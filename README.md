@@ -36,4 +36,5 @@ The examples seek to be:
 
 ## Sources / Thanks To
 
+[Learn Terraform The Hard Way](https://leanpub.com/learnterraformthehardway)
 TODO

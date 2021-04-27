@@ -16,11 +16,35 @@ This might be to do a basic test of something, find an example to tinker with, o
 
 ## Usage
 
-TODO
+To help get started with these examples, there are scripts available in `bin` and in local folders.
+
+Here's an example run:
+
+```
+$ git clone https://github.com/ContainerSolutions/terraform-examples
+$ cd terraform-examples
+$ cd aws/aws_vpc
+$ ./run.sh
+Input AWS_ACCESS_KEY_ID
+KEY
+Input AWS_SECRET_ACCESS_KEY
+<secret>
+...
+```
+
+If you want to skip the manual key/id inputs, then export them.
+
+See `bin/README.md` for more information.
+
+## Where is...?
+
+If you want to look for a specific example, try the [index](INDEX.md).
 
 ## Sections
 
 TODO
+
+
 
 ## Principles
 

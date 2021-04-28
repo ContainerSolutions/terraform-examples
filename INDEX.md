@@ -6,7 +6,7 @@
 | `aws_security_group` | [aws, ssh](aws/aws_security_group/ssh) <p/> [aws, open](aws/aws_security_group/open) |
 | `aws_vpc`     | [aws](aws/aws_vpc) |
 | `count`       | [aws, simple](aws/aws_instance/count) |
-| `for_each`    | [map](null_resource/for_each) |
+| `for_each`    | [map](null_resource/for_each) [aws](aws/aws_instance/for_each) |
 | `inline`      | [aws, inline](aws/aws_instance/remote-exec/inline/) |
 | `local_file`  | [local](local/local_file/hello) <p/> [local](local/local_file/preexisting_file) |
 | `map`         | [null_resource](null_resource/for_each) |

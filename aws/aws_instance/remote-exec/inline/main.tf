@@ -63,13 +63,14 @@ resource "aws_security_group_rule" "incoming_ssh" {
 }
 
 resource "aws_instance" "this" {
+  count = 2
   instance_type          = "t2.nano"
   ami                    = "ami-0ddbdea833a8d2f0d"
-  key_name               = aws_key_pair.this.id                            # the name of the SSH keypair to use for provisioning
-  vpc_security_group_ids = [aws_security_group.this.id]
+  key_name               = aws_key_pair.this[count.index].id                            # the name of the SSH keypair to use for provisioning
+  vpc_security_group_ids = [aws_security_group.this[count.index].id]
 
   connection {
-    host        = aws_instance.this.public_ip
+    host        = aws_instance.this[count.index].public_ip
     user        = var.ssh_username
     private_key = file(var.ssh_private_key_path)
     agent       = false                                    # don't use SSH agent because we have the private key right here
@@ -77,7 +78,7 @@ resource "aws_instance" "this" {
 
   provisioner "remote-exec" {
     inline = [
-      "echo ${aws_instance.this.ami}"
+      "echo ${aws_instance.this[count.index].ami}"
     ]
   }
 }

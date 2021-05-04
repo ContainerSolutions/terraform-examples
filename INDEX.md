@@ -14,6 +14,7 @@
 | `module`             | [local, module usage](variables/local_file/module) <p/> [local, module example](modules/local_file/hello_module) <p/> [local, module example consumer](modules/local_file/hello_consumer) |
 | `null_resource`      | [simple](null_resource/simple) |
 | `outputs`            | [local](outputs/local_file/local_file) <p/> [local, module](outputs/local_file/module) |
+| `random_id`          | [simple](aws/aws_s3_bucket/simple) |
 | `remote-exec`        | [aws, inline](aws/aws_instance/remote-exec/inline) |
 | `splat`              | [aws, aws_vpc](aws/aws_vpc/splat) |
 | `variable`           | [aws, local_file](variables/local_file/local_file) |

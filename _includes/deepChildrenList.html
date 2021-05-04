@@ -1,0 +1,93 @@
+{% if page.has_siblings == true %}
+<header class="post-header" id="examples-header">
+    <div class="color-section examples" id="colored-section">
+        <h1 id='{{page.title}}' class="post-title title">{{page.title}}</h1>
+    </div>
+</header>
+
+<article class="post padding-top">
+    <div class="post-content main">
+        {% comment %}  get all the tf pages and static files that include the page title (unique page title in path - between '/','/')
+        {% endcomment %}
+        {%- assign page_title = page.title | append: '/' | prepend: '/' -%}
+        {%- assign children = site.pages | where_exp:"item", "item.path contains page_title" -%}
+        {%- assign tfChildren = children | where_exp:"item", "item.path contains '.tf'" -%}
+        {%- assign staticChildren = site.static_files | where_exp:"item", "item.path contains page_title" -%}
+        {%- assign tfChildren = tfChildren | concat: staticChildren -%}
+        {% comment %} get the folders inside each example folder and create an array {% endcomment %}
+        {% capture tf_folder_list %}
+        {% for child in tfChildren %}
+        {%- assign title = page.title | append: "/" -%}
+        {%- assign firstLevel = child.path | split:title | last -%}
+        {%- assign itemName = firstLevel | split:'/' | last -%}
+        {%- assign secondLevel = firstLevel | remove: itemName -%}
+        {{secondLevel}}::
+        {% endfor %}
+        {% endcapture %}
+
+        {% comment %}return an unique array of folder names{% endcomment %}
+        {%- assign tfFolders_array = tf_folder_list | split: '::'| uniq -%}
+
+        {% comment %}loop for the first level of folders - example files in examples folder{% endcomment %}
+        {% for child in tfChildren %}
+        {% comment %}There is difference of paths for the static files and non static files (and extra '/'){% endcomment %}
+        {%- assign file_name = child.path | split:'/' | last -%}
+        {% if child.content %}
+        {%- assign child_path = child.path -%}
+        {% else %}
+        {%- assign child_path = child.path | remove_first: "/" -%}
+        {% endif %}
+
+        {% comment %}check how many '/' are in the path and see where the folder is located in proportion to Examples folder as root{% endcomment %}
+        {%- assign level = child_path | split:'/' | size -%}
+        {% comment %}top level folders content{% endcomment %}
+
+        {% if level <= 3 %}
+        {% comment %}show README files differently than tfs{% endcomment %}
+        {% if child.path contains ".md" %}
+        {% capture my_include %}{% include_relative {{ file_name }} %}{% endcapture %}
+        {{ my_include | markdownify }}
+        {% else %}
+        {{child.path}}
+        <h2 style="color: grey;" id="{{file_name}}">{{file_name}} neee</h2>
+        {% capture static_tf %}{% include_relative {{ file_name }} %}{% endcapture %}
+        {% highlight hcl %}{{static_tf}}{% endhighlight %}
+        {% endif %}
+        {% endif %}
+        {% endfor %}
+
+        {% comment %}lower/inner level folders content{% endcomment %}
+        {% for folder in tfFolders_array %}
+
+        {% comment %}get unique folder name to avoid same name files being used for wrong folders {% endcomment %}
+        {% assign strippedFolder = folder | strip_newlines | remove:" " %}
+        {% assign uniqStrippedFolder = strippedFolder | prepend: '/'%}
+        {% if strippedFolder != "" %}
+        <div>
+            <h2 id="{{strippedFolder}}">{{strippedFolder}}</h2>
+            {% comment %}for each folder get files{% endcomment %}
+            {%- assign folderYamlChildren = tfChildren | where_exp:"item", "item.path contains uniqStrippedFolder" -%}
+            {% for tf in folderYamlChildren %}
+            {% comment %}for each file get name and parent folders - to use as subsections in the UI{% endcomment %}
+            {%- assign tf_name = tf.path | split:'/' | last -%}
+            {%- assign page_path = tf.path | split: strippedFolder | first -%}
+            {%- assign static_path = tf.path | split: page_path | last -%}
+
+            {% comment %} display README files differently than Yaml{% endcomment %}
+            {% if tf.path contains ".md" %}
+            {% capture my_include %}{% include_relative {{static_path}} %}{% endcapture %}
+            {{ my_include | markdownify }}
+            {% else %}
+            <h3 style="color: grey;" id="{{tf_name}}">{{tf_name}}</h3>
+            {% capture tf_static %}{% include_relative {{static_path}} %}{% endcapture %}
+            {% highlight hcl %}
+            {{tf_static}} {% endhighlight %}
+            {% endif %}
+            {% endfor %}
+        </div>
+        {% endif %}
+        {% endfor %}
+    </div>
+    {% endif %}
+</article>
+

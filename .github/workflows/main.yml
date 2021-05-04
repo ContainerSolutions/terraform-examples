@@ -1,0 +1,14 @@
+name: Terraform Examples Checks
+on: [push]
+jobs:
+  TFLint:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository code
+        uses: actions/checkout@v2
+      - name: Setup TFLint
+        uses: terraform-linters/setup-tflint@v1
+        with:
+          tflint_version: v0.28.0  # Must be specified. See: https://github.com/terraform-linters/tflint/releases for latest versions
+      - name: Run TFLint
+        run: find ${{ github.workspace }} | grep tf$ | xargs -n1 dirname | xargs -IXXX -n1 /bin/sh -c 'cd XXX; pwd; tflint .; cd - >/dev/null'

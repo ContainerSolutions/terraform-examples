@@ -2,8 +2,6 @@ terraform {
   required_version = ">= 0.14.0"
 }
 
-error
-
 output consumer_filename {
     value = module.hello.filename
 }

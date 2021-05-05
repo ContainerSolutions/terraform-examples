@@ -12,7 +12,7 @@ TERRAFORM_FOLDERS="$(find . | grep tf$ | xargs -n1 dirname | sed 's/^.\///')"
 for folder in ${TERRAFORM_FOLDERS}
 do
   echo -n "Checking folder: ${folder} ... "
-  pushd "${folder}"
+  pushd "${folder}" >/dev/null
   pwd
   for script in run.sh destroy.sh
   do

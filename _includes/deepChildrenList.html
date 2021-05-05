@@ -49,7 +49,7 @@
         {{ my_include | markdownify }}
         {% else %}
         {{child.path}}
-        <h2 style="color: grey;" id="{{file_name}}">{{file_name}} neee</h2>
+        <h2 style="color: grey;" id="{{file_name}}">{{file_name}}</h2>
         {% capture static_tf %}{% include_relative {{ file_name }} %}{% endcapture %}
         {% highlight hcl %}{{static_tf}}{% endhighlight %}
         {% endif %}

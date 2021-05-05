@@ -42,9 +42,9 @@ If you want to look for a specific example, try the [index](INDEX.md).
 
 ## Sections
 
-TODO
+The code is generally divided up by provider, then resource, then whatever the example illustrates, eg `local/null_resource/for_each`, or `aws/aws_instance/remote-exec/inline`.
 
-
+Other basic language features may be illustrated in their own folders, eg `outputs/local_file/module`.
 
 ## Principles
 
@@ -54,11 +54,8 @@ The examples seek to be:
 
 - Self-contained (ie limited to one `.tf` file)
 
-- Non-conflicting (eg resource names are unique)
-
 - Clear (eg resource names are verbose and unambiguous)
 
 ## Sources / Thanks To
 
 [Learn Terraform The Hard Way](https://leanpub.com/learnterraformthehardway)
-TODO

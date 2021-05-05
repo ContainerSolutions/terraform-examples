@@ -20,8 +20,8 @@
 
 title: Terraform examples
 description: A reference repository of Terraform with canonical and as-simple-as-possible demonstrations of Terraform functionality and features.
-baseurl: "" # the subpath of your site, e.g. /blog
-url: "" # the base hostname & protocol for your site, e.g. http://example.com
+baseurl: "/terraform-examples/" # the subpath of your site, e.g. /blog
+url: "https://containersolutions.github.io" # the base hostname & protocol for your site, e.g. http://example.com
 logo: "/assets/images/logo-main.svg"
 aux_links:
   "Contribute":

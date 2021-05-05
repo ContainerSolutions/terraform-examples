@@ -18,4 +18,7 @@
 | `remote-exec`           | [aws, inline](aws/aws_instance/remote-exec/inline) |
 | `splat`                 | [aws, aws_vpc](aws/aws_vpc/splat) |
 | `variable`              | [aws, local_file](variables/local_file/local_file) |
-| `kubernetes_deployment` | [kubernetes, deployment_simple](kubernetes/kubernetes_deployment/simple) |
+| `kubernetes_namespace`  | [simple](kubernetes/kubernetes_namespace/simple) |
+| `kubernetes_deployment` | [simple](kubernetes/kubernetes_deployment/simple) <p/> [deployment-and-service](kubernetes/kubernetes_deployment/deployment-and-service) |
+| `kubernetes_service`    | [simple](kubernetes/kubernetes_service/simple) |
+| `kubernetes_config_map` | [simple](kubernetes/kubernetes_config_map/simple) <p/> [data_from_files](kubernetes/kubernetes_config_map/from_files) |

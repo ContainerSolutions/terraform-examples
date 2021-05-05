@@ -19,6 +19,9 @@ do
     echo -n "script:${script}... "
     if ! [ -e "${script}" ]
     then
+      pwd
+      ls
+      ls $script
       echo "$folder/$script should exist, but does not"
       exit 1
     fi

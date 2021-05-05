@@ -1,3 +1,3 @@
 #!/bin/bash
-../../../bin/apply_aws.sh
+../../../bin/apply.sh
 

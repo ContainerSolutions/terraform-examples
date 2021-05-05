@@ -18,4 +18,4 @@
 | `remote-exec`           | [aws, inline](aws/aws_instance/remote-exec/inline) |
 | `splat`                 | [aws, aws_vpc](aws/aws_vpc/splat) |
 | `variable`              | [aws, local_file](variables/local_file/local_file) |
-| `kubernetes_deployment` | [kubernetes, deployment_simple](kubernetes/deployment/simple) |
+| `kubernetes_deployment` | [kubernetes, deployment_simple](kubernetes/kubernetes_deployment/simple) |

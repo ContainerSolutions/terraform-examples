@@ -10,7 +10,7 @@ INDEX_FILE="INDEX.md"
 echo "================================================================================"
 echo "Checking folders in ${INDEX_FILE} exist"
 echo "================================================================================"
-FILES="$(cat ${INDEX_FILE} | grep '(' | grep ')' | sed 's/)/)\n/g;s/.*(\(.*\))/\1/' | grep '/')"
+FILES="$(grep '(' "${INDEX_FILE}" | grep ')' | sed 's/)/)\n/g;s/.*(\(.*\))/\1/' | grep '/')"
 for file in $FILES
 do
   ls -d "$file" >/dev/null

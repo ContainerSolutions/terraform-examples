@@ -7,7 +7,7 @@ provider "aws" {
 }
 
 resource "aws_vpc" "aws_vpc_count" {
-  count = 3
+  count      = 3
   cidr_block = format("172.%d.0.0/16", 16 + count.index)
 }
 
@@ -17,7 +17,7 @@ output "bidr_block_full_splat" {
 
 output "ips" {
   value = [
-    for vpc in aws_vpc.aws_vpc_count:
-      vpc.cidr_block
+    for vpc in aws_vpc.aws_vpc_count :
+    vpc.cidr_block
   ]
 }

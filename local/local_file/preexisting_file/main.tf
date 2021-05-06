@@ -3,9 +3,9 @@ terraform {
 }
 
 data "local_file" "local_file_preexisting_file" {
-    filename = "${path.module}/preexisting_file.txt"
+  filename = "${path.module}/preexisting_file.txt"
 }
 
 output "preexisting_file_content" {
-    value = data.local_file.local_file_preexisting_file.content
+  value = data.local_file.local_file_preexisting_file.content
 }

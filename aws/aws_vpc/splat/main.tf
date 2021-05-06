@@ -7,7 +7,7 @@ provider "aws" {
 }
 
 resource "aws_vpc" "aws_vpc_splat" {
-  count = 3
+  count      = 3
   cidr_block = format("172.%d.0.0/16", 16 + count.index)
 }
 

@@ -8,6 +8,7 @@
 | `count`                 | [aws, aws_instance](aws/aws_instance/count) <p/> [aws, aws_vpc](aws/aws_vpc/count) |
 | `for`                   | [aws, aws_vpc](aws/aws_vpc/for) |
 | `for_each`              | [map, local](local/null_resource/for_each) <p/> [aws](aws/aws_instance/for_each) |
+| `helm_release`          | [simple](helm/helm_release/simple) <p/> [values_from_file](helm/helm_release/values_from_file) |
 | `inline`                | [aws, remote-exec](aws/aws_instance/remote-exec/inline/) |
 | `kubernetes_config_map` | [simple](kubernetes/kubernetes_config_map/simple) <p/> [data_from_files](kubernetes/kubernetes_config_map/from_files) |
 | `kubernetes_deployment` | [simple](kubernetes/kubernetes_deployment/simple) <p/> [deployment-and-service](kubernetes/kubernetes_deployment/deployment-and-service) |

@@ -3,5 +3,5 @@ terraform {
 }
 
 module "hello_consumer" {
-    source = "../hello_module"
+  source = "../hello_module"
 }

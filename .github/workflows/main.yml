@@ -13,7 +13,11 @@ jobs:
       - name: Run TFLint
         # info level there because of WARNs and ERRs seen occasionally only in GitHub actions logs
         run: find ${{ github.workspace }} | grep tf$ | xargs -n1 dirname | xargs -IXXX -n1 /bin/sh -c 'set -o errexit; cd XXX; pwd; tflint --loglevel=info .; cd - >/dev/null'
+      - name: Run Check Format
+        run: ${{ github.workspace }}/bin/check_format.sh
       - name: Run Check Index
         run: ${{ github.workspace }}/bin/check_index.sh
       - name: Run Check Scripts
         run: ${{ github.workspace }}/bin/check_scripts.sh
+      - name: Run Check Shell Scripts
+        run: ${{ github.workspace }}/bin/check_shell.sh

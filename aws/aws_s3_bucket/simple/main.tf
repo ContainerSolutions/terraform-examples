@@ -11,5 +11,5 @@ resource "random_id" "bucket_name" {
 }
 
 resource "aws_s3_bucket" "aws_s3_bucket_simple" {
-  bucket        = "ltthw-${random_id.bucket_name.hex}"
+  bucket = "ltthw-${random_id.bucket_name.hex}"
 }

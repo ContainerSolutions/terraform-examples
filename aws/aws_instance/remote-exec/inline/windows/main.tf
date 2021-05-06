@@ -88,14 +88,14 @@ output "admin_password" {
 resource "null_resource" "provision_files" {
 
   connection {
-    host        = aws_instance.this.public_ip
-    type        = "winrm"
-    user        = "Administrator"
-    password    = rsadecrypt(aws_instance.this.password_data, file(var.ssh_private_key_path))
-    https       = true
-    insecure    = true
-    port        = 5986
-    timeout     = "1m"
+    host     = aws_instance.this.public_ip
+    type     = "winrm"
+    user     = "Administrator"
+    password = rsadecrypt(aws_instance.this.password_data, file(var.ssh_private_key_path))
+    https    = true
+    insecure = true
+    port     = 5986
+    timeout  = "1m"
   }
 
   provisioner "file" {

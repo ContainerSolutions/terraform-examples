@@ -1,0 +1,15 @@
+terraform {
+  backend "s3" {
+    bucket = BUCKET_NAME
+    region = "us-east-1"
+    key    = "tfstate"
+  }
+}
+
+provider "aws" {
+  region = "us-east-1"
+}
+
+resource "aws_vpc" "aws_vpc_s3_backend" {
+    cidr_block = "10.0.0.0/16"
+}

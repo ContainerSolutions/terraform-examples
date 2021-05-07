@@ -1,8 +1,8 @@
+# Summary: Create an AWS VPC
+
+# Documentation: https://www.terraform.io/docs/language/settings/index.html
 terraform {
   required_version = ">= 0.14.0"
-}
-
-terraform {
   required_providers {
     aws = {
       source  = "hashicorp/aws"
@@ -11,10 +11,12 @@ terraform {
   }
 }
 
+# Documentation: https://www.terraform.io/docs/language/providers/requirements.html
 provider "aws" {
   region = "us-east-1"
 }
 
+# Documentation: https://registry.terraform.io/providers/hashicorp/aws/latest/docs/data-sources/vpc
 resource "aws_vpc" "main" {
   cidr_block = "10.0.0.0/16"
 }

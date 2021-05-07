@@ -4,7 +4,9 @@
 | -------------            |:-------------:|
 | `aws_instance`           | [aws](aws/aws_instance) <p/> [simple](aws/aws_instance/simple) |
 | `aws_security_group`     | [aws, ssh](aws/aws_security_group/ssh) <p/> [aws, open](aws/aws_security_group/open) |
+| `aws_s3_bucket`          | [aws, backends, s3](backends/s3/aws_s3_bucket) |
 | `aws_vpc`                | [aws](aws/aws_vpc/simple) |
+| `backends`               | [aws, s3, aws_s3_bucket](backends/s3/aws_s3_bucket) |
 | `count`                  | [aws, aws_instance](aws/aws_instance/count) <p/> [aws, aws_vpc](aws/aws_vpc/count) |
 | `for`                    | [aws, aws_vpc](aws/aws_vpc/for) |
 | `for_each`               | [map, local](local/null_resource/for_each) <p/> [aws](aws/aws_instance/for_each) |
@@ -23,5 +25,6 @@
 | `random_id`              | [simple](aws/aws_s3_bucket/simple) |
 | `remote-exec`            | [aws, inline](aws/aws_instance/remote-exec/inline) |
 | `splat`                  | [aws, aws_vpc](aws/aws_vpc/splat) |
+| `s3`                     | [aws, backends, aws_s3_bucket](backends/s3/aws_s3_bucket) |
 | `variable`               | [aws, local_file](variables/local_file/local_file) |
 | `windows`                | [aws_instance, remote-exec, inline](aws/aws_instance/remote-exec/inline/windows) |

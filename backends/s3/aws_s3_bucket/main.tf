@@ -9,5 +9,5 @@ resource "random_id" "bucket_name" {
 }
 resource "aws_s3_bucket" "aws_s3_bucket_simple" {
   force_destroy = true
-  bucket        = "ltthw-${random_id.bucket_name.hex}"
+  bucket        = "te-${random_id.bucket_name.hex}"
 }

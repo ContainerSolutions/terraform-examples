@@ -1,3 +1,6 @@
+# Summary: A Kubernetes namespace
+
+# Documentation: https://www.terraform.io/docs/language/settings/index.html
 terraform {
   required_version = ">= 0.14.0"
   required_providers {
@@ -8,10 +11,9 @@ terraform {
   }
 }
 
-# NameSpace
-
-resource "kubernetes_namespace" "namespace-simple" {
+# Documentation: https://registry.terraform.io/providers/hashicorp/kubernetes/latest/docs/resources/namespace
+resource "kubernetes_namespace" "changeme_namespace_simple" {
   metadata {
-    name = "namespace-simple"
+    name = "changeme-namespace-simple-name"
   }
 }

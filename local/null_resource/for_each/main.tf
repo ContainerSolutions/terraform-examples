@@ -1,8 +1,14 @@
+# Summary: Local null resource that iterates over a map using for_each
+
+# Documentation: https://www.terraform.io/docs/language/settings/index.html
 terraform {
   required_version = ">= 0.14.0"
 }
 
+
+# Documentation: https://www.terraform.io/docs/language/values/locals.html
 locals {
+  # Documentation: https://www.terraform.io/docs/language/expressions/types.html#maps-objects
   map1 = {
     item1 = {
       name1 = "item1value1"
@@ -15,8 +21,11 @@ locals {
   }
 }
 
-resource "null_resource" "null_resource_simple" {
+# Documentation: https://registry.terraform.io/providers/hashicorp/null/latest/docs/resources/resource
+resource "null_resource" "changeme_null_resource_simple" {
+  # Documentation: https://www.terraform.io/docs/language/meta-arguments/for_each.html
   for_each = local.map1
+  # Documentation: https://www.terraform.io/docs/language/resources/provisioners/local-exec.html
   provisioner "local-exec" {
     command = "echo ${each.key} ${each.value.name1} ${each.value.name2}"
   }

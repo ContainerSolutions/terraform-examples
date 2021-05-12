@@ -1,3 +1,6 @@
+# Summary: A kubernetes service
+
+# Documentation: https://www.terraform.io/docs/language/settings/index.html
 terraform {
   required_version = ">= 0.14.0"
   required_providers {
@@ -8,11 +11,10 @@ terraform {
   }
 }
 
-# Service
-
-resource "kubernetes_service" "service-simple" {
+# Documentation:  https://registry.terraform.io/providers/hashicorp/kubernetes/latest/docs/resources/service
+resource "kubernetes_service" "changeme_service_simple" {
   metadata {
-    name = "service-simple"
+    name = "changeme-service-simple-name"
   }
   spec {
     selector = {

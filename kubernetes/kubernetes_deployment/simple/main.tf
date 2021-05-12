@@ -1,3 +1,6 @@
+# Summary: A Kubernetes deployment
+
+# Documentation: https://www.terraform.io/docs/language/settings/index.html
 terraform {
   required_version = ">= 0.14.0"
   required_providers {
@@ -8,9 +11,8 @@ terraform {
   }
 }
 
-# Deployment
-
-resource "kubernetes_deployment" "deployment-simple" {
+# Documentation: https://registry.terraform.io/providers/hashicorp/kubernetes/latest/docs/resources/deployment
+resource "kubernetes_deployment" "changeme_deployment_simple" {
   metadata {
     name = "deployment-simple"
     labels = {

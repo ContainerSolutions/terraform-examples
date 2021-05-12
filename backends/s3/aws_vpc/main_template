@@ -1,4 +1,8 @@
+# Summary: template for S3 backend
+
+# Documentation: https://www.terraform.io/docs/language/providers/requirements.html
 terraform {
+  # Documentation: https://www.terraform.io/docs/language/settings/backends/s3.html
   backend "s3" {
     bucket = BUCKET_NAME
     region = "us-east-1"
@@ -6,10 +10,12 @@ terraform {
   }
 }
 
+# Documentation: https://www.terraform.io/docs/language/providers/requirements.html
 provider "aws" {
   region = "us-east-1"
 }
 
-resource "aws_vpc" "aws_vpc_s3_backend" {
+# Documentation: https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/vpc
+resource "aws_vpc" "changeme_aws_vpc_s3_backend" {
     cidr_block = "10.0.0.0/16"
 }

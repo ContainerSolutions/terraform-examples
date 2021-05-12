@@ -56,6 +56,12 @@ The examples seek to be:
 
 - Clear (eg resource names are verbose and unambiguous)
 
+## Conventions
+
+- Where it makes sense, items that can be changed are prefaced with `changeme_`
+
+- In general, underscores are used in Terraform names over dashes
+
 ## Sources / Thanks To
 
 [Learn Terraform The Hard Way](https://leanpub.com/learnterraformthehardway)

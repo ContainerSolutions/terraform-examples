@@ -1,4 +1,4 @@
-# Summary: Creates a GKE (Google Kubernetes Engine) cluster, connects the Terraform Kubernetes Provider to it, and creates a k8s deplyment.
+# Summary: Creates a GKE (Google Kubernetes Engine) cluster, connects the Terraform Kubernetes Provider to it, and creates a k8s deployment.
 
 terraform {
   required_version = ">= 0.14.0"

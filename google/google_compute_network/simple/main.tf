@@ -12,14 +12,13 @@ terraform {
 }
 
 # Documentation: https://www.terraform.io/docs/language/values/variables.html
-variable "changeme_project_id" {
-  description = "project id"
+variable "project_id" {
   type        = string
 }
 
 # Documentation: https://www.terraform.io/docs/language/providers/requirements.html
 provider "google" {
-  project = var.changeme_project_id
+  project = var.project_id
   region  = "us-central1"
   zone    = "us-central1-c"
 }
@@ -32,7 +31,7 @@ resource "google_compute_network" "changeme_vpc_simple" {
 
 # Documentation: https://registry.terraform.io/providers/hashicorp/google/latest/docs/resources/compute_subnetwork
 resource "google_compute_subnetwork" "changeme_vpc_simple_subnet_1" {
-  name          = "changeme_${google_compute_network.changeme_vpc_simple.name}_subnet_1"
+  name          = "changeme-${google_compute_network.changeme_vpc_simple.name}-subnet-1"
   region        = "us-central1"
   network       = google_compute_network.changeme_vpc_simple.name
   ip_cidr_range = "10.10.0.0/24"

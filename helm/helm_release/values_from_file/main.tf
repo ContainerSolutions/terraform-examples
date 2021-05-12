@@ -13,7 +13,7 @@ terraform {
 
 # Documentation: https://registry.terraform.io/providers/hashicorp/helm/latest/docs/resources/release
 resource "helm_release" "changeme_release_values_from_file_ingress_nginx" {
-  name = "changeme_release_values_from_file_ingress_nginx_name"
+  name = "changeme-release-values-from-file-ingress-nginx-name"
 
   repository = "https://kubernetes.github.io/ingress-nginx"
   chart      = "ingress-nginx"

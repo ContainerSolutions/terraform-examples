@@ -18,7 +18,7 @@ module "eks-spot-and-fargate-network" {
 
 
 module "eks-spot-and-fargate-cluster" {
-  source          = "./fargate_eks"
+  source          = "./eks_cluster"
   name            = var.name
   environment     = var.environment
   region          = var.region

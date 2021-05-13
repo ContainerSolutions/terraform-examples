@@ -11,8 +11,7 @@
 | `for`                      | [aws, aws_vpc](aws/aws_vpc/for) |
 | `for_each`                 | [map, local](local/null_resource/for_each) <p/> [aws](aws/aws_instance/for_each) |
 | `google_compute_network`   | [google](google/google_compute_network/simple) |
-| `google_container_cluster` | [google, GKE](google/google_container_cluster/simple) <p/> [separate-node-pool](google/google_container_cluster/separate-node-pool) |
-| `helm`                     | [helm](helm) |
+| `google_container_cluster` | [google, GKE](google/google_container_cluster/simple) <p/> [separate-node-pool](google/google_container_cluster/separate-node-pool) <p/> [cluster-and-deployment](google/google_container_cluster/cluster-and-deployment) <p/> [vpc_native_cluster](google/google_container_cluster/vpc_native_cluster) |
 | `helm_release`             | [simple](helm/helm_release/simple) <p/> [values_from_file](helm/helm_release/values_from_file) |
 | `inline`                   | [aws, remote-exec](aws/aws_instance/remote-exec/inline/) |
 | `kubernetes`               | [kubernetes](kubernetes) |

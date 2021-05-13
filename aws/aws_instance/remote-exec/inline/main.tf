@@ -77,7 +77,7 @@ resource "aws_security_group_rule" "changeme_incoming_ssh" {
 # Documentation: https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/instance
 resource "aws_instance" "changeme_aws_instance" {
   # Documentation: https://www.terraform.io/docs/language/meta-arguments/count.html
-  count                  = 2
+  count = 2
 
   instance_type          = "t2.nano"
   ami                    = "ami-0ddbdea833a8d2f0d"

@@ -1,28 +1,4 @@
-# MIT License
-
-# Copyright (c) 2020 finleap GmbH
-
-# Permission is hereby granted, free of charge, to any person obtaining a copy
-# of this software and associated documentation files (the "Software"), to deal
-# in the Software without restriction, including without limitation the rights
-# to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-# copies of the Software, and to permit persons to whom the Software is
-# furnished to do so, subject to the following conditions:
-
-# The above copyright notice and this permission notice shall be included in all
-# copies or substantial portions of the Software.
-
-# THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-# IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-# FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-# AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-# LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-# OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
-# SOFTWARE. 
-#
-# This code was taken and adapted from https://github.com/finleap/tf-eks-fargate-tmpl
-# More about it at https://engineering.finleap.com/posts/2020-02-27-eks-fargate-terraform/
-
+# From https://github.com/finleap/tf-eks-fargate-tmpl
 provider "local" {
   version = "~> 1.4"
 }
@@ -45,44 +21,6 @@ data "aws_eks_cluster" "cluster" {
 
 data "aws_eks_cluster_auth" "cluster" {
   name = aws_eks_cluster.main.id
-}
-
-resource "aws_iam_policy" "AmazonEKSClusterCloudWatchMetricsPolicy" {
-  name   = "AmazonEKSClusterCloudWatchMetricsPolicy"
-  policy = <<EOF
-{
-    "Version": "2012-10-17",
-    "Statement": [
-        {
-            "Action": [
-                "cloudwatch:PutMetricData"
-            ],
-            "Resource": "*",
-            "Effect": "Allow"
-        }
-    ]
-}
-EOF
-}
-
-resource "aws_iam_policy" "AmazonEKSClusterNLBPolicy" {
-  name   = "AmazonEKSClusterNLBPolicy"
-  policy = <<EOF
-{
-    "Version": "2012-10-17",
-    "Statement": [
-        {
-            "Action": [
-                "elasticloadbalancing:*",
-                "ec2:CreateSecurityGroup",
-                "ec2:Describe*"
-            ],
-            "Resource": "*",
-            "Effect": "Allow"
-        }
-    ]
-}
-EOF
 }
 
 resource "aws_iam_role" "eks_cluster_role" {
@@ -118,31 +56,9 @@ resource "aws_iam_role_policy_attachment" "AmazonEKSServicePolicy" {
   role       = aws_iam_role.eks_cluster_role.name
 }
 
-resource "aws_iam_role_policy_attachment" "AmazonEKSCloudWatchMetricsPolicy" {
-  policy_arn = aws_iam_policy.AmazonEKSClusterCloudWatchMetricsPolicy.arn
-  role       = aws_iam_role.eks_cluster_role.name
-}
-
-resource "aws_iam_role_policy_attachment" "AmazonEKSCluserNLBPolicy" {
-  policy_arn = aws_iam_policy.AmazonEKSClusterNLBPolicy.arn
-  role       = aws_iam_role.eks_cluster_role.name
-}
-
-resource "aws_cloudwatch_log_group" "eks_cluster" {
-  name              = "/aws/eks/${var.name}-${var.environment}/cluster"
-  retention_in_days = 30
-
-  tags = {
-    Name        = "${var.name}-${var.environment}-eks-cloudwatch-log-group"
-    Environment = var.environment
-  }
-}
-
 resource "aws_eks_cluster" "main" {
   name     = "${var.name}-${var.environment}"
   role_arn = aws_iam_role.eks_cluster_role.arn
-
-  enabled_cluster_log_types = ["api", "audit", "authenticator", "controllerManager", "scheduler"]
 
   vpc_config {
     subnet_ids = concat(var.public_subnets.*.id, var.private_subnets.*.id)
@@ -153,7 +69,6 @@ resource "aws_eks_cluster" "main" {
   }
 
   depends_on = [
-    aws_cloudwatch_log_group.eks_cluster,
     aws_iam_role_policy_attachment.AmazonEKSClusterPolicy,
     aws_iam_role_policy_attachment.AmazonEKSServicePolicy
   ]
@@ -214,7 +129,7 @@ resource "aws_iam_role_policy_attachment" "AmazonEC2ContainerRegistryReadOnly" {
 
 resource "aws_eks_node_group" "main" {
   cluster_name    = aws_eks_cluster.main.name
-  node_group_name = "rrpg-01"
+  node_group_name = "changeme-eks-cluster-kube-system"
   node_role_arn   = aws_iam_role.eks_node_group_role.arn
   subnet_ids      = var.private_subnets.*.id
   capacity_type   = "SPOT"
@@ -228,11 +143,6 @@ resource "aws_eks_node_group" "main" {
   instance_types  = ["t2.micro"]
 
   version = var.k8s_version
-
-  tags = {
-    Name        = "${var.name}-${var.environment}-eks-node-group"
-    Environment = var.environment
-  }
 
   # Ensure that IAM Role permissions are created before and deleted after EKS Node Group handling.
   # Otherwise, EKS will not be able to properly delete EC2 Instances and Elastic Network Interfaces.

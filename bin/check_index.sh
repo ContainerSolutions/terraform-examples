@@ -20,7 +20,8 @@ done
 echo "================================================================================"
 echo "Checking that every folder is mentioned in ${INDEX_FILE}"
 echo "================================================================================"
-TERRAFORM_FOLDERS="$(find . | grep tf$ | xargs -n1 dirname | sed 's/^.\///')"
+# shellcheck disable=SC1091
+source bin/get_terraform_folders.sh
 for folder in $TERRAFORM_FOLDERS
 do
   if grep "${folder}" ${INDEX_FILE} >/dev/null

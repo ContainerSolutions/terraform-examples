@@ -8,7 +8,12 @@ do
     if [[ $(terraform show -no-color) != "" ]]
     then
         echo "In folder: ${d}"
-        terraform destroy
+        if [[ $- == *i* ]]
+        then
+          terraform destroy
+        else
+          terraform destroy -auto-approve
+        fi
     fi
     cd - >/dev/null || exit 1
 done

@@ -7,4 +7,9 @@ cd - >/dev/null || exit 1
 
 terraform init
 terraform plan
-terraform destroy
+if [[ $- == *i* ]]
+then
+  terraform destroy
+else
+  terraform destroy -auto-approve
+fi

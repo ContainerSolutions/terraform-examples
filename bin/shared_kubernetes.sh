@@ -1,14 +1,15 @@
+#!/bin/bash
 set -o errexit
 set -o pipefail
 
 
-if [ -z $KUBE_CONFIG_PATH ]
+if [ -z "$KUBE_CONFIG_PATH" ]
 then
-  KUBE_CONFIG_PATH="~/.kube/config"
+  KUBE_CONFIG_PATH="${HOME}/.kube/config"
   echo "By default we look for kube config file in ${KUBE_CONFIG_PATH}"
   echo "To use a custom kube config path, run 'export KUBE_CONFIG_PATH=<YOUR_KUBE_CONFIG_PATH>'"
 fi
-if [ -z $KUBE_CTX ]
+if [ -z "$KUBE_CTX" ]
 then
   KUBE_CTX="$(kubectl config current-context)"
   echo "By default we use context: ${KUBE_CTX}"

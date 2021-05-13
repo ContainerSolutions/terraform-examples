@@ -15,3 +15,4 @@ do
     shellcheck -x "$file"
   fi
 done
+shellcheck -x -- *sh

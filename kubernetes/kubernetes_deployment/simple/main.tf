@@ -12,11 +12,11 @@ terraform {
 }
 
 # Documentation: https://registry.terraform.io/providers/hashicorp/kubernetes/latest/docs/resources/deployment
-resource "kubernetes_deployment" "changeme_deployment_simple" {
+resource "kubernetes_deployment" "changeme_simple_deployment" {
   metadata {
-    name = "deployment-simple"
+    name = "changeme-simple-deployment"
     labels = {
-      app = "deployment-simple-app"
+      app = "changeme-simple-deployment"
     }
   }
 
@@ -24,13 +24,13 @@ resource "kubernetes_deployment" "changeme_deployment_simple" {
     replicas = 1
     selector {
       match_labels = {
-        app = "deployment-simple-app"
+        app = "changeme-simple-deployment"
       }
     }
     template {
       metadata {
         labels = {
-          app = "deployment-simple-app"
+          app = "changeme-simple-deployment"
         }
       }
       spec {

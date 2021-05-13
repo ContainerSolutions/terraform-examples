@@ -25,8 +25,8 @@ provider "google" {
 
 # GKE
 # Documentation: https://registry.terraform.io/providers/hashicorp/google/latest/docs/resources/container_cluster
-resource "google_container_cluster" "changeme_cluster_separate_node_pool" {
-  name     = "changeme-cluster-separate-node-pool"
+resource "google_container_cluster" "changeme_separate_node_pool_cluster" {
+  name     = "changeme-separate-node-pool-cluster"
   location = "us-central1-a"
 
   # Explanation: Cannot create a cluster with no node pool. So we create a pool and immediately delete it.
@@ -36,10 +36,10 @@ resource "google_container_cluster" "changeme_cluster_separate_node_pool" {
 
 # Node Pool in a GKE cluster (managed separately)
 # Documentation: https://registry.terraform.io/providers/hashicorp/google/latest/docs/resources/container_node_pool
-resource "google_container_node_pool" "changeme-node-pool-separate-node-pool" {
-  name       = "changeme-node-pool-separate-node-pool"
+resource "google_container_node_pool" "changeme_separate_node_pool" {
+  name       = "changeme-separate-node-pool"
   location   = "us-central1-a"
-  cluster    = google_container_cluster.changeme_cluster_separate_node_pool.name
+  cluster    = google_container_cluster.changeme_separate_node_pool_cluster.name
   node_count = 1
 
   node_config {

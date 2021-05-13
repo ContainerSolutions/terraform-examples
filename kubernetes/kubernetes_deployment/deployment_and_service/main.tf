@@ -14,17 +14,17 @@ terraform {
 # Documentation: https://registry.terraform.io/providers/hashicorp/kubernetes/latest/docs/resources/namespace
 resource "kubernetes_namespace" "changeme_deployment_and_service_namespace" {
   metadata {
-    name = "deployment-and-service"
+    name = "changeme-deployment-and-service"
   }
 }
 
 # Documentation: https://registry.terraform.io/providers/hashicorp/kubernetes/latest/docs/resources/deployment
 resource "kubernetes_deployment" "changeme_deployment_and_service_deployment" {
   metadata {
-    name      = "deployment-and-service"
+    name      = "changeme-deployment-and-service"
     namespace = kubernetes_namespace.changeme_deployment_and_service_namespace.metadata.0.name
     labels = {
-      app = "deployment-and-service-app"
+      app = "changeme-deployment-and-service"
     }
   }
 
@@ -32,13 +32,13 @@ resource "kubernetes_deployment" "changeme_deployment_and_service_deployment" {
     replicas = 2
     selector {
       match_labels = {
-        app = "deployment-and-service-app"
+        app = "changeme-deployment-and-service"
       }
     }
     template {
       metadata {
         labels = {
-          app = "deployment-and-service-app"
+          app = "changeme-deployment-and-service"
         }
       }
       spec {
@@ -59,7 +59,7 @@ resource "kubernetes_deployment" "changeme_deployment_and_service_deployment" {
 # Documentation: https://registry.terraform.io/providers/hashicorp/kubernetes/latest/docs/resources/service
 resource "kubernetes_service" "changeme_deployment_and_service_service" {
   metadata {
-    name      = "deployment-and-service"
+    name      = "changeme-deployment-and-service"
     namespace = kubernetes_namespace.changeme_deployment_and_service_namespace.metadata.0.name
   }
   spec {

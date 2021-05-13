@@ -62,6 +62,15 @@ The examples seek to be:
 
 - In general, underscores are used in Terraform names over dashes
 
+- Naming Terraform resources:
+  - use only lower case letters, numbers, and underscore
+  - names should be unique between all examples
+  - prefixed with:  `changeme_<example_name>_`
+
+- `name =` attribute within the resource:
+  - use only lower case letters, numbers, and dash
+  - same as resource name, but with: `s/_/-/g`
+
 ## Sources / Thanks To
 
 [Learn Terraform The Hard Way](https://leanpub.com/learnterraformthehardway)

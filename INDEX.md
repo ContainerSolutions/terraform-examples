@@ -6,7 +6,7 @@
 | `aws_security_group`       | [aws, ssh](aws/aws_security_group/ssh) <p/> [aws, open](aws/aws_security_group/open) |
 | `aws_s3_bucket`            | [aws, backends, s3](backends/s3/aws_s3_bucket) |
 | `aws_vpc`                  | [aws](aws/aws_vpc/simple) |
-| `aws_eks`                  | [aws](aws/aws_eks/fargate/spot_and_fargate) |
+| `aws_eks`                  | [aws, spot_and_fargate](aws/aws_eks/fargate/spot_and_fargate) <p/> [aws, eks_network](aws/aws_eks/fargate/spot_and_fargate/network) <p/> [aws, eks_cluster](aws/aws_eks/fargate/spot_and_fargate/eks_cluster) |
 | `backends`                 | [backends](backends) <p/> [aws, s3, aws_s3_bucket](backends/s3/aws_s3_bucket) |
 | `count`                    | [aws, aws_instance](aws/aws_instance/count) <p/> [aws, aws_vpc](aws/aws_vpc/count) |
 | `for`                      | [aws, aws_vpc](aws/aws_vpc/for) |

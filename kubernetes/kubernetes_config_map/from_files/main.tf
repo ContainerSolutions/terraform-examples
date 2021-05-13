@@ -12,9 +12,9 @@ terraform {
 }
 
 # Documentation: https://registry.terraform.io/providers/hashicorp/kubernetes/latest/docs/resources/config_ma
-resource "kubernetes_config_map" "changeme_config_map_from_files" {
+resource "kubernetes_config_map" "changeme_from_files_config_map" {
   metadata {
-    name = "changeme-config-map-from-files-name"
+    name = "changeme-from-files-config-map"
   }
 
   data = {

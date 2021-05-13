@@ -26,18 +26,18 @@ provider "google" {
 
 # Google VPC network
 # Documentation: https://registry.terraform.io/providers/hashicorp/google/latest/docs/resources/compute_network
-resource "google_compute_network" "changeme_vpc_native_cluster_network" {
-  name                    = "changeme-vpc-native-cluster-network"
+resource "google_compute_network" "changeme_vpc_native_cluster_vpc" {
+  name                    = "changeme-vpc-native-cluster-vpc"
   auto_create_subnetworks = false
 }
 
 # Subnetwork
 # Documentation: https://registry.terraform.io/providers/hashicorp/google/latest/docs/resources/compute_subnetwork
-resource "google_compute_subnetwork" "changeme_vpc_native_cluster_subnetwork" {
-  name          = "changeme-vpc-native-cluster-subnetwork"
+resource "google_compute_subnetwork" "changeme_vpc_native_cluster_subnet" {
+  name          = "changeme-vpc-native-cluster-subnet"
   ip_cidr_range = "10.2.0.0/16"
   region        = "us-central1"
-  network       = google_compute_network.changeme_vpc_native_cluster_network.id
+  network       = google_compute_network.changeme_vpc_native_cluster_vpc.id
   secondary_ip_range {
     range_name    = "services-range"
     ip_cidr_range = "192.168.1.0/24"
@@ -56,12 +56,12 @@ resource "google_container_cluster" "changeme_vpc_native_cluster" {
   location           = "us-central1-a"
   initial_node_count = 1
 
-  network    = google_compute_network.changeme_vpc_native_cluster_network.id
-  subnetwork = google_compute_subnetwork.changeme_vpc_native_cluster_subnetwork.id
+  network    = google_compute_network.changeme_vpc_native_cluster_vpc.id
+  subnetwork = google_compute_subnetwork.changeme_vpc_native_cluster_subnet.id
 
   ip_allocation_policy {
     cluster_secondary_range_name  = "services-range"
-    services_secondary_range_name = google_compute_subnetwork.changeme_vpc_native_cluster_subnetwork.secondary_ip_range.1.range_name
+    services_secondary_range_name = google_compute_subnetwork.changeme_vpc_native_cluster_subnet.secondary_ip_range.1.range_name
   }
 
   node_config {

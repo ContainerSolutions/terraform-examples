@@ -11,12 +11,12 @@
 | `for`                      | [aws, aws_vpc](aws/aws_vpc/for) |
 | `for_each`                 | [map, local](local/null_resource/for_each) <p/> [aws](aws/aws_instance/for_each) |
 | `google_compute_network`   | [google](google/google_compute_network/simple) |
-| `google_container_cluster` | [google, GKE](google/google_container_cluster/simple) <p/> [separate-node-pool](google/google_container_cluster/separate-node-pool) <p/> [cluster-and-deployment](google/google_container_cluster/cluster-and-deployment) <p/> [vpc_native_cluster](google/google_container_cluster/vpc_native_cluster) |
+| `google_container_cluster` | [google, GKE](google/google_container_cluster/simple) <p/> [separate_node_pool](google/google_container_cluster/separate_node_pool) <p/> [cluster_and_deployment](google/google_container_cluster/cluster_and_deployment) <p/> [vpc_native_cluster](google/google_container_cluster/vpc_native_cluster) |
 | `helm_release`             | [simple](helm/helm_release/simple) <p/> [values_from_file](helm/helm_release/values_from_file) |
 | `inline`                   | [aws, remote-exec](aws/aws_instance/remote-exec/inline/) |
 | `kubernetes`               | [kubernetes](kubernetes) |
 | `kubernetes_config_map`    | [simple](kubernetes/kubernetes_config_map/simple) <p/> [data_from_files](kubernetes/kubernetes_config_map/from_files) |
-| `kubernetes_deployment`    | [simple](kubernetes/kubernetes_deployment/simple) <p/> [deployment-and-service](kubernetes/kubernetes_deployment/deployment-and-service) |
+| `kubernetes_deployment`    | [simple](kubernetes/kubernetes_deployment/simple) <p/> [deployment_and_service](kubernetes/kubernetes_deployment/deployment_and_service) |
 | `kubernetes_namespace`     | [simple](kubernetes/kubernetes_namespace/simple) |
 | `kubernetes_service`       | [simple](kubernetes/kubernetes_service/simple) |
 | `local`                    | [local](local) |

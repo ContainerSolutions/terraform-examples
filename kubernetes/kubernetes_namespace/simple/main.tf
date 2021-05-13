@@ -12,8 +12,8 @@ terraform {
 }
 
 # Documentation: https://registry.terraform.io/providers/hashicorp/kubernetes/latest/docs/resources/namespace
-resource "kubernetes_namespace" "changeme_namespace_simple" {
+resource "kubernetes_namespace" "changeme_simple_namespace" {
   metadata {
-    name = "changeme-namespace-simple-name"
+    name = "changeme-simple-namespace"
   }
 }

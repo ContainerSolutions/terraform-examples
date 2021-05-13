@@ -25,8 +25,8 @@ provider "google" {
 
 # GKE
 # Documentation: https://registry.terraform.io/providers/hashicorp/google/latest/docs/resources/container_cluster
-resource "google_container_cluster" "changeme_google_container_cluster_simple" {
-  name               = "changeme-google-container-cluster-simple"
+resource "google_container_cluster" "changeme_simple_cluster" {
+  name               = "changeme-simple-cluster"
   location           = "us-central1-a"
   initial_node_count = 1
   node_config {

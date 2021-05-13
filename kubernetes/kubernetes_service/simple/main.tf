@@ -12,13 +12,13 @@ terraform {
 }
 
 # Documentation:  https://registry.terraform.io/providers/hashicorp/kubernetes/latest/docs/resources/service
-resource "kubernetes_service" "changeme_service_simple" {
+resource "kubernetes_service" "changeme_simple_service" {
   metadata {
-    name = "changeme-service-simple-name"
+    name = "changeme-simple-service"
   }
   spec {
     selector = {
-      app = "deployment-simple-app"
+      app = "changeme-simple-deployment"
     }
     port {
       port        = 80

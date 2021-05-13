@@ -1,5 +1,6 @@
 # Summary: Creates a GKE (Google Kubernetes Engine) cluster, connects the Terraform Kubernetes Provider to it, and creates a k8s deployment.
 
+# Documentation: https://www.terraform.io/docs/language/settings/index.html
 terraform {
   required_version = ">= 0.14.0"
   required_providers {
@@ -10,10 +11,12 @@ terraform {
   }
 }
 
+# Documentation: https://www.terraform.io/docs/language/values/variables.html
 variable "project_id" {
   type = string
 }
 
+# Documentation: https://www.terraform.io/docs/language/providers/requirements.html
 provider "google" {
   project = var.project_id
   region  = "us-central1"
@@ -22,7 +25,7 @@ provider "google" {
 
 # GKE
 # Documentation: https://registry.terraform.io/providers/hashicorp/google/latest/docs/resources/container_cluster
-resource "google_container_cluster" "changeme-cluster-and-deployment-cluster" {
+resource "google_container_cluster" "changeme_cluster_and_deployment_cluster" {
   name               = "changeme-cluster-and-deployment-cluster"
   location           = "us-central1-a"
   initial_node_count = 1
@@ -40,16 +43,16 @@ data "google_client_config" "provider" {}
 
 # Documentation: https://registry.terraform.io/providers/hashicorp/kubernetes/latest/docs
 provider "kubernetes" {
-  host  = "https://${google_container_cluster.changeme-cluster-and-deployment-cluster.endpoint}"
+  host  = "https://${google_container_cluster.changeme_cluster_and_deployment_cluster.endpoint}"
   token = data.google_client_config.provider.access_token
   cluster_ca_certificate = base64decode(
-    google_container_cluster.changeme-cluster-and-deployment-cluster.master_auth[0].cluster_ca_certificate,
+    google_container_cluster.changeme_cluster_and_deployment_cluster.master_auth[0].cluster_ca_certificate,
   )
 }
 
 # Deployment
 # Documentation: https://registry.terraform.io/providers/hashicorp/kubernetes/latest/docs/resources/deployment
-resource "kubernetes_deployment" "changeme-cluster-and-deployment-deployment" {
+resource "kubernetes_deployment" "changeme_cluster_and_deployment_deployment" {
   metadata {
     name = "changeme-cluster-and-deployment-deployment"
     labels = {

@@ -1,20 +1,27 @@
+# Summary: Example of output of local_file filename
+
+# Documentation: https://www.terraform.io/docs/language/settings/index.html
 terraform {
   required_version = ">= 0.14.0"
 }
 
-variable "filename" {
-  default = "default_filename.txt"
+# Documentation:
+variable "changeme_filename" {
+  default = "changeme_default_filename.txt"
 }
 
-variable "content" {
+# Documentation: https://www.terraform.io/docs/language/values/variables.html
+variable "changeme_content" {
   default = "Hello terraform local output module!"
 }
 
-output "filename" {
-  value = var.filename
+# Documentation: https://www.terraform.io/docs/language/values/outputs.html
+output "changeme_filename" {
+  value = var.changeme_filename
 }
 
-resource "local_file" "local_file_hello_local_output" {
-  content  = var.content
-  filename = var.filename
+# Documentation: https://registry.terraform.io/providers/hashicorp/local/latest/docs/resources/file
+resource "local_file" "changeme_local_file_hello_local_output" {
+  content  = var.changeme_content
+  filename = var.changeme_filename
 }

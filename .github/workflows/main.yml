@@ -21,3 +21,5 @@ jobs:
         run: ${{ github.workspace }}/bin/check_scripts.sh
       - name: Run Check Shell Scripts
         run: ${{ github.workspace }}/bin/check_shell.sh
+      - name: Run terraform validate
+        run: ${{ github.workspace }}/bin/check_validate.sh

@@ -1,3 +1,6 @@
+# Summary: Kubernetes configmap from files
+
+# Documentation: https://www.terraform.io/docs/language/settings/index.html
 terraform {
   required_version = ">= 0.14.0"
   required_providers {
@@ -8,11 +11,10 @@ terraform {
   }
 }
 
-# ConfigMap
-
-resource "kubernetes_config_map" "config-map-from-files" {
+# Documentation: https://registry.terraform.io/providers/hashicorp/kubernetes/latest/docs/resources/config_ma
+resource "kubernetes_config_map" "changeme_config_map_from_files" {
   metadata {
-    name = "config-map-from-files"
+    name = "changeme-config-map-from-files-name"
   }
 
   data = {

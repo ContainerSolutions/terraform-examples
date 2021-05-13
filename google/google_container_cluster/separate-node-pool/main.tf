@@ -1,5 +1,6 @@
 # Summary: Creates a GKE (Google Kubernetes Engine) cluster with a separatelly managed node pool.
 
+# Documentation: https://www.terraform.io/docs/language/settings/index.html
 terraform {
   required_version = ">= 0.14.0"
   required_providers {
@@ -10,10 +11,12 @@ terraform {
   }
 }
 
+# Documentation: https://www.terraform.io/docs/language/values/variables.html
 variable "project_id" {
   type = string
 }
 
+# Documentation: https://www.terraform.io/docs/language/providers/requirements.html
 provider "google" {
   project = var.project_id
   region  = "us-central1"
@@ -22,7 +25,7 @@ provider "google" {
 
 # GKE
 # Documentation: https://registry.terraform.io/providers/hashicorp/google/latest/docs/resources/container_cluster
-resource "google_container_cluster" "changeme-cluster-separate-node-pool" {
+resource "google_container_cluster" "changeme_cluster_separate_node_pool" {
   name     = "changeme-cluster-separate-node-pool"
   location = "us-central1-a"
 
@@ -36,7 +39,7 @@ resource "google_container_cluster" "changeme-cluster-separate-node-pool" {
 resource "google_container_node_pool" "changeme-node-pool-separate-node-pool" {
   name       = "changeme-node-pool-separate-node-pool"
   location   = "us-central1-a"
-  cluster    = google_container_cluster.changeme-cluster-separate-node-pool.name
+  cluster    = google_container_cluster.changeme_cluster_separate_node_pool.name
   node_count = 1
 
   node_config {

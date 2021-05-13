@@ -89,7 +89,7 @@ resource "aws_instance" "changeme_aws_instance" {
   ami                    = "ami-0f93c815788872c5d"
   key_name               = aws_key_pair.changeme_aws_key_pair.id # the name of the SSH keypair to use for provisioning
   vpc_security_group_ids = [aws_security_group.changeme_aws_security_group.id]
-  user_data              = file("scripts/hello.ps1")
+  user_data              = file("scripts/user_data.txt")
   get_password_data      = true
   tags                   = { Name = "terraform-smaples" }
 }

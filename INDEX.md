@@ -8,6 +8,7 @@
 | `aws_vpc`                  | [aws](aws/aws_vpc/simple) |
 | `backends`                 | [backends](backends) <p/> [aws, s3, aws_s3_bucket](backends/s3/aws_s3_bucket) |
 | `count`                    | [aws, aws_instance](aws/aws_instance/count) <p/> [aws, aws_vpc](aws/aws_vpc/count) |
+| `dynamic`                  | [aws, aws_security_group](aws/aws_security_group/dynamic) |
 | `for`                      | [aws, aws_vpc](aws/aws_vpc/for) |
 | `for_each`                 | [map, local](local/null_resource/for_each) <p/> [aws](aws/aws_instance/for_each) |
 | `google_compute_network`   | [google](google/google_compute_network/simple) |

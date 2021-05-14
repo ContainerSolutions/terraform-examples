@@ -7,4 +7,9 @@ cd -
 
 terraform init
 terraform plan
-terraform destroy
+if [[ $- == *i* ]]
+then
+  terraform destroy
+else
+  terraform destroy -auto-approve
+fi

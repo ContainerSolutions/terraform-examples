@@ -6,4 +6,9 @@ cd -
 
 terraform init
 terraform plan
-terraform apply
+if [[ $- == *i* ]]
+then
+  terraform apply
+else
+  terraform apply -auto-approve
+fi

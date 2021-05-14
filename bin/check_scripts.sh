@@ -8,12 +8,12 @@ cd "${0%/*}/.."
 echo "================================================================================"
 echo "Checking that every folder has working scripts"
 echo "================================================================================"
-TERRAFORM_FOLDERS="$(find . | grep tf$ | xargs -n1 dirname | sed 's/^.\///')"
+# shellcheck disable=SC1091
+source bin/get_terraform_folders.sh
 for folder in ${TERRAFORM_FOLDERS}
 do
   echo -n "Checking folder: ${folder} ... "
   pushd "${folder}" >/dev/null
-  pwd
   for script in run.sh destroy.sh
   do
     echo -n "script:${script}... "

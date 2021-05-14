@@ -1,0 +1,20 @@
+name: Terraform Examples Checks with Auth
+on: [push]
+jobs:
+  TFLint:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository code
+        uses: actions/checkout@v2
+      # TODO: figure out and set up authentication
+      #- name: Run GCP examples
+      #  env:
+      #    GCP_CREDENTIALS_FILE: ${{ secrets.GCP_CREDENTIALS_FILE }}
+      #    GCP_CREDENTIALS_FILENAME: ${{ secrets.GCP_CREDENTIALS_FILENAME }}
+      #    TF_VAR_project_id: ${{ secrets.GCP_PROJECT }}
+      #  run: GOOGLE_APPLICATION_CREDENTIALS=$GCP_CREDENTIALS_FILENAME ${{github.workspace}}/bin/run_gcp_examples.sh
+      - name: Run AWS examples
+        env:
+          AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+        run: ${{github.workspace}}/bin/run_aws_examples.sh

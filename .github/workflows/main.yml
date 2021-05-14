@@ -1,5 +1,5 @@
-name: Terraform Examples Checks
-on: [push]
+name: Main Checks
+on: [push, pull_request]
 jobs:
   TFLint:
     runs-on: ubuntu-latest
@@ -38,4 +38,4 @@ jobs:
           AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
           AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
         if: github.ref == 'refs/heads/main'  # Only run on main, as these take a long time
-        run: ${{github.workspace}}/bin/run_aws_examples.sh
+        run: ${{ github.workspace }}/bin/run_aws_examples.sh

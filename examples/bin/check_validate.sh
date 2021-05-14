@@ -1,0 +1,21 @@
+#!/bin/bash
+
+set -o errexit
+set -o nounset
+
+cd "${0%/*}/.."
+
+echo "================================================================================"
+echo "Validating every folder's terraform code"
+echo "================================================================================"
+TERRAFORM_FOLDERS="$(find . | grep tf$ | xargs -n1 dirname | sed 's/^.\///')"
+for folder in $TERRAFORM_FOLDERS
+do
+  echo "================================================================================"
+  echo "Validating code in ${folder}"
+  echo "================================================================================"
+  cd "${folder}" >/dev/null || exit 1
+  terraform init
+  terraform validate
+  cd - >/dev/null || exit 1
+done

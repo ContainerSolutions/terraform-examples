@@ -1,8 +1,12 @@
+# Summary: A local_file example to be used as a module
+
+# Documentation: https://www.terraform.io/docs/language/modules/index.html
 terraform {
   required_version = ">= 0.14.0"
 }
 
-resource "local_file" "hello_local_file" {
-    content     = "Hello terraform local module!"
-    filename    = "hello_local.txt"
+# Documentation: https://registry.terraform.io/providers/hashicorp/local/latest/docs/resources/file
+resource "local_file" "changeme_hello_local_file" {
+  content  = "Hello terraform local module!"
+  filename = "hello_local.txt"
 }

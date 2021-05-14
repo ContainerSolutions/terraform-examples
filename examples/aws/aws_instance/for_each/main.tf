@@ -1,3 +1,6 @@
+# Summary: Example of 'for_each' usage.
+
+# Documentation: https://www.terraform.io/docs/language/settings/index.html
 terraform {
   required_version = ">= 0.14.0"
   required_providers {
@@ -8,15 +11,19 @@ terraform {
   }
 }
 
+# Documentation: https://www.terraform.io/docs/language/providers/requirements.html
 provider "aws" {
-  region     = "us-east-1"
+  region = "us-east-1"
 }
 
-resource "aws_instance" "aws_resource_count" {
+# Documentation: https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/instance
+resource "aws_instance" "changeme_aws_resource_count" {
+  # Documentation: https://www.terraform.io/docs/language/meta-arguments/for_each.html
   for_each = {
     "a" = "1"
     "b" = "2"
   }
+
   tags = {
     Name = "aws_resource_count_${each.key}${each.value}"
   }

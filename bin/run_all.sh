@@ -4,17 +4,21 @@
 # - If run without arguments, will apply all examples from this repo
 # - If run with a PATH, will apply examples from a given dir (recursively)
 
-if [ ! -n "$1" ]
+set -o errexit
+set -o nounset
+set -o pipefail
+
+if [ -z "$1" ]
 then
-    cd "${0%/*}"/.. || exit 1
+    cd "${0%/*}"/..
 else
     cd "$1"
 fi
 
 for d in $(find . | grep state$ | xargs -n1 dirname)
 do
-    cd "${d}" >/dev/null || exit 1
+    cd "${d}" >/dev/null
     echo "In folder: ${d}"
     ./run.sh
-    cd - >/dev/null || exit 1
+    cd - >/dev/null
 done

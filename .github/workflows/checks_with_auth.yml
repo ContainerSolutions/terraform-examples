@@ -1,4 +1,4 @@
-name: Terraform Examples Checks with Auth
+name: Checks with Auth
 on: [push]
 jobs:
   TFLint:

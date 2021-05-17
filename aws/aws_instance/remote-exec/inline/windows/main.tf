@@ -91,7 +91,7 @@ resource "aws_instance" "changeme_aws_instance" {
   vpc_security_group_ids = [aws_security_group.changeme_aws_security_group.id]
   user_data              = file("scripts/user_data.txt")
   get_password_data      = true
-  tags                   = { Name = "terraform-smaples" }
+  tags                   = { Name = "terraform-examples" }
 }
 
 # Documentation: https://www.terraform.io/docs/language/values/outputs.html

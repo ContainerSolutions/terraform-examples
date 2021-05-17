@@ -100,7 +100,7 @@ resource "aws_eks_cluster" "main" {
 
 # Fetch OIDC provider thumbprint for root CA
 data "external" "thumbprint" {
-  program =    ["${path.module}/oidc_thumbprint.sh", var.region]
+  program    = ["${path.module}/oidc_thumbprint.sh", var.region]
   depends_on = [aws_eks_cluster.main]
 }
 
@@ -155,7 +155,7 @@ resource "aws_eks_node_group" "main" {
   cluster_name    = aws_eks_cluster.main.name
   node_group_name = "changeme-eks-cluster-kube-system"
   node_role_arn   = aws_iam_role.eks_node_group_role.arn
-  subnet_ids = aws_subnet.public.*.id
+  subnet_ids      = aws_subnet.public.*.id
   capacity_type   = "SPOT"
 
   scaling_config {
@@ -164,7 +164,7 @@ resource "aws_eks_node_group" "main" {
     min_size     = 1
   }
 
-  instance_types  = ["t2.micro"]
+  instance_types = ["t2.micro"]
 
   version = var.k8s_version
 

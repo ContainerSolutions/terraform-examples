@@ -30,5 +30,5 @@ variable "public_subnets" {
 
 variable "k8s_version" {
   description = "kubernetes version"
-  default = ""
+  default     = ""
 }

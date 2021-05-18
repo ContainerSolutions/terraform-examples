@@ -16,6 +16,9 @@ provider "aws" {
   region = "us-east-1"
 }
 
+# Explanation: This resource is not necessary for the creation of an S3 bucket, but is here to ensure that
+# the S3 bucket name is unique.
+#
 # Documentation: https://registry.terraform.io/providers/hashicorp/random/latest/docs/resources/id
 resource "random_id" "changeme_bucket_name" {
   byte_length = 16

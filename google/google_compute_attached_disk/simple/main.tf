@@ -54,10 +54,10 @@ resource "google_compute_instance" "changeme_simple_attached_disk_instance" {
 # Persistent disks
 # Documentation: https://registry.terraform.io/providers/hashicorp/google/latest/docs/resources/compute_disk
 resource "google_compute_disk" "changeme_simple_attached_disk_disk" {
-  name  = "changeme-simple-attached-disk-disk"
-  type  = "pd-ssd"
-  zone  = "us-central1-a"
-  size  = 4
+  name = "changeme-simple-attached-disk-disk"
+  type = "pd-ssd"
+  zone = "us-central1-a"
+  size = 4
   labels = {
     environment = "dev"
   }

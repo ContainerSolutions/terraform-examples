@@ -26,10 +26,10 @@ provider "google" {
 # Persistent disks
 # Documentation: https://registry.terraform.io/providers/hashicorp/google/latest/docs/resources/compute_disk
 resource "google_compute_disk" "changeme_simple_disk" {
-  name  = "changeme-simple-disk"
-  type  = "pd-ssd"
-  zone  = "us-central1-a"
-  size  = 4
+  name = "changeme-simple-disk"
+  type = "pd-ssd"
+  zone = "us-central1-a"
+  size = 4
   labels = {
     environment = "dev"
   }

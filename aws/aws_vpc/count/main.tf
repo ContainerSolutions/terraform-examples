@@ -23,7 +23,7 @@ resource "aws_vpc" "aws_vpc_count" {
 }
 
 # Documentation: https://www.terraform.io/docs/language/values/outputs.html
-output "bidr_block_full_splat" {
+output "cidr_block_full_splat" {
   value = aws_vpc.aws_vpc_count[*].cidr_block
 }
 

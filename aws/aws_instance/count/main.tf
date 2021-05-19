@@ -16,9 +16,6 @@ provider "aws" {
   region = "us-east-1"
 }
 
-# Explanation: This resource is not necessary for the creation of an S3 bucket, but is here to ensure that
-# the S3 bucket name is unique.
-#
 # Documentation: https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/instance
 resource "aws_instance" "changeme_aws_resource_count" {
   # Documentation: https://www.terraform.io/docs/language/meta-arguments/count.html

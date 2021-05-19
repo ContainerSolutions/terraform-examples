@@ -20,7 +20,7 @@ do
     if ! [ -x "${script}" ]
     then
       echo "$folder/$script should exist and be executable, but is/does not"
-      ls -l ${folder}
+      ls -l "${folder}"
       exit 1
     fi
     FILES="$(grep '\.sh$' ${script})"

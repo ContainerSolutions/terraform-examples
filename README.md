@@ -73,6 +73,9 @@ The examples seek to be:
   - use only lower case letters, numbers, and dash
   - same as resource name, but with: `s/_/-/g`
 
+- For help with automated testing
+  - where possible, add some way to enable 'left-over' resources to be cleaned up, eg provider `default_tags` of `cs_terraform_examples` in AWS provider blocks
+
 ## Sources / Thanks To
 
 [Learn Terraform The Hard Way](https://leanpub.com/learnterraformthehardway)

@@ -15,6 +15,11 @@ terraform {
 
 provider "aws" {
   region = "us-east-1"
+  default_tags {
+    tags = {
+      cs_terraform_examples = "aws_eks/fargate/spot_and_fargate"
+    }
+  }
 }
 
 provider "kubernetes" {

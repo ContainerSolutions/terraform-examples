@@ -14,6 +14,11 @@ terraform {
 # Documentation: https://www.terraform.io/docs/language/providers/requirements.html
 provider "aws" {
   region = "us-east-1"
+  default_tags {
+    tags = {
+      cs_terraform_examples = "aws_s3_bucket/simple"
+    }
+  }
 }
 
 # Explanation: This resource is not necessary for the creation of an S3 bucket, but is here to ensure that

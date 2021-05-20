@@ -14,6 +14,11 @@ terraform {
 # Documentation: https://www.terraform.io/docs/language/providers/requirements.html
 provider "aws" {
   region = "us-east-1"
+  default_tags {
+    tags = {
+      cs_terraform_examples = "aws_security_group/ssh"
+    }
+  }
 }
 
 # Documentation: https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/security_group

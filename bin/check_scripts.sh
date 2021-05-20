@@ -23,7 +23,7 @@ do
       ls -l "${folder}"
       exit 1
     fi
-    FILES="$(grep '\.sh$' ${script})"
+    FILES="$(grep '\.sh$' ${script} | awk '{print $NF}')"
     echo -n "file:${script}... "
     for file in ${FILES}
     do

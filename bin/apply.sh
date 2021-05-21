@@ -1,8 +1,12 @@
 #!/bin/bash
 
 cd "$(dirname "${BASH_SOURCE[0]}")" >/dev/null || exit 1
+
 # shellcheck disable=SC1091
 source ./shared.sh
+# shellcheck disable=SC1091
+source ./shared_terraform_cloud.sh
+
 cd - >/dev/null || exit 1
 
 terraform init

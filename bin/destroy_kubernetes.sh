@@ -2,6 +2,7 @@
 
 cd "${0%/*}" || exit 1
 source ./shared_kubernetes.sh
+source ./shared_terraform_cloud.sh
 cd -
 
 terraform init

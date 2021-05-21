@@ -29,14 +29,14 @@ resource "aws_vpc" "changeme_aws_vpc_count" {
 
 # Documentation: https://www.terraform.io/docs/language/values/outputs.html
 output "changeme_aws_vpc_count_splat" {
-  value = aws_vpc.aws_vpc_count[*].cidr_block
+  value = aws_vpc.changeme_aws_vpc_count[*].cidr_block
 }
 
 # Documentation: https://www.terraform.io/docs/language/values/outputs.html
 output "changeme_aws_vpc_count_for" {
   # Documentation: https://www.terraform.io/docs/language/expressions/for.html
   value = [
-    for vpc in aws_vpc.aws_vpc_count :
+    for vpc in aws_vpc.changeme_aws_vpc_count :
     vpc.cidr_block
   ]
 }

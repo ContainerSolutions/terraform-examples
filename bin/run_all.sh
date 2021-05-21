@@ -5,7 +5,6 @@
 # - If run with a PATH, will apply examples from a given dir (recursively)
 
 set -o errexit
-set -o nounset
 set -o pipefail
 
 if [ -z "$1" ]
@@ -14,6 +13,8 @@ then
 else
     cd "$1"
 fi
+
+set -o nounset
 
 for d in $(find . | grep state$ | xargs -n1 dirname)
 do

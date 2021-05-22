@@ -14,7 +14,7 @@ source bin/get_azurerm_folders.sh
 for folder in ${AZURERM_FOLDERS}
 do
   echo "================================================================================"
-  echo -n "Checking folder: ${folder} ... "
+  echo -n "$0 checking folder: ${folder} ... "
   if [[ -a ${folder}/.skiptest ]]
   then
     echo -n "found .skiptest file, skipping "

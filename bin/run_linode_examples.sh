@@ -12,7 +12,7 @@ source bin/get_linode_folders.sh
 for folder in ${LINODE_FOLDERS}
 do
   echo "================================================================================"
-  echo -n "Checking folder: ${folder} ... "
+  echo -n "$0 checking folder: ${folder} ... "
   if [[ -a ${folder}/.skiptest ]]
   then
     echo -n "found .skiptest file, skipping "

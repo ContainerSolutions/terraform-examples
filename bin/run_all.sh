@@ -19,7 +19,7 @@ set -o nounset
 for d in $(find . | grep state$ | xargs -n1 dirname)
 do
     cd "${d}" >/dev/null
-    echo "In folder: ${d}"
+    echo "$0 in folder: ${d}"
     ./run.sh
     cd - >/dev/null
 done

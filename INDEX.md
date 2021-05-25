@@ -7,7 +7,7 @@
 | `aws_s3_bucket`                | [aws, backends, s3](backends/s3/aws_s3_bucket) |
 | `aws_vpc`                      | [aws](aws/aws_vpc/simple) |
 | `aws_eks`                      | [aws, spot_and_fargate](aws/aws_eks/fargate/spot_and_fargate) |
-| `backends`                     | [backends](backends) <p/> [aws, s3, aws_s3_bucket](backends/s3/aws_s3_bucket) |
+| `backends`                     | [backends](backends) <p/> [aws, s3, aws_s3_bucket](backends/s3/aws_s3_bucket) <p/> [google, gcs_bucket](backends/gcs/google_storage_bucket) |
 | `count`                        | [aws, aws_instance](aws/aws_instance/count) <p/> [aws, aws_vpc](aws/aws_vpc/count) <p/> [google, gcp_attached_disk](google/google_compute_attached_disk/count) |
 | `dynamic`                      | [aws, aws_security_group](aws/aws_security_group/dynamic) |
 | `for`                          | [aws, aws_vpc](aws/aws_vpc/for) |

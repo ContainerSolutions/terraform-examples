@@ -34,6 +34,6 @@ resource "random_id" "changeme_bucket_name" {
 # GCS (Google Cloud Storage) bucket
 # Documentation: https://registry.terraform.io/providers/hashicorp/google/latest/docs/resources/storage_bucket
 resource "google_storage_bucket" "changeme_simple_bucket" {
-  name          = "changeme-${random_id.changeme_bucket_name.hex}"
-  location      = "US"
+  name     = "changeme-${random_id.changeme_bucket_name.hex}"
+  location = "US"
 }

@@ -34,6 +34,30 @@ resource "aws_vpc" "main" {
   enable_dns_support   = true
   enable_dns_hostnames = true
 }
+resource "aws_internet_gateway" "main" {
+  vpc_id = aws_vpc.main.id
+}
+
+resource "aws_nat_gateway" "main" {
+  count         = length(var.private_subnets)
+  allocation_id = element(aws_eip.nat.*.id, count.index)
+  subnet_id     = element(aws_subnet.public.*.id, count.index)
+  depends_on    = [aws_internet_gateway.main]
+}
+
+resource "aws_eip" "nat" {
+  count = length(var.private_subnets)
+  vpc = true
+}
+
+
+resource "aws_subnet" "private" {
+  vpc_id            = aws_vpc.main.id
+  cidr_block        = element(var.private_subnets, count.index)
+  availability_zone = element(var.availability_zones, count.index)
+  count             = length(var.private_subnets)
+}
+
 
 
 resource "aws_subnet" "public" {
@@ -44,6 +68,39 @@ resource "aws_subnet" "public" {
   map_public_ip_on_launch = true
 }
 
+resource "aws_route_table" "public" {
+  vpc_id = aws_vpc.main.id
+}
+
+resource "aws_route" "public" {
+  route_table_id         = aws_route_table.public.id
+  destination_cidr_block = "0.0.0.0/0"
+  gateway_id             = aws_internet_gateway.main.id
+}
+
+resource "aws_route_table" "private" {
+  count  = length(var.private_subnets)
+  vpc_id = aws_vpc.main.id
+}
+
+resource "aws_route" "private" {
+  count                  = length(compact(var.private_subnets))
+  route_table_id         = element(aws_route_table.private.*.id, count.index)
+  destination_cidr_block = "0.0.0.0/0"
+  nat_gateway_id         = element(aws_nat_gateway.main.*.id, count.index)
+}
+
+resource "aws_route_table_association" "private" {
+  count          = length(var.private_subnets)
+  subnet_id      = element(aws_subnet.private.*.id, count.index)
+  route_table_id = element(aws_route_table.private.*.id, count.index)
+}
+
+resource "aws_route_table_association" "public" {
+  count          = length(var.public_subnets)
+  subnet_id      = element(aws_subnet.public.*.id, count.index)
+  route_table_id = aws_route_table.public.id
+}
 
 data "aws_eks_cluster" "cluster" {
   name = aws_eks_cluster.main.id
@@ -91,7 +148,7 @@ resource "aws_eks_cluster" "main" {
   role_arn = aws_iam_role.eks_cluster_role.arn
 
   vpc_config {
-    subnet_ids = aws_subnet.public.*.id
+    subnet_ids = concat(aws_subnet.public.*.id, aws_subnet.private.*.id)
   }
 
   timeouts {
@@ -161,7 +218,7 @@ resource "aws_eks_node_group" "main" {
   cluster_name    = aws_eks_cluster.main.name
   node_group_name = "changeme-eks-cluster-kube-system"
   node_role_arn   = aws_iam_role.eks_node_group_role.arn
-  subnet_ids      = aws_subnet.public.*.id
+  subnet_ids      = aws_subnet.private.*.id
   capacity_type   = "SPOT"
 
   scaling_config {

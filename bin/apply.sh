@@ -7,6 +7,8 @@ cd - >/dev/null || exit 1
 
 terraform init
 terraform plan
+
+# If this is non-interactive, then auto-approve...
 if [[ $- == *i* ]]
 then
   terraform apply

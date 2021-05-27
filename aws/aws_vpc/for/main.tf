@@ -29,7 +29,7 @@ resource "aws_vpc" "changeme_aws_vpc_for" {
 }
 
 # Documentation: https://www.terraform.io/docs/language/values/outputs.html
-output "changeme_ips" {
+output "changeme_aws_vpc_for_output" {
   # Documentation: https://www.terraform.io/docs/language/expressions/for.html
   value = [
     for vpc in aws_vpc.changeme_aws_vpc_for :

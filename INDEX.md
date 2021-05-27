@@ -7,7 +7,7 @@
 | `aws_s3_bucket`                | [aws, backends, s3](backends/s3/aws_s3_bucket) |
 | `aws_vpc`                      | [aws](aws/aws_vpc/simple) |
 | `aws_eks`                      | [aws, spot_and_fargate](aws/aws_eks/fargate/spot_and_fargate) |
-| `backends`                     | [backends](backends) <p/> [aws, s3, aws_s3_bucket](backends/s3/aws_s3_bucket) <p/> [aws, remote](backends/remote) |
+| `backends`                     | [backends](backends) <p/> [aws, s3, aws_s3_bucket](backends/s3/aws_s3_bucket) <p/> [aws, remote](backends/remote) <p/> [google, gcs_bucket](backends/gcs/google_storage_bucket) |
 | `count`                        | [aws, aws_instance](aws/aws_instance/count) <p/> [aws, aws_vpc](aws/aws_vpc/count) <p/> [google, gcp_attached_disk](google/google_compute_attached_disk/count) |
 | `dynamic`                      | [aws, aws_security_group](aws/aws_security_group/dynamic) |
 | `for`                          | [aws, aws_vpc](aws/aws_vpc/for) |
@@ -17,6 +17,7 @@
 | `google_compute_instance`      | [google, gcp_instance](google/google_compute_instance/simple) |
 | `google_compute_network`       | [google](google/google_compute_network/simple) |
 | `google_container_cluster`     | [google, GKE](google/google_container_cluster/simple) <p/> [separate_node_pool](google/google_container_cluster/separate_node_pool) <p/> [cluster_and_deployment](google/google_container_cluster/cluster_and_deployment) <p/> [vpc_native_cluster](google/google_container_cluster/vpc_native_cluster) |
+| `google_storage_bucket`        | [google, gcs_bucket](google/google_storage_bucket/simple) |
 | `helm_release`                 | [simple](helm/helm_release/simple) <p/> [values_from_file](helm/helm_release/values_from_file) |
 | `inline`                       | [aws, remote-exec](aws/aws_instance/remote-exec/inline/) |
 | `kubernetes`                   | [kubernetes](kubernetes) |

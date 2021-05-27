@@ -23,12 +23,12 @@ jobs:
         run: ${{ github.workspace }}/bin/check_shell.sh
       - name: Run terraform validate
         env:
-          CI_USE_TF_CLOUD: true
+          CI_USE_TF_CLOUD: ${{ secrets.CI_USE_TF_CLOUD }}
           TERRAFORM_CLOUD_LOGIN_TOKEN: ${{ secrets.TERRAFORM_CLOUD_LOGIN_TOKEN }}
         run: ${{ github.workspace }}/bin/check_validate.sh
       - name: Run GCP examples
         env:
-          CI_USE_TF_CLOUD: true
+          CI_USE_TF_CLOUD: ${{ secrets.CI_USE_TF_CLOUD }}
           TERRAFORM_CLOUD_LOGIN_TOKEN: ${{ secrets.TERRAFORM_CLOUD_LOGIN_TOKEN }}
           GCP_CREDENTIALS_FILE: ${{ secrets.GCP_CREDENTIALS_FILE }}
           GCP_CREDENTIALS_FILENAME: ${{ secrets.GCP_CREDENTIALS_FILENAME }}

@@ -3,7 +3,12 @@
 set -o errexit
 set -o nounset
 
+cd "${0%/*}"
+# shellcheck disable=SC1091
+source ./shared_terraform_cloud.sh
+
 cd "${0%/*}/.."
+
 
 echo "================================================================================"
 echo "Validating every folder's terraform code"

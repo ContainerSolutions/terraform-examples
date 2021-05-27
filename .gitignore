@@ -4,3 +4,4 @@
 TODO
 **tfvars
 .*.sw?
+!**.terraformignore*

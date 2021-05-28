@@ -26,6 +26,14 @@ jobs:
           CI_USE_TF_CLOUD: ${{ secrets.CI_USE_TF_CLOUD }}
           TERRAFORM_CLOUD_LOGIN_TOKEN: ${{ secrets.TERRAFORM_CLOUD_LOGIN_TOKEN }}
         run: ${{ github.workspace }}/bin/check_validate.sh
+      - name: Run AWS examples
+        env:
+          AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          CI_USE_TF_CLOUD: true
+          TERRAFORM_CLOUD_LOGIN_TOKEN: ${{ secrets.TERRAFORM_CLOUD_LOGIN_TOKEN }}
+        if: github.ref == 'refs/heads/main'  # Only run on main, as these take a long time
+        run: ${{ github.workspace }}/bin/run_aws_examples.sh
       - name: Run GCP examples
         env:
           CI_USE_TF_CLOUD: ${{ secrets.CI_USE_TF_CLOUD }}
@@ -38,11 +46,3 @@ jobs:
       - name: Run Local Examples
         if: github.ref == 'refs/heads/main'  # Only run on main, as these take a long time
         run: ${{github.workspace}}/bin/run_local_examples.sh
-      - name: Run AWS examples
-        env:
-          AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
-          AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-          CI_USE_TF_CLOUD: true
-          TERRAFORM_CLOUD_LOGIN_TOKEN: ${{ secrets.TERRAFORM_CLOUD_LOGIN_TOKEN }}
-        if: github.ref == 'refs/heads/main'  # Only run on main, as these take a long time
-        run: ${{ github.workspace }}/bin/run_aws_examples.sh

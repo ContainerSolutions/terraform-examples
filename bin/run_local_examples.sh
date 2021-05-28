@@ -18,7 +18,8 @@ do
   fi
   pushd "${folder}" >/dev/null
   echo -n "./run.sh"
-  ./run.sh
+  # If the run fails, try and clean up
+  ./run.sh || ( ./destroy.sh && exit 1 )
   echo -n "./destroy.sh"
   ./destroy.sh
   popd >/dev/null

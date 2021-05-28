@@ -27,6 +27,7 @@
 | `kubernetes_deployment`        | [simple](kubernetes/kubernetes_deployment/simple) <p/> [deployment_and_service](kubernetes/kubernetes_deployment/deployment_and_service) |
 | `kubernetes_namespace`         | [simple](kubernetes/kubernetes_namespace/simple) |
 | `kubernetes_service`           | [simple](kubernetes/kubernetes_service/simple) |
+| `linode`                       | [simple](linode/linode_instance/simple) |
 | `local`                        | [local](local) |
 | `local_file`                   | [local](local/local_file/hello) <p/> [local](local/local_file/preexisting_file) |
 | `map`                          | [null_resource, for_each, local](local/null_resource/for_each) |

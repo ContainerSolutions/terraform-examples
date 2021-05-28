@@ -5,7 +5,7 @@ set -o pipefail
 
 TERRAFORM_CLOUD_LOGIN_TOKEN_FILE="${HOME}/.terraform.d/credentials.tfrc.json"
 
-if [[ "$CI_USE_TF_CLOUD" == 'true' ]]
+if [[ "${CI_USE_TF_CLOUD:-false}" == 'true' ]]
 then
   if [ ! -e "${TERRAFORM_CLOUD_LOGIN_TOKEN_FILE}" ] && [ -z "$TERRAFORM_CLOUD_LOGIN_TOKEN" ]
   then

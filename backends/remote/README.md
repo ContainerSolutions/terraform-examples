@@ -14,6 +14,12 @@ These are the files used:
 
 `main.tf` - Template file for Terraform code for AWS VPC using remote backend
 
+`tfe/main.tf`        - Terraform code to set up a Terraform Cloud
+
+`tfe/run.sh`         - Script to create just the Terraform Cloud
+
+`tfe/destroy.sh`     - Script to destroy just the Terraform Cloud
+
 There are mandatory manual steps to be done on Terraform Cloud:
 
 1. Register an account

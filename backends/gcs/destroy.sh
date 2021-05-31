@@ -12,7 +12,7 @@ source ../../bin/shared.sh
 
 log "Cleaning up google_compute_network"
 cd google_compute_network
-./destroy.sh 2>/dev/null
+./destroy.sh 2>/dev/null || true
 rm -f main.tf
 rm -rf .terraform terraform*
 

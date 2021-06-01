@@ -12,6 +12,7 @@
 | `dynamic`                      | [aws, aws_security_group](aws/aws_security_group/dynamic) |
 | `for`                          | [aws, aws_vpc](aws/aws_vpc/for) |
 | `for_each`                     | [map, local](local/null_resource/for_each) <p/> [aws](aws/aws_instance/for_each) |
+| `google_cloud_run_service`     | [google, gcp_cloud_run](google/google_cloud_run_service/simple ) <p/> [noauth](google/google_cloud_run_service/noauth) |
 | `google_compute_attached_disk` | [google](google/google_compute_attached_disk/simple) <p/> [count](google/google_compute_attached_disk/count) |
 | `google_compute_disk`          | [google, gcp_disk](google/google_compute_disk/simple) |
 | `google_compute_instance`      | [google, gcp_instance](google/google_compute_instance/simple) |

@@ -22,7 +22,7 @@ locals {
 }
 
 # Documentation: https://registry.terraform.io/providers/hashicorp/null/latest/docs/resources/resource
-resource "null_resource" "changeme_null_resource_simple" {
+resource "null_resource" "changeme_null_resource_foreach" {
   # Documentation: https://www.terraform.io/docs/language/meta-arguments/for_each.html
   for_each = local.map1
   # Documentation: https://www.terraform.io/docs/language/resources/provisioners/local-exec.html

@@ -22,7 +22,7 @@ provider "aws" {
 }
 
 # Documentation: https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/instance
-resource "aws_instance" "changeme_aws_resource_count" {
+resource "aws_instance" "changeme_aws_instance_count_count" {
   # Documentation: https://www.terraform.io/docs/language/meta-arguments/count.html
   count         = 2
   instance_type = "t2.nano"

@@ -6,12 +6,13 @@ terraform {
 }
 
 # Documentation: https://www.terraform.io/docs/language/values/variables.html
-variable "myfilename" {
+variable "changeme_variables_local_file_module_myfilename" {
   default = "changeme_module_default_filename.txt"
 }
 
 # Documentation: https://www.terraform.io/docs/language/modules/index.html
 module "hello" {
-  source   = "../local_file"
-  filename = var.myfilename
+  source = "../local_file"
+
+  changeme_variables_local_file_local_file_filename = var.changeme_variables_local_file_module_myfilename
 }

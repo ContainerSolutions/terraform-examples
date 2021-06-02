@@ -12,13 +12,13 @@ terraform {
 }
 
 # Documentation: https://www.terraform.io/docs/language/values/variables.html
-variable "changeme_google_storage_bucket_simple_project_id" {
+variable "project_id" {
   type = string
 }
 
 # Documentation: https://www.terraform.io/docs/language/providers/requirements.html
 provider "google" {
-  project = var.changeme_google_storage_bucket_simple_project_id
+  project = var.project_id
   region  = "us-central1"
   zone    = "us-central1-a"
 }

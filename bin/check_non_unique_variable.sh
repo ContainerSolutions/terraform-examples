@@ -7,7 +7,8 @@ cd "${0%/*}/.."
 
 echo "Running $0 ..."
 
-VARIABLE_NAMES="$(find . -print0 -name '*\.tf' | xargs grep -rnwI ^variable | awk '{print $2}' | sort -u | sed 's/"\(.*\)"/\1/')"
+IGNORE_VARIABLE_NAMES='project_id' # variable names list separated with '|'
+VARIABLE_NAMES="$(find . -print0 -name '*\.tf' | xargs grep -rnwI ^variable | awk '!/'"${IGNORE_VARIABLE_NAMES}"'/{print $2}' | sort -u | sed 's/"\(.*\)"/\1/')"
 FAILED=0
 
 for variable_name in ${VARIABLE_NAMES}

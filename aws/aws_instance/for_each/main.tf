@@ -22,7 +22,7 @@ provider "aws" {
 }
 
 # Documentation: https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/instance
-resource "aws_instance" "changeme_aws_resource_count" {
+resource "aws_instance" "changeme_aws_instance_count_foreach" {
   # Documentation: https://www.terraform.io/docs/language/meta-arguments/for_each.html
   for_each = {
     "a" = "1"

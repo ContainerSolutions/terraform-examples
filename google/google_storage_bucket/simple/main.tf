@@ -12,13 +12,13 @@ terraform {
 }
 
 # Documentation: https://www.terraform.io/docs/language/values/variables.html
-variable "project_id" {
+variable "changeme_google_storage_bucket_simple_project_id" {
   type = string
 }
 
 # Documentation: https://www.terraform.io/docs/language/providers/requirements.html
 provider "google" {
-  project = var.project_id
+  project = var.changeme_google_storage_bucket_simple_project_id
   region  = "us-central1"
   zone    = "us-central1-a"
 }
@@ -27,13 +27,13 @@ provider "google" {
 # the GCS bucket name is unique.
 #
 # Documentation: https://registry.terraform.io/providers/hashicorp/random/latest/docs/resources/id
-resource "random_id" "changeme_bucket_name" {
+resource "random_id" "changeme_google_storage_bucket_simple_name" {
   byte_length = 16
 }
 
 # GCS (Google Cloud Storage) bucket
 # Documentation: https://registry.terraform.io/providers/hashicorp/google/latest/docs/resources/storage_bucket
-resource "google_storage_bucket" "changeme_simple_bucket" {
-  name     = "changeme-${random_id.changeme_bucket_name.hex}"
+resource "google_storage_bucket" "changeme_google_storage_simple_bucket" {
+  name     = "changeme-${random_id.changeme_google_storage_bucket_simple_name.hex}"
   location = "US"
 }

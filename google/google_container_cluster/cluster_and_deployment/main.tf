@@ -12,13 +12,13 @@ terraform {
 }
 
 # Documentation: https://www.terraform.io/docs/language/values/variables.html
-variable "project_id" {
+variable "changeme_google_container_cluster_cluster_and_deployment_project_id" {
   type = string
 }
 
 # Documentation: https://www.terraform.io/docs/language/providers/requirements.html
 provider "google" {
-  project = var.project_id
+  project = var.changeme_google_container_cluster_cluster_and_deployment_project_id
   region  = "us-central1"
   zone    = "us-central1-a"
 }
@@ -39,12 +39,12 @@ resource "google_container_cluster" "changeme_cluster_and_deployment_cluster" {
 # Documentation: https://registry.terraform.io/providers/hashicorp/google/latest/docs/guides/using_gke_with_terraform
 
 # # Explanation: Retrieve an access token as the Terraform runner
-data "google_client_config" "provider" {}
+data "google_client_config" "changeme_cluster_and_deployment_provider" {}
 
 # Documentation: https://registry.terraform.io/providers/hashicorp/kubernetes/latest/docs
 provider "kubernetes" {
   host  = "https://${google_container_cluster.changeme_cluster_and_deployment_cluster.endpoint}"
-  token = data.google_client_config.provider.access_token
+  token = data.google_client_config.changeme_cluster_and_deployment_provider.access_token
   cluster_ca_certificate = base64decode(
     google_container_cluster.changeme_cluster_and_deployment_cluster.master_auth[0].cluster_ca_certificate,
   )

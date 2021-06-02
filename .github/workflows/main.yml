@@ -21,6 +21,8 @@ jobs:
         run: ${{ github.workspace }}/bin/check_scripts.sh
       - name: Run Check Shell Scripts
         run: ${{ github.workspace }}/bin/check_shell.sh
+      - name: Run Check Names
+        run: ${{ github.workspace }}/bin/check_non_unique_data.sh && ${{ github.workspace }}/bin/check_non_unique_resources.sh && ${{ github.workspace }}/bin/check_non_unique_variable.sh
       - name: Run terraform validate
         env:
           CI_USE_TF_CLOUD: ${{ secrets.CI_USE_TF_CLOUD }}

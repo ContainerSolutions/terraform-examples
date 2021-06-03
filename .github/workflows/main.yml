@@ -66,6 +66,12 @@ jobs:
     needs: [TFLint, TFValidate, Checks]
     runs-on: ubuntu-latest
     steps:
+      - name: Check out repository code
+        uses: actions/checkout@v2
+      - name: Setup TFLint
+        uses: terraform-linters/setup-tflint@v1
+      - name: Inject slug/short variables
+        uses: rlespinasse/github-slug-action@v3.x
       - name: Run GCP examples
         env:
           CI_USE_TF_CLOUD: ${{ secrets.CI_USE_TF_CLOUD }}

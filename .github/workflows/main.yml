@@ -82,7 +82,7 @@ jobs:
         if: github.ref == 'refs/heads/main' || env.GITHUB_REF_SLUG == 'integration' # Only run on main/integration, as these take a long time
         run: GOOGLE_APPLICATION_CREDENTIALS=$GCP_CREDENTIALS_FILENAME ${{github.workspace}}/bin/run_gcp_examples.sh
   ProvidersLocal:
-    concurrency: provider_test_aws
+    concurrency: provider_test_local
     needs: [TFLint, TFValidate, Checks]
     runs-on: ubuntu-latest
     steps:

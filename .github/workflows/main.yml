@@ -13,6 +13,20 @@ jobs:
       - name: Run TFLint
         # info level there because of WARNs and ERRs seen occasionally only in GitHub actions logs
         run: find ${{ github.workspace }} | grep tf$ | xargs -n1 dirname | xargs -IXXX -n1 /bin/sh -c 'set -o errexit; cd XXX; pwd; tflint --loglevel=info .; cd - >/dev/null'
+  TFValidate:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository code
+        uses: actions/checkout@v2
+      - name: Setup TFLint
+        uses: terraform-linters/setup-tflint@v1
+        with:
+          tflint_version: v0.28.0  # Must be specified. See: https://github.com/terraform-linters/tflint/releases for latest versions
+      - name: Run terraform validate
+        env:
+          CI_USE_TF_CLOUD: ${{ secrets.CI_USE_TF_CLOUD }}
+          TERRAFORM_CLOUD_LOGIN_TOKEN: ${{ secrets.TERRAFORM_CLOUD_LOGIN_TOKEN }}
+        run: ${{ github.workspace }}/bin/check_validate.sh
   Checks:
     runs-on: ubuntu-latest
     steps:
@@ -29,6 +43,7 @@ jobs:
       - name: Run Check Names
         run: ${{ github.workspace }}/bin/check_non_unique_data.sh && ${{ github.workspace }}/bin/check_non_unique_resources.sh && ${{ github.workspace }}/bin/check_non_unique_variable.sh
   Providers:
+    concurrency: provider_test
     runs-on: ubuntu-latest
     steps:
       - name: Check out repository code
@@ -47,11 +62,6 @@ jobs:
         # env.GITHUB_BASE_REF_SLUG_URL
         # env.GITHUB_REPOSITORY_SLUG_URL
         # env.GITHUB_SHA_SHORT
-      - name: Run terraform validate
-        env:
-          CI_USE_TF_CLOUD: ${{ secrets.CI_USE_TF_CLOUD }}
-          TERRAFORM_CLOUD_LOGIN_TOKEN: ${{ secrets.TERRAFORM_CLOUD_LOGIN_TOKEN }}
-        run: ${{ github.workspace }}/bin/check_validate.sh
       - name: Run AWS examples
         env:
           AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}

@@ -44,6 +44,7 @@ jobs:
         run: ${{ github.workspace }}/bin/check_non_unique_data.sh && ${{ github.workspace }}/bin/check_non_unique_resources.sh && ${{ github.workspace }}/bin/check_non_unique_variable.sh
   Providers:
     concurrency: provider_test
+    needs: [TFLint, TFValidate, Checks]
     runs-on: ubuntu-latest
     steps:
       - name: Check out repository code

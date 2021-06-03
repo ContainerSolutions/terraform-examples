@@ -7,7 +7,7 @@ cd "${0%/*}/.."
 
 echo "Running $0 ..."
 
-DATA_NAMES="$(find . -print0 -name '*\.tf' | xargs grep -rnwI ^data | awk '{print $3}' | sort -u | sed 's/"\(.*\)"/\1/')"
+DATA_NAMES="$(find . -print0 -name '*\.tf' | xargs -0 grep -rnwI ^data | awk '{print $3}' | sort -u | sed 's/"\(.*\)"/\1/')"
 FAILED=0
 
 for data_name in ${DATA_NAMES}

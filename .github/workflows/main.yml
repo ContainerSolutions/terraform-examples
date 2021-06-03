@@ -42,8 +42,8 @@ jobs:
         run: ${{ github.workspace }}/bin/check_shell.sh
       - name: Run Check Names
         run: ${{ github.workspace }}/bin/check_non_unique_data.sh && ${{ github.workspace }}/bin/check_non_unique_resources.sh && ${{ github.workspace }}/bin/check_non_unique_variable.sh
-  Providers:
-    concurrency: provider_test
+  ProvidersAWS:
+    concurrency: provider_test_aws
     needs: [TFLint, TFValidate, Checks]
     runs-on: ubuntu-latest
     steps:
@@ -51,18 +51,8 @@ jobs:
         uses: actions/checkout@v2
       - name: Setup TFLint
         uses: terraform-linters/setup-tflint@v1
-      # Get access to some useful variables.
       - name: Inject slug/short variables
         uses: rlespinasse/github-slug-action@v3.x
-        # env.GITHUB_REF_SLUG
-        # env.GITHUB_HEAD_REF_SLUG
-        # env.GITHUB_BASE_REF_SLUG
-        # env.GITHUB_REPOSITORY_SLUG
-        # env.GITHUB_REF_SLUG_URL
-        # env.GITHUB_HEAD_REF_SLUG_URL
-        # env.GITHUB_BASE_REF_SLUG_URL
-        # env.GITHUB_REPOSITORY_SLUG_URL
-        # env.GITHUB_SHA_SHORT
       - name: Run AWS examples
         env:
           AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
@@ -71,6 +61,11 @@ jobs:
           TERRAFORM_CLOUD_LOGIN_TOKEN: ${{ secrets.TERRAFORM_CLOUD_LOGIN_TOKEN }}
         if: github.ref == 'refs/heads/main' || env.GITHUB_REF_SLUG == 'integration' # Only run on main/integration, as these take a long time
         run: ${{ github.workspace }}/bin/run_aws_examples.sh
+  ProvidersGCP:
+    concurrency: provider_test_gcp
+    needs: [TFLint, TFValidate, Checks]
+    runs-on: ubuntu-latest
+    steps:
       - name: Run GCP examples
         env:
           CI_USE_TF_CLOUD: ${{ secrets.CI_USE_TF_CLOUD }}
@@ -80,6 +75,17 @@ jobs:
           TF_VAR_project_id: ${{ secrets.GCP_PROJECT }}
         if: github.ref == 'refs/heads/main' || env.GITHUB_REF_SLUG == 'integration' # Only run on main/integration, as these take a long time
         run: GOOGLE_APPLICATION_CREDENTIALS=$GCP_CREDENTIALS_FILENAME ${{github.workspace}}/bin/run_gcp_examples.sh
+  ProvidersLocal:
+    concurrency: provider_test_aws
+    needs: [TFLint, TFValidate, Checks]
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository code
+        uses: actions/checkout@v2
+      - name: Inject slug/short variables
+        uses: rlespinasse/github-slug-action@v3.x
+      - name: Setup TFLint
+        uses: terraform-linters/setup-tflint@v1
       - name: Run Local Examples
         if: github.ref == 'refs/heads/main' || env.GITHUB_REF_SLUG == 'integration' # Only run on main/integration, as these take a long time
         run: ${{github.workspace}}/bin/run_local_examples.sh

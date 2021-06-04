@@ -9,7 +9,7 @@ cd "${0%/*}/.."
 
 echo "Running $0 ..."
 
-RESOURCE_NAMES="$(find . -print0 -name '*\.tf' | xargs grep -rnwI ^resource | awk '{print $3}' | sort -u | sed 's/"\(.*\)"/\1/')"
+RESOURCE_NAMES="$(find . -print0 -name '*\.tf' | xargs -0 grep -rnwI ^resource | awk '{print $3}' | sort -u | sed 's/"\(.*\)"/\1/')"
 FAILED=0
 
 for resource_name in ${RESOURCE_NAMES}

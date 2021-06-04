@@ -21,7 +21,7 @@ do
   echo "================================================================================"
   if [ "${folder}" = "backends/remote" ] && [ ! -f "${HOME}/.terraform.d/credentials.tfrc.json" ]
   then
-    echo "Skippking validate in ${folder} as it requres 'terraform login'"
+    echo "Skipping validate in ${folder} as it requres 'terraform login'"
     continue
   fi
   cd "${folder}" >/dev/null || exit 1

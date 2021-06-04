@@ -23,6 +23,15 @@ provider "google" {
   zone    = "us-central1-a"
 }
 
+# Enable Cloud Run Admin API
+# Documentation: https://registry.terraform.io/providers/hashicorp/google/latest/docs/resources/google_project_service
+resource "google_project_service" "changeme_simple_project_service" {
+  project = var.project_id
+  service = "run.googleapis.com"
+
+  disable_on_destroy = false
+}
+
 # GCP Cloud Run Service
 # Documentation: https://registry.terraform.io/providers/hashicorp/google/latest/docs/resources/cloud_run_service
 resource "google_cloud_run_service" "changeme_noauth_cloud_run_service" {

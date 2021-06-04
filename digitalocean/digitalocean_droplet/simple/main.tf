@@ -11,6 +11,8 @@ terraform {
   }
 }
 
+# DigitalOcean Provider
+# Documentation: https://registry.terraform.io/providers/digitalocean/digitalocean/latest/docs
 provider "digitalocean" {
 }
 

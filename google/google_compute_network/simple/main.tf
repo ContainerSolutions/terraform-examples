@@ -1,4 +1,4 @@
-# Summary: Uses the 'count' feature to create multiple EC2 instances.
+# Summary: A simple GCP VPC (google_compute_network)
 
 # Documentation: https://www.terraform.io/docs/language/settings/index.html
 terraform {

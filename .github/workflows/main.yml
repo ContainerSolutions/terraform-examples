@@ -18,7 +18,7 @@ jobs:
     steps:
       - name: Check out repository code
         uses: actions/checkout@v2
-      - name: Setup TFLint
+      - name: Terraform Validate
         uses: terraform-linters/setup-tflint@v1
         with:
           tflint_version: v0.28.0  # Must be specified. See: https://github.com/terraform-linters/tflint/releases for latest versions

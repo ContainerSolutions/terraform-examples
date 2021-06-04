@@ -76,6 +76,34 @@ The examples seek to be:
 - For help with automated testing
   - where possible, add some way to enable 'left-over' resources to be cleaned up, eg provider `default_tags` of `cs_terraform_examples` in AWS provider blocks
 
+## GitHub Actions Workflow
+
+On every commit, the following tests run on all branches:
+
+- A `tflint` on all files ending with `tf`
+
+- A `terraform validate` on all
+
+- A series of checks to test the code against standards
+
+On every commit to the `integration` and `main branches`:
+
+- All AWS provider examples are run against an AWS account
+
+- All GCP provider examples are run against a GCP account
+
+- All 'local' provider examples are run locally on the GitHub Actions runner
+
+This is because `a)` the tests are long and/or cost money and `b)` the won't work without the necessary auth information being set up correctly.
+
+The auth information for the provider accounts are stored in secrets in the repository, accessible to the admin.
+
+Integration rebasing and any necessary re-work is done on the `integration` branch before rebasing to `main`. This is to help ensure that `main` is in as pristine a state as possible.
+
 ## Sources / Thanks To
 
 [Learn Terraform The Hard Way](https://leanpub.com/learnterraformthehardway)
+
+## Other Examples
+
+[Immutable Cluster Using Packer and Ansible on AWS](https://github.com/bluebrown/immutable-cluster)

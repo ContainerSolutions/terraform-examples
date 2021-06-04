@@ -25,7 +25,7 @@ provider "google" {
 
 # Enable Cloud Run Admin API
 # Documentation: https://registry.terraform.io/providers/hashicorp/google/latest/docs/resources/google_project_service
-resource "google_project_service" "changeme_simple_project_service" {
+resource "google_project_service" "changeme_noauth_project_service" {
   project = var.project_id
   service = "run.googleapis.com"
 

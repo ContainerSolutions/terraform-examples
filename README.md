@@ -92,6 +92,10 @@ On every commit to the `integration` and `main branches`:
 
 - All GCP provider examples are run against a GCP account
 
+- All Linode provider examples are run against a Linode account
+
+- All DigitalOcean provider examples are run against a DigitalOcean account
+
 - All 'local' provider examples are run locally on the GitHub Actions runner
 
 This is because `a)` the tests are long and/or cost money and `b)` the won't work without the necessary auth information being set up correctly.

@@ -9,7 +9,7 @@ jobs:
       - name: Setup TFLint
         uses: terraform-linters/setup-tflint@v1
         with:
-          tflint_version: v0.28.0  # Must be specified. See: https://github.com/terraform-linters/tflint/releases for latest versions
+          tflint_version: v0.28.0 # Must be specified. See: https://github.com/terraform-linters/tflint/releases for latest versions
       - name: Run TFLint
         # info level there because of WARNs and ERRs seen occasionally only in GitHub actions logs
         run: find ${{ github.workspace }} | grep tf$ | xargs -n1 dirname | xargs -IXXX -n1 /bin/sh -c 'set -o errexit; cd XXX; pwd; tflint --loglevel=info .; cd - >/dev/null'
@@ -21,7 +21,7 @@ jobs:
       - name: Terraform Validate
         uses: terraform-linters/setup-tflint@v1
         with:
-          tflint_version: v0.28.0  # Must be specified. See: https://github.com/terraform-linters/tflint/releases for latest versions
+          tflint_version: v0.28.0 # Must be specified. See: https://github.com/terraform-linters/tflint/releases for latest versions
       - name: Run terraform validate
         env:
           CI_USE_TF_CLOUD: ${{ secrets.CI_USE_TF_CLOUD }}
@@ -81,6 +81,38 @@ jobs:
           TF_VAR_project_id: ${{ secrets.GCP_PROJECT }}
         if: github.ref == 'refs/heads/main' || env.GITHUB_REF_SLUG == 'integration' # Only run on main/integration, as these take a long time
         run: GOOGLE_APPLICATION_CREDENTIALS=$GCP_CREDENTIALS_FILENAME ${{github.workspace}}/bin/run_gcp_examples.sh
+  ProvidersLinode:
+    concurrency: provider_test_linode
+    needs: [TFLint, TFValidate, Checks]
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository code
+        uses: actions/checkout@v2
+      - name: Setup TFLint
+        uses: terraform-linters/setup-tflint@v1
+      - name: Inject slug/short variables
+        uses: rlespinasse/github-slug-action@v3.x
+      - name: Run Linode examples
+        env:
+          LINODE_TOKEN: ${{ secrets.LINODE_TOKEN }}
+        if: github.ref == 'refs/heads/main' || env.GITHUB_REF_SLUG == 'integration' # Only run on main/integration, as these take a long time
+        run: ${{github.workspace}}/bin/run_linode_examples.sh
+  ProvidersDigitalocean:
+    concurrency: provider_test_digitalocean
+    needs: [TFLint, TFValidate, Checks]
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository code
+        uses: actions/checkout@v2
+      - name: Setup TFLint
+        uses: terraform-linters/setup-tflint@v1
+      - name: Inject slug/short variables
+        uses: rlespinasse/github-slug-action@v3.x
+      - name: Run DigitalOcean examples
+        env:
+          DIGITALOCEAN_TOKEN: ${{ secrets.DIGITALOCEAN_TOKEN }}
+        if: github.ref == 'refs/heads/main' || env.GITHUB_REF_SLUG == 'integration' # Only run on main/integration, as these take a long time
+        run: ${{github.workspace}}/bin/run_digitalocean_examples.sh
   ProvidersLocal:
     concurrency: provider_test_local
     needs: [TFLint, TFValidate, Checks]

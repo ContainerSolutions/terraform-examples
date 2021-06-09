@@ -148,3 +148,21 @@ jobs:
       - name: Run Local Examples
         if: github.ref == 'refs/heads/main' || env.GITHUB_REF_SLUG == 'integration' # Only run on main/integration, as these take a long time
         run: ${{github.workspace}}/bin/run_local_examples.sh
+  RecordActionSuccess:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository code
+        uses: actions/checkout@v2
+      - name: Get what's in github
+        run: echo "${{ github.sha }}" >> "${{ github.workspace }}/.test_log.log"
+      - name: Commit The New Image Reference
+        uses: stefanzweifel/git-auto-commit-action@v4
+        if: github.ref == 'refs/heads/main' # Only run on main, as this is the reference branch
+        with:
+          commit_message: Testing
+          branch: main
+          commit_options: '--no-verify --signoff'
+          repository: .
+          commit_user_name: Terraform Examples Bot
+          commit_user_email: terraform-examples-bot@container-solutions.com
+          commit_author: Terraform Examples Bot <terraform-examples-bot@container-solutions.com>

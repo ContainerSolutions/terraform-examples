@@ -154,6 +154,8 @@ jobs:
     steps:
       - name: Check out repository code
         uses: actions/checkout@v2
+        with:
+          ref: ${{ github.head_ref }}
       - name: Inject slug/short variables
         uses: rlespinasse/github-slug-action@v3.x
       - name: Add the successfully tested SHA value to the log

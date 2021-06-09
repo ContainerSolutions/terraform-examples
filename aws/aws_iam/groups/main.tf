@@ -23,7 +23,7 @@ provider "aws" {
 
 # Documentation: https://www.terraform.io/docs/language/values/variables.html
 variable "changeme_iam_groups_groups" {
-  type = list
+  type = list(any)
   default = [
     "Dev",
     "Infra"
@@ -32,7 +32,7 @@ variable "changeme_iam_groups_groups" {
 
 # Documentation: https://www.terraform.io/docs/language/values/variables.html
 variable "changeme_iam_groups_users" {
-  type = map
+  type = map(any)
   default = {
     "jane.doe" = {
       "groups" = [
@@ -61,9 +61,9 @@ resource "aws_iam_group_policy_attachment" "changeme_iam_group_policy_attachment
 
 # Documentation: https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/iam_group_policy
 resource "aws_iam_group_policy" "changeme_iam_group_policy_dev" {
-  name    = "changeme-iam-group-policy-dev"
-  group   = aws_iam_group.changeme_iam_groups_groups[1].id
-policy = <<EOF
+  name   = "changeme-iam-group-policy-dev"
+  group  = aws_iam_group.changeme_iam_groups_groups[1].id
+  policy = <<EOF
 {
   "Version": "2012-10-17",
   "Statement": [
@@ -79,9 +79,9 @@ EOF
 
 # Documentation: https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/iam_group_policy
 resource "aws_iam_group_policy" "changeme_iam_group_policy_dev_assumerole" {
-  name    = "changeme-iam-group-policy-devsecops-assumerole"
-  group   = aws_iam_group.changeme_iam_groups_groups[1].id
-policy = <<EOF
+  name   = "changeme-iam-group-policy-devsecops-assumerole"
+  group  = aws_iam_group.changeme_iam_groups_groups[1].id
+  policy = <<EOF
 {
   "Version": "2012-10-17",
   "Statement": [

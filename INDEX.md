@@ -2,6 +2,7 @@
 
 | Feature                        | Links/Related Features  |
 | -------------                  |:-------------:|
+| `aws_iam`                      | [aws](aws/aws_iam/groups) |
 | `aws_instance`                 | [aws](aws/aws_instance) <p/> [simple](aws/aws_instance/simple) |
 | `aws_security_group`           | [aws, ssh](aws/aws_security_group/ssh) <p/> [aws, open](aws/aws_security_group/open) |
 | `aws_s3_bucket`                | [aws, backends, s3](backends/s3/aws_s3_bucket) |
@@ -10,10 +11,12 @@
 | `azurerm_virtual_network`      | [azure](azurerm/azurerm_virtual_network/simple) |
 | `backends`                     | [backends](backends) <p/> [aws, s3, aws_s3_bucket](backends/s3/aws_s3_bucket) <p/> [aws, remote](backends/remote) <p/> [google, gcs_bucket](backends/gcs/google_storage_bucket) |
 | `count`                        | [aws, aws_instance](aws/aws_instance/count) <p/> [aws, aws_vpc](aws/aws_vpc/count) <p/> [google, gcp_attached_disk](google/google_compute_attached_disk/count) |
+| `depends_on`                   | [aws](aws/aws_iam/groups) |
 | `digitalocean`                 | [simple](digitalocean/digitalocean_droplet/simple) |
 | `dynamic`                      | [aws, aws_security_group](aws/aws_security_group/dynamic) |
+| `each`                         | [aws](aws/aws_iam/groups) |
 | `for`                          | [aws, aws_vpc](aws/aws_vpc/for) |
-| `for_each`                     | [map, local](local/null_resource/for_each) <p/> [aws](aws/aws_instance/for_each) |
+| `for_each`                     | [map, local](local/null_resource/for_each) <p/> [aws](aws/aws_instance/for_each) <p/> [aws](aws/aws_iam/groups)|
 | `google_cloud_run_service`     | [google, gcp_cloud_run](google/google_cloud_run_service/simple ) <p/> [noauth](google/google_cloud_run_service/noauth) |
 | `google_compute_attached_disk` | [google](google/google_compute_attached_disk/simple) <p/> [count](google/google_compute_attached_disk/count) |
 | `google_compute_disk`          | [google, gcp_disk](google/google_compute_disk/simple) |

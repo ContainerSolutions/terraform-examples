@@ -164,7 +164,7 @@ jobs:
         uses: stefanzweifel/git-auto-commit-action@v4
         if: github.ref == 'refs/heads/main' || env.GITHUB_REF_SLUG == 'integration' # Only run on main or integration, as only these branches run full tests is the reference branch
         with:
-          commit_message: Testing
+          commit_message: Successful test recorded in log
           branch: ${{ github.head_ref }}
           commit_options: '--no-verify --signoff'
           repository: .

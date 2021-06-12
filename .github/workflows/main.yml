@@ -176,3 +176,5 @@ jobs:
           commit_user_name: Terraform Examples Bot
           commit_user_email: terraform-examples-bot@container-solutions.com
           commit_author: Terraform Examples Bot <terraform-examples-bot@container-solutions.com>
+      - name: Add the successfully tested SHA value to the log
+        run: echo "${{ github.sha }}" && git status && cat .test_log.log

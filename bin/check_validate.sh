@@ -2,6 +2,7 @@
 
 set -o errexit
 set -o nounset
+set -x
 
 cd "${0%/*}"
 # shellcheck disable=SC1091

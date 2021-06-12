@@ -6,6 +6,8 @@ jobs:
     steps:
       - name: Check out repository code
         uses: actions/checkout@v2
+        with:
+          fetch-depth: 0   # Need whole history, or at least far enough back to get .test_log.log reference
       - name: Setup TFLint
         uses: terraform-linters/setup-tflint@v1
         with:
@@ -18,6 +20,8 @@ jobs:
     steps:
       - name: Check out repository code
         uses: actions/checkout@v2
+        with:
+          fetch-depth: 0   # Need whole history, or at least far enough back to get .test_log.log reference
       - name: Terraform Validate
         uses: terraform-linters/setup-tflint@v1
         with:
@@ -49,6 +53,8 @@ jobs:
     steps:
       - name: Check out repository code
         uses: actions/checkout@v2
+        with:
+          fetch-depth: 0   # Need whole history, or at least far enough back to get .test_log.log reference
       - name: Setup TFLint
         uses: terraform-linters/setup-tflint@v1
       - name: Inject slug/short variables
@@ -68,6 +74,8 @@ jobs:
     steps:
       - name: Check out repository code
         uses: actions/checkout@v2
+        with:
+          fetch-depth: 0   # Need whole history, or at least far enough back to get .test_log.log reference
       - name: Setup TFLint
         uses: terraform-linters/setup-tflint@v1
       - name: Inject slug/short variables
@@ -88,6 +96,8 @@ jobs:
     steps:
       - name: Check out repository code
         uses: actions/checkout@v2
+        with:
+          fetch-depth: 0   # Need whole history, or at least far enough back to get .test_log.log reference
       - name: Setup TFLint
         uses: terraform-linters/setup-tflint@v1
       - name: Inject slug/short variables
@@ -104,6 +114,8 @@ jobs:
     steps:
       - name: Check out repository code
         uses: actions/checkout@v2
+        with:
+          fetch-depth: 0   # Need whole history, or at least far enough back to get .test_log.log reference
       - name: Setup TFLint
         uses: terraform-linters/setup-tflint@v1
       - name: Inject slug/short variables
@@ -120,6 +132,8 @@ jobs:
     steps:
       - name: Check out repository code
         uses: actions/checkout@v2
+        with:
+          fetch-depth: 0   # Need whole history, or at least far enough back to get .test_log.log reference
       - name: Setup TFLint
         uses: terraform-linters/setup-tflint@v1
       - name: Inject slug/short variables
@@ -141,6 +155,8 @@ jobs:
     steps:
       - name: Check out repository code
         uses: actions/checkout@v2
+        with:
+          fetch-depth: 0   # Need whole history, or at least far enough back to get .test_log.log reference
       - name: Inject slug/short variables
         uses: rlespinasse/github-slug-action@v3.x
       - name: Setup TFLint
@@ -155,7 +171,8 @@ jobs:
       - name: Check out repository code
         uses: actions/checkout@v2
         with:
-          ref: ${{ github.head_ref }}
+          fetch-depth: 0   # Need whole history, or at least far enough back to get .test_log.log reference
+          ref: ${{ github.head_ref }}   # Need head ref to update the branch, not the specific reference.
       - name: Inject slug/short variables
         uses: rlespinasse/github-slug-action@v3.x
       - name: Add the successfully tested SHA value to the log

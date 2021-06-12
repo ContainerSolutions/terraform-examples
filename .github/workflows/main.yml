@@ -163,8 +163,8 @@ jobs:
       - name: Determine whether the commit is not a bot commit
         id: isrealcommit
         run: |
-          [ $(git log --format='%ae' | head -1) != 'terraform-examples-bot@container-solutions.com' ]
-          echo "::set-output name=OUTPUT::$?"
+          if [ $(git log --format='%ae' | head -1) != 'terraform-examples-bot@container-solutions.com' ]; then OUTPUT=0; else OUTPUT=1; fi
+          echo "::set-output name=OUTPUT::$OUTPUT"
       - name: Commit the updated log
         uses: stefanzweifel/git-auto-commit-action@v4
         if: steps.isrealcommit.outputs.OUTPUT == '0' && (github.ref == 'refs/heads/main' || env.GITHUB_REF_SLUG == 'integration') # Only run on main or integration, as only these branches run full tests is the reference branch, and don't run if the last commit was a test (isrealcommit).

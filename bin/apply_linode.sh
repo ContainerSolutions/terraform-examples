@@ -7,7 +7,7 @@ source ./shared_linode.sh
 # shellcheck disable=SC1091
 source ./shared_terraform_cloud.sh
 
-cd -
+cd - || exit 1
 
 terraform init
 terraform plan

@@ -1,9 +1,13 @@
 #!/bin/bash
 
 cd "${0%/*}" || exit 1
+
+# shellcheck disable=SC1091
 source ./shared_google.sh
+# shellcheck disable=SC1091
 source ./shared_terraform_cloud.sh
-cd -
+
+cd - || exit 1
 
 terraform init
 terraform plan

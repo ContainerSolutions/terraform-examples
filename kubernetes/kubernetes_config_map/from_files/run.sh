@@ -1,2 +1,2 @@
 #!/bin/bash
-../../../bin/apply_kubernetes.sh
+../../../bin/apply.sh kubernetes

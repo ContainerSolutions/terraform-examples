@@ -1,2 +1,2 @@
 #!/bin/bash
-../../../bin/destroy_google.sh
+../../../bin/destroy.sh google

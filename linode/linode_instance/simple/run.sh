@@ -1,2 +1,2 @@
 #!/bin/bash
-../../../bin/apply_linode.sh
+../../../bin/apply.sh linode

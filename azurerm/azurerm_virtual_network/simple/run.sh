@@ -1,2 +1,2 @@
 #!/bin/bash
-../../../bin/apply_azurerm.sh
+../../../bin/apply.sh azurerm

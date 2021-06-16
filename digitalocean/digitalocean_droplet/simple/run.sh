@@ -1,2 +1,2 @@
 #!/bin/bash
-../../../bin/apply_digitalocean.sh
+../../../bin/apply.sh digitalocean

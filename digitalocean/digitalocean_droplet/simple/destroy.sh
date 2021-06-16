@@ -1,2 +1,2 @@
 #!/bin/bash
-../../../bin/destroy_digitalocean.sh
+../../../bin/destroy.sh digitalocean

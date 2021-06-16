@@ -1,2 +1,2 @@
 #!/bin/bash
-../../../bin/destroy_azurerm.sh
+../../../bin/destroy.sh azurerm

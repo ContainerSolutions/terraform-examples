@@ -3,7 +3,7 @@
 | Feature                        | Links/Related Features  |
 | -------------                  |:-------------:|
 | `aws_iam`                      | [aws](aws/aws_iam/groups) |
-| `aws_instance`                 | [aws](aws/aws_instance) <p/> [simple](aws/aws_instance/simple) |
+| `aws_instance`                 | [aws](aws/aws_instance) <p/> [simple](aws/aws_instance/simple) <p/> [simple_ssh_access](aws/aws_instance/simple_ssh_access) |
 | `aws_lambda_function`          | [aws](aws/aws_lambda_function) <p/> [simple](aws/aws_lambda_function/simple) |
 | `aws_security_group`           | [aws, ssh](aws/aws_security_group/ssh) <p/> [aws, open](aws/aws_security_group/open) |
 | `aws_s3_bucket`                | [aws, backends, s3](backends/s3/aws_s3_bucket) |

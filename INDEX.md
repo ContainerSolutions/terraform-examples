@@ -8,6 +8,11 @@
 | `aws_s3_bucket`                | [aws, backends, s3](backends/s3/aws_s3_bucket) |
 | `aws_vpc`                      | [aws](aws/aws_vpc/simple) |
 | `aws_eks`                      | [aws, spot_and_fargate](aws/aws_eks/fargate/spot_and_fargate) |
+| `azuread_application`          | [simple](azuread/azuread_application/simple) |
+| `azuread_group`                | [simple](azuread/azuread_group/simple) |
+| `azuread_group_member`         | [simple](azuread/azuread_group_member/simple) |
+| `azuread_service_principal`    | [simple](azuread/azuread_service_principal/simple) |
+| `azuread_user`                 | [simple](azuread/azuread_user/simple) |
 | `azurerm_virtual_network`      | [azure](azurerm/azurerm_virtual_network/simple) |
 | `backends`                     | [backends](backends) <p/> [aws, s3, aws_s3_bucket](backends/s3/aws_s3_bucket) <p/> [aws, remote](backends/remote) <p/> [google, gcs_bucket](backends/gcs/google_storage_bucket) |
 | `count`                        | [aws, aws_instance](aws/aws_instance/count) <p/> [aws, aws_vpc](aws/aws_vpc/count) <p/> [google, gcp_attached_disk](google/google_compute_attached_disk/count) |

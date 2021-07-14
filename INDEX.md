@@ -9,9 +9,12 @@
 | `aws_vpc`                      | [aws](aws/aws_vpc/simple) |
 | `aws_eks`                      | [aws, spot_and_fargate](aws/aws_eks/fargate/spot_and_fargate) |
 | `azuread_application`          | [simple](azure/azuread_application/simple) |
+| `azurerm_container_group`      | [simple](azure/azurerm_container_group/simple) |
+| `azurerm_container_registry`   | [simple](azure/azurerm_container_registry/simple) |
 | `azurerm_dns_zone`             | [simple](azure/azurerm_dns_zone/simple) |
 | `azuread_group`                | [simple](azure/azuread_group/simple) |
 | `azuread_group_member`         | [simple](azure/azuread_group_member/simple) |
+| `azurerm_kubernetes_cluster`   | [simple](azure/azurerm_kubernetes_cluster/simple) |
 | `azurerm_lb`                   | [simple](azure/azurerm_lb/simple) |
 | `azurerm_managed_disk`         | [empty](azure/azurerm_managed_disk/empty) <p/> [copy](azure/azurerm_managed_disk/copy) |
 | `azurerm_private_dns_zone`     | [simple](azure/azurerm_private_dns_zone/simple) |

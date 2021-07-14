@@ -8,6 +8,12 @@
 | `aws_s3_bucket`                | [aws, backends, s3](backends/s3/aws_s3_bucket) |
 | `aws_vpc`                      | [aws](aws/aws_vpc/simple) |
 | `aws_eks`                      | [aws, spot_and_fargate](aws/aws_eks/fargate/spot_and_fargate) |
+| `azurerm_network_interface`      | [simple](azurerm/azurerm_network_interface/simple) |
+| `azurerm_linux_virtual_machine`  | [simple](azurerm/azurerm_linux_virtual_machine/simple) |
+| `azurerm_subnet`                 | [simple](azurerm/azurerm_subnet/simple) |
+| `azurerm_virtual_network`        | [azure](azurerm/azurerm_virtual_network/simple) |
+| `azurerm_virtual_machine`        | [linux](azurerm/azurerm_virtual_machine/linux) <p/> [windows](azurerm/azurerm_virtual_machine/windows) |
+| `azurerm_windows_virtual_machine`| [simple](azurerm/azurerm_windows_virtual_machine/simple) |
 | `azurerm_virtual_network`      | [azure](azurerm/azurerm_virtual_network/simple) |
 | `backends`                     | [backends](backends) <p/> [aws, s3, aws_s3_bucket](backends/s3/aws_s3_bucket) <p/> [aws, remote](backends/remote) <p/> [google, gcs_bucket](backends/gcs/google_storage_bucket) |
 | `count`                        | [aws, aws_instance](aws/aws_instance/count) <p/> [aws, aws_vpc](aws/aws_vpc/count) <p/> [google, gcp_attached_disk](google/google_compute_attached_disk/count) |

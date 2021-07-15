@@ -8,7 +8,9 @@
 | `aws_s3_bucket`                | [aws, backends, s3](backends/s3/aws_s3_bucket) |
 | `aws_vpc`                      | [aws](aws/aws_vpc/simple) |
 | `aws_eks`                      | [aws, spot_and_fargate](aws/aws_eks/fargate/spot_and_fargate) |
+| `azurerm_dns_zone`             | [simple](azurerm/azurerm_dns_zone/simple) |
 | `azurerm_managed_disk`         | [empty](azurerm/azurerm_managed_disk/empty) <p/> [copy](azurerm/azurerm_managed_disk/copy) |
+| `azurerm_private_dns_zone`     | [simple](azurerm/azurerm_private_dns_zone/simple) |
 | `azurerm_storage_account`      | [simple](azurerm/azurerm_storage_account/simple) |
 | `azurerm_storage_blob`         | [append](azurerm/azurerm_storage_blob/append) <p/> [block](azurerm/azurerm_storage_blob/block) <p/> [page](azurerm/azurerm_storage_blob/page) |
 | `azurerm_storage_container`    | [simple](azurerm/azurerm_storage_container/simple) |

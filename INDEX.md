@@ -3,13 +3,30 @@
 | Feature                        | Links/Related Features  |
 | -------------                  |:-------------:|
 | `aws_iam`                      | [aws](aws/aws_iam/groups) |
-| `aws_instance`                 | [aws](aws/aws_instance) <p/> [simple](aws/aws_instance/simple) |
+| `aws_instance`                 | [aws](aws/aws_instance) <p/> [simple](aws/aws_instance/simple) <p/> [simple_ssh_access](aws/aws_instance/simple_ssh_access) |
+| `aws_lambda_function`          | [aws](aws/aws_lambda_function) <p/> [simple](aws/aws_lambda_function/simple) |
 | `aws_security_group`           | [aws, ssh](aws/aws_security_group/ssh) <p/> [aws, open](aws/aws_security_group/open) |
 | `aws_s3_bucket`                | [aws, backends, s3](backends/s3/aws_s3_bucket) |
 | `aws_vpc`                      | [aws](aws/aws_vpc/simple) |
 | `aws_eks`                      | [aws, spot_and_fargate](aws/aws_eks/fargate/spot_and_fargate) |
+| `azuread_application`          | [simple](azuread/azuread_application/simple) |
+| `azuread_group_member`         | [simple](azuread/azuread_group_member/simple) |
+| `azuread_group`                | [simple](azuread/azuread_group/simple) |
+| `azuread_service_principal`    | [simple](azuread/azuread_service_principal/simple) |
+| `azuread_user`                 | [simple](azuread/azuread_user/simple) |
 | `azurerm_app_service_plan`     | [simple](azurerm/azurerm_app_service_plan/simple) |
+| `azurerm_dns_zone`             | [simple](azurerm/azurerm_dns_zone/simple) |
 | `azurerm_function_app`         | [simple](azurerm/azurerm_function_app/simple) |
+| `azurerm_lb`                   | [simple](azurerm/azurerm_lb/simple) |
+| `azurerm_managed_disk`         | [empty](azurerm/azurerm_managed_disk/empty) <p/> [copy](azurerm/azurerm_managed_disk/copy) |
+| `azurerm_private_dns_zone`     | [simple](azurerm/azurerm_private_dns_zone/simple) |
+| `azurerm_public_ip`            | [simple](azurerm/azurerm_public_ip/simple) |
+| `azurerm_storage_account`      | [simple](azurerm/azurerm_storage_account/simple) |
+| `azurerm_storage_blob`         | [append](azurerm/azurerm_storage_blob/append) <p/> [block](azurerm/azurerm_storage_blob/block) <p/> [page](azurerm/azurerm_storage_blob/page) |
+| `azurerm_storage_container`    | [simple](azurerm/azurerm_storage_container/simple) |
+| `azurerm_storage_queue`        | [simple](azurerm/azurerm_storage_queue/simple) |
+| `azurerm_storage_share`        | [simple](azurerm/azurerm_storage_share/simple) |
+| `azurerm_storage_table`        | [simple](azurerm/azurerm_storage_table/simple) |
 | `azurerm_virtual_network`      | [azure](azurerm/azurerm_virtual_network/simple) |
 | `backends`                     | [backends](backends) <p/> [aws, s3, aws_s3_bucket](backends/s3/aws_s3_bucket) <p/> [aws, remote](backends/remote) <p/> [google, gcs_bucket](backends/gcs/google_storage_bucket) |
 | `count`                        | [aws, aws_instance](aws/aws_instance/count) <p/> [aws, aws_vpc](aws/aws_vpc/count) <p/> [google, gcp_attached_disk](google/google_compute_attached_disk/count) |

@@ -104,6 +104,16 @@ The auth information for the provider accounts are stored in secrets in the repo
 
 Integration rebasing and any necessary re-work is done on the `integration` branch before rebasing to `main`. This is to help ensure that `main` is in as pristine a state as possible.
 
+### Forcing tests
+
+You can force a test for a given provider (on the `integration` or `main` branches only) by adding a `.forcetest` file to the relevant folder.
+
+For example, if you want to ensure that the aws tests run, then add an empty file in `aws/.forcetest`. On a successfully completed test run, these files are removed as part of the 'success commit' in the github action workflow.
+
+## Maintainer Information
+
+For information for maintainers of this repository at ContainerSolutions, see [maintainers](MAINTAINERS.md)
+
 ## Sources / Thanks To
 
 [Learn Terraform The Hard Way](https://leanpub.com/learnterraformthehardway)
@@ -111,3 +121,6 @@ Integration rebasing and any necessary re-work is done on the `integration` bran
 ## Other Examples
 
 [Immutable Cluster Using Packer and Ansible on AWS](https://github.com/bluebrown/immutable-cluster)
+
+
+

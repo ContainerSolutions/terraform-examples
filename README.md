@@ -76,6 +76,11 @@ The examples seek to be:
 - For help with automated testing
   - where possible, add some way to enable 'left-over' resources to be cleaned up, eg provider `default_tags` of `cs_terraform_examples` in AWS provider blocks
 
+- Add inline documentation for each Terraform code block
+  - `# Summary:` – 1-line summary of what this example does
+  - `# Documentation:` – add link to documentation before each block (terraform, provider, variable, resource, etc.)
+  - `# Explanation:` – add only where some extra explanation is needed
+
 ## GitHub Actions Workflow
 
 On every commit, the following tests run on all branches:

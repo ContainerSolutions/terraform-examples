@@ -29,6 +29,7 @@ jobs:
         uses: hashicorp/setup-terraform@v1
         with:
           terraform_version: ${{ env.terraform_version }}
+          terraform_wrapper: false
           cli_config_credentials_token: ${{ secrets.TERRAFORM_CLOUD_LOGIN_TOKEN }}
       - name: Run terraform validate
         env:
@@ -44,6 +45,7 @@ jobs:
         uses: hashicorp/setup-terraform@v1
         with:
           terraform_version: ${{ env.terraform_version }}
+          terraform_wrapper: false
       - name: Run Check Format
         run: ${{ github.workspace }}/bin/check_format.sh
       - name: Run Check Index
@@ -67,6 +69,7 @@ jobs:
         uses: hashicorp/setup-terraform@v1
         with:
           terraform_version: ${{ env.terraform_version }}
+          terraform_wrapper: false
           cli_config_credentials_token: ${{ secrets.TERRAFORM_CLOUD_LOGIN_TOKEN }}
       - name: Inject slug/short variables
         uses: rlespinasse/github-slug-action@v3.x
@@ -91,6 +94,7 @@ jobs:
         uses: hashicorp/setup-terraform@v1
         with:
           terraform_version: ${{ env.terraform_version }}
+          terraform_wrapper: false
           cli_config_credentials_token: ${{ secrets.TERRAFORM_CLOUD_LOGIN_TOKEN }}
       - name: Inject slug/short variables
         uses: rlespinasse/github-slug-action@v3.x
@@ -116,6 +120,7 @@ jobs:
         uses: hashicorp/setup-terraform@v1
         with:
           terraform_version: ${{ env.terraform_version }}
+          terraform_wrapper: false
       - name: Inject slug/short variables
         uses: rlespinasse/github-slug-action@v3.x
       - name: Run Linode examples
@@ -136,6 +141,7 @@ jobs:
         uses: hashicorp/setup-terraform@v1
         with:
           terraform_version: ${{ env.terraform_version }}
+          terraform_wrapper: false
       - name: Inject slug/short variables
         uses: rlespinasse/github-slug-action@v3.x
       - name: Run DigitalOcean examples
@@ -156,6 +162,7 @@ jobs:
         uses: hashicorp/setup-terraform@v1
         with:
           terraform_version: ${{ env.terraform_version }}
+          terraform_wrapper: false
           cli_config_credentials_token: ${{ secrets.TERRAFORM_CLOUD_LOGIN_TOKEN }}
       - name: Inject slug/short variables
         uses: rlespinasse/github-slug-action@v3.x
@@ -184,6 +191,7 @@ jobs:
         uses: hashicorp/setup-terraform@v1
         with:
           terraform_version: ${{ env.terraform_version }}
+          terraform_wrapper: false
       - name: Run Local Examples
         if: github.ref == 'refs/heads/main' || env.GITHUB_REF_SLUG == 'integration' # Only run on main/integration, as these take a long time
         run: ${{github.workspace}}/bin/run_local_examples.sh

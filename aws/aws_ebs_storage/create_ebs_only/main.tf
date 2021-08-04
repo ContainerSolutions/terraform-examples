@@ -21,24 +21,13 @@ provider "aws" {
   }
 }
 
-# Documentation: https://www.terraform.io/docs/language/values/variables.html
-variable "changeme_ebs_volume_size" {
-  description = "Size of the EBS volume in GiBs. Defaults to 10"
-  type        = number
-  default     = 10
-}
-
-variable "changeme_ebs_volume_region" {
-  description = "AZ where the EBS volume will exist. Defaults to us-east-1"
-  type        = string
-  default     = "us-east-1a"
-}
-
-# Documentation: https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/iam_group
+# Documentation: https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/ebs_volume
+# Explanation: The AWS 'aws_ebs_volume' resource is responsible for creating the EBS volume. The only required field is Availability Zone
+# where the EBS is going to be created. It's also good to set the Size in GBi. 
+#
 resource "aws_ebs_volume" "changeme_ebs_volume" {
-
-  availability_zone = var.changeme_ebs_volume_region
-  size              = var.changeme_ebs_volume_size
+  availability_zone = "us-east-2a"
+  size              = 10
   tags = {
     Name = "changeme_ebs_volume_object"
   }

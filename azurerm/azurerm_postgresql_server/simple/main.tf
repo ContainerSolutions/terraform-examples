@@ -41,7 +41,7 @@ resource "azurerm_postgresql_server" "changeme_simple_postgresql_server" {
   sku_name = "B_Gen5_1"
   version  = "11"
 
-  administrator_login          = "changeme-admin-u"
+  administrator_login          = "changemeadmin"
   administrator_login_password = "ch4ng3m3-A@£$%^&"
 
   ssl_enforcement_enabled = true

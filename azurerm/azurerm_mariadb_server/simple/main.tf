@@ -42,7 +42,7 @@ resource "azurerm_mariadb_server" "changeme_simple_mariadb_server" {
   sku_name   = "B_Gen5_1"
   version    = "10.3"
 
-  administrator_login          = "changeme-admin-u"
+  administrator_login          = "changemeadmin"
   administrator_login_password = "ch4ng3m3-A@£$%^&"
 
   ssl_enforcement_enabled = true

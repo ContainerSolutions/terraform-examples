@@ -40,6 +40,6 @@ resource "azurerm_sql_server" "changeme_simple_sql_server" {
 
   version = "12.0"
 
-  administrator_login          = "changeme-admin-u"
+  administrator_login          = "changemeadmin"
   administrator_login_password = "ch4ng3m3-A@£$%^&"
 }

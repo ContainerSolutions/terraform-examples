@@ -45,6 +45,10 @@ resource "azurerm_cosmosdb_account" "changeme_simple_cosmosdb_gremlin_database_c
     failover_priority = 0
   }
 
+  capabilities {
+    name = "EnableGremlin"
+  }
+
   consistency_policy {
     consistency_level       = "BoundedStaleness"
     max_interval_in_seconds = 10

@@ -25,6 +25,8 @@ do
     if [[ -a azurerm/.forcetest ]]
     then
       echo "azurerm/.forcetest file exists, forcing test run"
+    elif [[ -a ${folder}/.forcetest ]]
+      echo "${folder}/.forcetest file exists, forcing test run"
     else
       echo "Folder ${folder} has not changed since last successful test on main (${last_successful_commit})"
       continue

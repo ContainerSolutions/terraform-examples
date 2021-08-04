@@ -10,6 +10,7 @@
 | `aws_s3_bucket`                | [aws, backends, s3](backends/s3/aws_s3_bucket) |
 | `aws_vpc`                      | [aws](aws/aws_vpc/simple) |
 | `aws_eks`                      | [aws, spot_and_fargate](aws/aws_eks/fargate/spot_and_fargate) |
+| `aws_sql_database`             | [aws](aws/aws_sql_database) |
 | `azuread_application`          | [simple](azuread/azuread_application/simple) |
 | `azuread_group_member`         | [simple](azuread/azuread_group_member/simple) |
 | `azuread_group`                | [simple](azuread/azuread_group/simple) |

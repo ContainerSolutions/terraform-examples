@@ -4,14 +4,15 @@
 | -------------                         |:-------------:|
 | `aws aurora`                          | [aws](aws/aws_aurora) <p/> [cluster](aws/aws_aurora/cluster) |
 | `aws_dynamodb`                        | [aws](aws/aws_dynamodb) <p/> [table](aws/aws_dynamodb/table) |
+| `aws_ebs_storage`                     | [aws](aws/aws_ebs_storage) <p/>[create_ebs_only](aws/aws_ebs_storage/create_ebs_only) |
+| `aws_eks`                             | [aws, spot_and_fargate](aws/aws_eks/fargate/spot_and_fargate) |
 | `aws_iam`                             | [aws](aws/aws_iam/groups) |
 | `aws_instance`                        | [aws](aws/aws_instance) <p/> [simple](aws/aws_instance/simple) <p/> [simple_ssh_access](aws/aws_instance/simple_ssh_access) |
-| `aws_ebs_storage`                     | [aws](aws/aws_ebs_storage) <p/>[create_ebs_only](aws/aws_ebs_storage/create_ebs_only) |
 | `aws_lambda_function`                 | [aws](aws/aws_lambda_function) <p/> [simple](aws/aws_lambda_function/simple) |
-| `aws_security_group`                  | [aws, ssh](aws/aws_security_group/ssh) <p/> [aws, open](aws/aws_security_group/open) |
 | `aws_s3_bucket`                       | [aws, backends, s3](backends/s3/aws_s3_bucket) |
+| `aws_security_group`                  | [aws, ssh](aws/aws_security_group/ssh) <p/> [aws, open](aws/aws_security_group/open) |
+| `aws_db_instance`                     | [aws](aws/aws_db_instance/simple) |
 | `aws_vpc`                             | [aws](aws/aws_vpc/simple) |
-| `aws_eks`                             | [aws, spot_and_fargate](aws/aws_eks/fargate/spot_and_fargate) |
 | `azuread_application`                 | [simple](azuread/azuread_application/simple) |
 | `azuread_group_member`                | [simple](azuread/azuread_group_member/simple) |
 | `azuread_group`                       | [simple](azuread/azuread_group/simple) |

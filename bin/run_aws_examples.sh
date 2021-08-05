@@ -23,6 +23,9 @@ do
     if [[ -a aws/.forcetest ]]
     then
       echo "aws/.forcetest file exists, forcing test run"
+    elif [[ -a ${folder}/.forcetest ]]
+    then
+      echo "${folder}/.forcetest file exists, forcing test run"
     else
       echo "Folder ${folder} has not changed since last successful test on main (${last_successful_commit})"
       continue

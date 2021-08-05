@@ -179,7 +179,7 @@ jobs:
       - name: Add the successfully tested SHA value to the log
         run: echo "${{ github.sha }}" >> "${{ github.workspace }}/.test_log.log"
       - name: Remove .forcetest files
-        run: rm -f */.forcetest
+        run: rm -f */.forcetest */*/.forcetest
       - name: Determine whether the commit is not a bot commit
         id: isrealcommit
         run: |

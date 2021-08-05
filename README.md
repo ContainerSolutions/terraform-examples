@@ -109,7 +109,7 @@ The auth information for the provider accounts are stored in secrets in the repo
 
 Integration rebasing and any necessary re-work is done on the `integration` branch before rebasing to `main`. This is to help ensure that `main` is in as pristine a state as possible.
 
-### Forcing tests
+### Forcing tests
 
 You can force a test for a given provider (on the `integration` or `main` branches only) by adding a `.forcetest` file to the relevant folder.
 

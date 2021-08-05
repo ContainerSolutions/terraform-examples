@@ -3,6 +3,7 @@
 | Feature                               | Links/Related Features  |
 | -------------                         |:-------------:|
 | `aws aurora`                          | [aws](aws/aws_aurora) <p/ > [cluster](aws/aws_aurora/cluster) |
+| `aws_dynamodb`                        | [aws](aws/aws_dynamodb) <p/> [table](aws/aws_dynamodb/table) |
 | `aws_iam`                             | [aws](aws/aws_iam/groups) |
 | `aws_instance`                        | [aws](aws/aws_instance) <p/> [simple](aws/aws_instance/simple) <p/> [simple_ssh_access](aws/aws_instance/simple_ssh_access) |
 | `aws_lambda_function`                 | [aws](aws/aws_lambda_function) <p/> [simple](aws/aws_lambda_function/simple) |

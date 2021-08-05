@@ -1,4 +1,4 @@
-# Summary: A simple Azure Public IP
+# Summary: A simple Azure MSSQL Server
 
 # Documentation: https://www.terraform.io/docs/language/settings/index.html
 terraform {
@@ -26,17 +26,20 @@ provider "azurerm" {
 
 # Resource Group
 # Documentation: https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/resource_group
-resource "azurerm_resource_group" "changeme_simple_public_ip_resource_group" {
-  name     = "changeme-simple-public-ip-resource-group-name"
+resource "azurerm_resource_group" "changeme_simple_mssql_server_resource_group" {
+  name     = "changeme-simple-mssql-database-resource-group"
   location = "West Europe"
 }
 
-# Public IP within the Resource Group
-# Explanation: Note that the location of the Public IP does not need to match the location of the Resource Group
-# Documentation: https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/public_ip
-resource "azurerm_public_ip" "changeme_simple_public_ip" {
-  name                = "changeme-simple-load-balancer-public-ip-name"
-  location            = "West US"
-  resource_group_name = azurerm_resource_group.changeme_simple_public_ip_resource_group.name
-  allocation_method   = "Static"
+# MSSQL Server within the Resource Group
+# Documentation: https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/mssql_server
+resource "azurerm_mssql_server" "changeme_simple_mssql_server" {
+  name                = "changeme-simple-mssql-database-name"
+  resource_group_name = azurerm_resource_group.changeme_simple_mssql_server_resource_group.name
+  location            = azurerm_resource_group.changeme_simple_mssql_server_resource_group.location
+
+  version = "12.0"
+
+  administrator_login          = "changemeadmin"
+  administrator_login_password = "ch4ng3m3-A@£$%^&"
 }

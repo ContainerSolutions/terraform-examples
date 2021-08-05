@@ -4,7 +4,7 @@
 | -------------                         |:-------------:|
 | `aws aurora`                          | [aws](aws/aws_aurora) <p/> [cluster](aws/aws_aurora/cluster) |
 | `aws_dynamodb`                        | [aws](aws/aws_dynamodb) <p/> [table](aws/aws_dynamodb/table) |
-| `aws_ebs_storage`                     | [aws](aws/aws_ebs_storage) <p/>[create_ebs_only](aws/aws_ebs_storage/create_ebs_only) |
+| `aws_ebs_volume`                      | [aws](aws/aws_ebs_volume) <p/>[simple](aws/aws_ebs_volume/simple) |
 | `aws_eks`                             | [aws, spot_and_fargate](aws/aws_eks/fargate/spot_and_fargate) |
 | `aws_iam`                             | [aws](aws/aws_iam/groups) |
 | `aws_instance`                        | [aws](aws/aws_instance) <p/> [simple](aws/aws_instance/simple) <p/> [simple_ssh_access](aws/aws_instance/simple_ssh_access) |

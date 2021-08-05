@@ -16,7 +16,7 @@ provider "aws" {
   region = "us-east-1"
   default_tags {
     tags = {
-      cs_terraform_examples = "aws_ebs_storage/create_ebs_only"
+      cs_terraform_examples = "aws_ebs_volume/simple"
     }
   }
 }
@@ -29,7 +29,7 @@ data "aws_availability_zones" "changeme_available_az_list" {
 # Documentation: https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/ebs_volume
 # Explanation: The AWS 'aws_ebs_volume' resource is responsible for creating the EBS volume. The only required field is Availability Zone
 # where the EBS vol is going to be created. Some optional arguments are Size in GBi, encryption(TRUE/FALSE) and he type of EBS volume. Can be "standard", "gp2", "io1", "sc1" or "st1" (Default: "standard").
-resource "aws_ebs_volume" "changeme_ebs_volume" {
+resource "aws_ebs_volume" "changeme_simple_aws_ebs_volume" {
   availability_zone = data.aws_availability_zones.changeme_available_az_list.names[0]
   size              = 10
   type              = "standard"

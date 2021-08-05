@@ -23,13 +23,13 @@ provider "aws" {
 
 # Documentation: https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/db_instance
 # Explanation: This resource creates the DB Instance. This Example creates a MySql Server version 5.7 as a Managed RDS Service.
-# Allocates a MySQl version 5.7 in a t3.micro instance with a database name 'changeme_aws_db_instance_simple', username 'changeme_username' and passwd 'changeme_password'
-resource "aws_db_instance" "changeme_aws_db_instance_simple" {
+# Allocates a MySQl version 5.7 in a t3.micro instance with a database name 'changeme_simple_aws_db_instance', username 'changeme_username' and passwd 'changeme_password'
+resource "aws_db_instance" "changeme_simple_aws_db_instance" {
   allocated_storage   = 5
   engine              = "mysql"
   engine_version      = "5.7"
   instance_class      = "db.t3.micro"
-  name                = "changeme_aws_db_instance_simple"
+  name                = "changeme_simple_aws_db_instance"
   username            = "changemeusername"
   password            = "changeme_password"
   skip_final_snapshot = true

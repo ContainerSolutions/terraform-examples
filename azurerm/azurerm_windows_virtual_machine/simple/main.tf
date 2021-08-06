@@ -66,12 +66,12 @@ resource "azurerm_network_interface" "changeme_simple_windows_virtual_machine_ne
 # Windows Virtual Machine with the NIC attached
 # Documentation: https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/windows_virtual_machine
 resource "azurerm_windows_virtual_machine" "changeme_simple_windows_virtual_machine" {
-  name                  = "changeme-simple-windows-virtual-machine-name"
+  name                  = "changeme"
   resource_group_name   = azurerm_resource_group.changeme_simple_windows_virtual_machine_resource_group.name
   location              = azurerm_resource_group.changeme_simple_windows_virtual_machine_resource_group.location
-  size                  = "B1ls"
+  size                  = "Standard_B1ls"
   admin_username        = "changeme-adminuser"
-  admin_password        = "changeme-password"
+  admin_password        = "changeme-P@$$w0rd!"
   network_interface_ids = [azurerm_network_interface.changeme_simple_windows_virtual_machine_network_interface.id]
 
   os_disk {
@@ -80,9 +80,9 @@ resource "azurerm_windows_virtual_machine" "changeme_simple_windows_virtual_mach
   }
 
   source_image_reference {
-    publisher = "Canonical"
-    offer     = "UbuntuServer"
-    sku       = "16.04-LTS"
+    publisher = "MicrosoftWindowsServer"
+    offer     = "WindowsServer"
+    sku       = "2016-Datacenter"
     version   = "latest"
   }
 }

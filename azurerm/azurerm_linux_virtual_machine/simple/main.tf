@@ -16,11 +16,6 @@ variable "azure_subscription_id" {
   type = string
 }
 
-# Documentation: https://www.terraform.io/docs/language/values/variables.html
-variable "changeme_ssh_public_key" {
-  type = string
-}
-
 # Documentation: https://www.terraform.io/docs/language/providers/requirements.html
 # Documentation: https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs
 provider "azurerm" {
@@ -74,13 +69,14 @@ resource "azurerm_linux_virtual_machine" "changeme_simple_linux_virtual_machine"
   name                  = "changme-simple-linux-virtual-machine-name"
   resource_group_name   = azurerm_resource_group.changeme_simple_linux_virtual_machine_resource_group.name
   location              = azurerm_resource_group.changeme_simple_linux_virtual_machine_resource_group.location
-  size                  = "B1ls"
+  size                  = "Standard_B1ls"
   admin_username        = "changeme-adminuser"
   network_interface_ids = [azurerm_network_interface.changeme_simple_linux_virtual_machine_network_interface.id]
 
   admin_ssh_key {
     username   = "changeme-adminuser"
-    public_key = var.changeme_ssh_public_key
+    public_key = file("~/.ssh/id_rsa.pub")
+
   }
 
   os_disk {

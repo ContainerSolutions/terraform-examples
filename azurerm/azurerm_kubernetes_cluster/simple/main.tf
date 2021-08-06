@@ -48,6 +48,6 @@ resource "azurerm_kubernetes_cluster" "changeme_simple_kubernetes_cluster" {
   default_node_pool {
     name       = "changeme"
     node_count = 1
-    vm_size    = "B1ls"
+    vm_size    = "standard_b1ls"
   }
 }

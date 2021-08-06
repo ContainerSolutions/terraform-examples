@@ -178,6 +178,8 @@ jobs:
         uses: rlespinasse/github-slug-action@v3.x
       - name: Add the successfully tested SHA value to the log
         run: echo "${{ github.sha }}" >> "${{ github.workspace }}/.test_log.log"
+      - name: Remove .forcetest files
+        run: rm -f */.forcetest */*/.forcetest
       - name: Determine whether the commit is not a bot commit
         id: isrealcommit
         run: |
@@ -187,7 +189,7 @@ jobs:
         uses: stefanzweifel/git-auto-commit-action@v4
         if: steps.isrealcommit.outputs.OUTPUT == '0' && (github.ref == 'refs/heads/main' || env.GITHUB_REF_SLUG == 'integration') # Only run on main or integration, as only these branches run full tests is the reference branch, and don't run if the last commit was a test (isrealcommit).
         with:
-          commit_message: Successful test recorded in log
+          commit_message: "Successful test recorded in log for ${{ github.sha }} on ${{ github.ref }}"
           branch: ${{ github.head_ref }}
           commit_options: '--no-verify --signoff'
           repository: .

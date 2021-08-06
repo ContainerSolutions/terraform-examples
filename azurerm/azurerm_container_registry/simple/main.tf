@@ -27,7 +27,7 @@ provider "azurerm" {
 # Resource Group
 # Documentation: https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/resource_group
 resource "azurerm_resource_group" "changeme_simple_container_registry_resource_group" {
-  name     = "changeme-simple-kubernetes-cluster-resource-group"
+  name     = "changeme-simple-container-registry-resource-group"
   location = "West Europe"
 }
 
@@ -37,4 +37,5 @@ resource "azurerm_container_registry" "changeme_simple_container_registry" {
   name                = "changemesimplecontainerregistry"
   resource_group_name = azurerm_resource_group.changeme_simple_container_registry_resource_group.name
   location            = azurerm_resource_group.changeme_simple_container_registry_resource_group.location
+  sku                 = "Standard"
 }

@@ -19,6 +19,8 @@
 | `azuread_service_principal`           | [simple](azuread/azuread_service_principal/simple) |
 | `azuread_user`                        | [simple](azuread/azuread_user/simple) |
 | `azurerm_app_service_plan`            | [simple](azurerm/azurerm_app_service_plan/simple) |
+| `azurerm_container_group`             | [simple](azurerm/azurerm_container_group/simple) |
+| `azurerm_container_registry`          | [simple](azurerm/azurerm_container_registry/simple) |
 | `azurerm_cosmosdb_account`            | [simple](azurerm/azurerm_cosmosdb_account/simple) |
 | `azurerm_cosmosdb_cassandra_keyspace` | [simple](azurerm/azurerm_cosmosdb_cassandra_keyspace/simple) |
 | `azurerm_cosmosdb_gremlin_database`   | [simple](azurerm/azurerm_cosmosdb_gremlin_database/simple) |
@@ -26,6 +28,7 @@
 | `azurerm_cosmosdb_sql_database`       | [simple](azurerm/azurerm_cosmosdb_sql_database/simple) |
 | `azurerm_dns_zone`                    | [simple](azurerm/azurerm_dns_zone/simple) |
 | `azurerm_function_app`                | [simple](azurerm/azurerm_function_app/simple) |
+| `azurerm_kubernetes_cluster`          | [simple](azurerm/azurerm_kubernetes_cluster/simple) |
 | `azurerm_lb`                          | [simple](azurerm/azurerm_lb/simple) |
 | `azurerm_managed_disk`                | [empty](azurerm/azurerm_managed_disk/empty) <p/> [copy](azurerm/azurerm_managed_disk/copy) |
 | `azurerm_mariadb_server`              | [simple](azurerm/azurerm_mariadb_server/simple) |

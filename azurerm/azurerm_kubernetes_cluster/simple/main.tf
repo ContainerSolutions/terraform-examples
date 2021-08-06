@@ -27,19 +27,19 @@ provider "azurerm" {
 
 # Resource Group
 # Documentation: https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/resource_group
-resource "azurerm_resource_group" "changeme_simple_kubernetes_cluster_resource_group" {
-  name     = "changeme-simple-kubernetes-cluster-resource-group"
+resource "azurerm_resource_group" "changeme_simple_k8s_rg" {
+  name     = "changeme-simple-k8s-rg"
   location = "West Europe"
 }
 
 # Kubernetes Cluster within the Resource Group
 # Documentation: https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/kubernetes_cluster
-resource "azurerm_kubernetes_cluster" "changeme_simple_kubernetes_cluster" {
-  name                = "changeme-simple-kubernetes-cluster"
-  location            = azurerm_resource_group.changeme_simple_kubernetes_cluster_resource_group.location
-  resource_group_name = azurerm_resource_group.changeme_simple_kubernetes_cluster_resource_group.name
+resource "azurerm_kubernetes_cluster" "changeme_simple_k8s" {
+  name                = "changeme-simple-k8s"
+  location            = azurerm_resource_group.changeme_simple_k8s_rg.location
+  resource_group_name = azurerm_resource_group.changeme_simple_k8s_rg.name
 
-  dns_prefix = "changeme-simple-kubernetes-cluster-dns-prefix"
+  dns_prefix = "changeme-simple-k8s-dns-prefix"
 
   identity {
     type = "SystemAssigned"

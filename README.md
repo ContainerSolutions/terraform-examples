@@ -60,6 +60,11 @@ The examples seek to be:
 
 ## Conventions
 
+- Naming examples:
+  - 'simple' - for minimal functionality demonstration
+  - '<functionality>' - when demonstrating something more than minimal
+  - directory structure: `<provider>/<resource_type>/<example_name>`
+
 - Where it makes sense, items that can be changed are prefaced with `changeme_`
 
 - In general, underscores are used in Terraform names over dashes

@@ -30,10 +30,12 @@
 | `azurerm_function_app`                | [simple](azurerm/azurerm_function_app/simple) |
 | `azurerm_kubernetes_cluster`          | [simple](azurerm/azurerm_kubernetes_cluster/simple) |
 | `azurerm_lb`                          | [simple](azurerm/azurerm_lb/simple) |
+| `azurerm_linux_virtual_machine`       | [simple](azurerm/azurerm_linux_virtual_machine/simple) |
 | `azurerm_managed_disk`                | [empty](azurerm/azurerm_managed_disk/empty) <p/> [copy](azurerm/azurerm_managed_disk/copy) |
 | `azurerm_mariadb_server`              | [simple](azurerm/azurerm_mariadb_server/simple) |
 | `azurerm_mssql_server`                | [simple](azurerm/azurerm_mssql_server/simple) |
 | `azurerm_mysql_server`                | [simple](azurerm/azurerm_mysql_server/simple) |
+| `azurerm_network_interface`           | [simple](azurerm/azurerm_network_interface/simple) |
 | `azurerm_postgresql_server`           | [simple](azurerm/azurerm_postgresql_server/simple) |
 | `azurerm_private_dns_zone`            | [simple](azurerm/azurerm_private_dns_zone/simple) |
 | `azurerm_public_ip`                   | [simple](azurerm/azurerm_public_ip/simple) |
@@ -44,7 +46,11 @@
 | `azurerm_storage_queue`               | [simple](azurerm/azurerm_storage_queue/simple) |
 | `azurerm_storage_share`               | [simple](azurerm/azurerm_storage_share/simple) |
 | `azurerm_storage_table`               | [simple](azurerm/azurerm_storage_table/simple) |
+| `zurerm_subnet`                       | [simple](azurerm/azurerm_subnet/simple) |
+| `azurerm_virtual_machine`             | [linux](azurerm/azurerm_virtual_machine/linux) <p/> [windows](azurerm/azurerm_virtual_machine/windows)
+|
 | `azurerm_virtual_network`             | [azure](azurerm/azurerm_virtual_network/simple) |
+| `azurerm_windows_virtual_machine`     | [simple](azurerm/azurerm_windows_virtual_machine/simple) |
 | `backends`                            | [backends](backends) <p/> [aws, s3, aws_s3_bucket](backends/s3/aws_s3_bucket) <p/> [aws, remote](backends/remote) <p/> [google, gcs_bucket](backends/gcs/google_storage_bucket) |
 | `count`                               | [aws, aws_instance](aws/aws_instance/count) <p/> [aws, aws_vpc](aws/aws_vpc/count) <p/> [google, gcp_attached_disk](google/google_compute_attached_disk/count) |
 | `depends_on`                          | [aws](aws/aws_iam/groups) |

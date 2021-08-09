@@ -26,6 +26,11 @@ jobs:
         uses: terraform-linters/setup-tflint@v1
         with:
           tflint_version: v0.28.0 # Must be specified. See: https://github.com/terraform-linters/tflint/releases for latest versions
+      - name: Generate SSH key
+        run: |
+          mkdir -p ~/.ssh/
+          chmod 700 ~/.ssh/
+          ssh-keygen -q -N '' -f ~/.ssh/id_rsa
       - name: Run terraform validate
         env:
           CI_USE_TF_CLOUD: ${{ secrets.CI_USE_TF_CLOUD }}

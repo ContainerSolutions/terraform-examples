@@ -72,11 +72,25 @@ resource "azurerm_virtual_machine" "changeme_simple_virtual_machine_windows" {
   vm_size               = "Standard_B1ls"
   network_interface_ids = [azurerm_network_interface.changeme_simple_virtual_machine_windows_network_interface.id]
 
+  storage_image_reference {
+    publisher = "MicrosoftWindowsServer"
+    offer     = "WindowsServer"
+    sku       = "2019-Datacenter-Core-smalldisk"
+    version   = "latest"
+  }
+
   storage_os_disk {
     name              = "changeme-os-disk-name"
     caching           = "ReadWrite"
     create_option     = "FromImage"
     managed_disk_type = "Standard_LRS"
+    os_type           = "Windows"
+  }
+
+  os_profile {
+    computer_name  = "changeme-simple"
+    admin_username = "changeme"
+    admin_password = "Password1234!"
   }
 
   os_profile_windows_config {}

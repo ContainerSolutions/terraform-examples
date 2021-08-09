@@ -69,7 +69,7 @@ resource "azurerm_virtual_machine" "changeme_simple_virtual_machine_linux" {
   name                  = "changeme-simple-virtual-machine-linux-name"
   resource_group_name   = azurerm_resource_group.changeme_simple_virtual_machine_linux_resource_group.name
   location              = azurerm_resource_group.changeme_simple_virtual_machine_linux_resource_group.location
-  vm_size               = "B1ls"
+  vm_size               = "Standard_B1ls"
   network_interface_ids = [azurerm_network_interface.changeme_simple_virtual_machine_linux_network_interface.id]
 
   storage_os_disk {

@@ -138,6 +138,11 @@ jobs:
         uses: terraform-linters/setup-tflint@v1
       - name: Inject slug/short variables
         uses: rlespinasse/github-slug-action@v3.x
+      - name: Generate SSH key
+        run: |
+          mkdir -p ~/.ssh/
+          chmod 700 ~/.ssh/
+          ssh-keygen -q -N '' -f ~/.ssh/id_rsa
       - name: Run Azure examples
         env:
           CI_USE_TF_CLOUD: ${{ secrets.CI_USE_TF_CLOUD }}

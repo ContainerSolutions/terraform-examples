@@ -72,11 +72,27 @@ resource "azurerm_virtual_machine" "changeme_simple_virtual_machine_linux" {
   vm_size               = "Standard_B1ls"
   network_interface_ids = [azurerm_network_interface.changeme_simple_virtual_machine_linux_network_interface.id]
 
+  delete_os_disk_on_termination    = true
+  delete_data_disks_on_termination = true
+
+  storage_image_reference {
+    publisher = "Canonical"
+    offer     = "UbuntuServer"
+    sku       = "16.04-LTS"
+    version   = "latest"
+  }
+
   storage_os_disk {
     name              = "changeme-os-disk-name"
     caching           = "ReadWrite"
     create_option     = "FromImage"
     managed_disk_type = "Standard_LRS"
+  }
+
+  os_profile {
+    computer_name  = "changeme-simple"
+    admin_username = "changeme"
+    admin_password = "Password1234!"
   }
 
   os_profile_linux_config {

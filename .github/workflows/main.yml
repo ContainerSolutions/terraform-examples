@@ -31,6 +31,11 @@ jobs:
           terraform_version: ${{ env.terraform_version }}
           terraform_wrapper: false
           cli_config_credentials_token: ${{ secrets.TERRAFORM_CLOUD_LOGIN_TOKEN }}
+      - name: Generate SSH key
+        run: |
+          mkdir -p ~/.ssh/
+          chmod 700 ~/.ssh/
+          ssh-keygen -q -N '' -f ~/.ssh/id_rsa
       - name: Run terraform validate
         env:
           CI_USE_TF_CLOUD: ${{ secrets.CI_USE_TF_CLOUD }}
@@ -166,6 +171,11 @@ jobs:
           cli_config_credentials_token: ${{ secrets.TERRAFORM_CLOUD_LOGIN_TOKEN }}
       - name: Inject slug/short variables
         uses: rlespinasse/github-slug-action@v3.x
+      - name: Generate SSH key
+        run: |
+          mkdir -p ~/.ssh/
+          chmod 700 ~/.ssh/
+          ssh-keygen -q -N '' -f ~/.ssh/id_rsa
       - name: Run Azure examples
         env:
           CI_USE_TF_CLOUD: ${{ secrets.CI_USE_TF_CLOUD }}
@@ -210,7 +220,7 @@ jobs:
       - name: Add the successfully tested SHA value to the log
         run: echo "${{ github.sha }}" >> "${{ github.workspace }}/.test_log.log"
       - name: Remove .forcetest files
-        run: rm -f */.forcetest
+        run: rm -f */.forcetest */*/.forcetest
       - name: Determine whether the commit is not a bot commit
         id: isrealcommit
         run: |

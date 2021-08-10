@@ -11,7 +11,7 @@
 | `aws_lambda_function`                 | [aws](aws/aws_lambda_function) <p/> [simple](aws/aws_lambda_function/simple) |
 | `aws_s3_bucket`                       | [aws, backends, s3](backends/s3/aws_s3_bucket) |
 | `aws_security_group`                  | [aws, ssh](aws/aws_security_group/ssh) <p/> [aws, open](aws/aws_security_group/open) |
-| `aws_db_instance`                     | [aws](aws/aws_db_instance/simple) |
+| `aws_db_instance`                     | [aws](aws/aws_db_instance) <p/> [simple](aws/aws_db_instance/simple) <p/> [postgres](aws/aws_db_instance/postgres) |
 | `aws_vpc`                             | [aws](aws/aws_vpc/simple) |
 | `azuread_application`                 | [simple](azuread/azuread_application/simple) |
 | `azuread_group_member`                | [simple](azuread/azuread_group_member/simple) |

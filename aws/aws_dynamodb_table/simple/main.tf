@@ -17,7 +17,7 @@ provider "aws" {
   profile = "terraform-examples"
   default_tags {
     tags = {
-      cs_terraform_examples = "aws_dynamodb/table"
+      cs_terraform_examples = "aws_dynamodb_table/simple"
     }
   }
 }

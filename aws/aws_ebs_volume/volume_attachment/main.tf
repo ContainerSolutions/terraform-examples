@@ -50,7 +50,7 @@ resource "aws_ebs_volume" "changeme_aws_ebs_volume" {
 }
 
 # Documentation: https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/instance
-# Explanation: The AWS 'aws_instance' resource is responsible for allocating an EC2 instance. It's need as we want to deliver the 
+# Explanation: The AWS 'aws_instance' resource is responsible for allocating an EC2 instance. It's needed as we want to deliver the 
 # the EBS volume to it. 
 resource "aws_instance" "changeme_aws_instance" {
   instance_type     = "t2.micro"

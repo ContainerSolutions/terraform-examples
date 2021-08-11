@@ -23,5 +23,5 @@ provider "aws" {
 
 # Documentation: https://registry.terraform.io/providers/hashicorp/aws/latest/docs/data-sources/vpc
 resource "aws_vpc" "changeme_aws_vpc_simple" {
-  cidr_block = "10.0.0.0/16"
+  cidr_block = "10.1.0.0/16"
 }

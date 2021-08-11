@@ -61,7 +61,7 @@ resource "aws_instance" "changeme_aws_instance" {
   }
   user_data = <<-EOF
             #!/bin/bash
-            echo "Hello Example!
+            echo "Hello Example"
             EOF
 }
 

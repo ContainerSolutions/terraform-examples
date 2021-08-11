@@ -22,7 +22,7 @@ provider "aws" {
 }
 
 # Documentation: https://registry.terraform.io/providers/hashicorp/aws/latest/docs/data-sources/availability_zones
-data "aws_availability_zones" "changeme_available_az_list" {
+data "aws_availability_zones" "changeme_az_list" {
   state = "available"
 }
 
@@ -40,7 +40,7 @@ resource "aws_volume_attachment" "changeme_aws_volume_attachment" {
 # Explanation: The AWS 'aws_ebs_volume' resource is responsible for creating the EBS volume. The only required field is Availability Zone
 # where the EBS vol is going to be created. Some optional arguments are Size in GBi, encryption(TRUE/FALSE) and he type of EBS volume. Can be "standard", "gp2", "io1", "sc1" or "st1" (Default: "standard").
 resource "aws_ebs_volume" "changeme_aws_ebs_volume" {
-  availability_zone = data.aws_availability_zones.changeme_available_az_list.names[0]
+  availability_zone = data.aws_availability_zones.changeme_az_list.names[0]
   size              = 5
   type              = "standard"
   encrypted         = false
@@ -55,7 +55,7 @@ resource "aws_ebs_volume" "changeme_aws_ebs_volume" {
 resource "aws_instance" "changeme_aws_instance" {
   instance_type     = "t2.micro"
   ami               = "ami-0c2b8ca1dad447f8a"
-  availability_zone = data.aws_availability_zones.changeme_available_az_list.names[0]
+  availability_zone = data.aws_availability_zones.changeme_az_list.names[0]
   tags = {
     Name = "changeme_aws_instance_tag"
   }

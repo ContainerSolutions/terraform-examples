@@ -33,7 +33,7 @@ resource "aws_db_instance" "changeme_simple_postgresql_instance" {
   username            = "changeme_username"
   password            = "changeme_password"
   skip_final_snapshot = true
-  storage_encrypted = false
+  storage_encrypted   = false
 }
 
 ##Explanation:

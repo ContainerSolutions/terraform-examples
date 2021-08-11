@@ -108,7 +108,8 @@ resource "aws_iam_user_group_membership" "changeme_iam_user_group_membership_use
   groups   = each.value["groups"]
   # This manual dependency is required, else Terraform complains the users do not exist yet.
   depends_on = [
-    aws_iam_user.changeme_iam_user_users
+    aws_iam_user.changeme_iam_user_users,
+    aws_iam_group.changeme_iam_groups_groups
   ]
 }
 

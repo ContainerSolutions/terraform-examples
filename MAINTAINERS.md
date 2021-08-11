@@ -8,7 +8,7 @@ Owner: Ian Miell
 
 Secrets: `AWS_ACCESS_KEY_ID`, `AWS_SECRET_ACCESS_KEY`
 
-Console Access: Tomasz Tarcynski
+Console Access: Tomasz Tarczynski
 
 ### azurerm
 
@@ -32,7 +32,7 @@ Owner: Ian Miell
 
 Project: ianmiell-project-1
 
-Editor Access: Tomasz Tarcynski
+Editor Access: Tomasz Tarczynski
 
 ### linode
 

@@ -3,6 +3,7 @@
 | Feature                               | Links/Related Features  |
 | -------------                         |:-------------:|
 | `aws_rds_cluster`                     | [aws](aws/aws_rds_cluster) <p/> [simple](aws/aws_rds_cluster/simple) |
+| `aws_db_cluster_snapshot`             | [aws](aws/aws_db_cluster_snapshot) <p/> [simple](aws/aws_db_cluster_snapshot/simple) |
 | `aws_dynamodb_table`                  | [aws](aws/aws_dynamodb_table) <p/> [simple](aws/aws_dynamodb_table/simple) |
 | `aws_ebs_volume`                      | [aws](aws/aws_ebs_volume) <p/>[simple](aws/aws_ebs_volume/simple) |
 | `aws_eks`                             | [aws, spot_and_fargate](aws/aws_eks/fargate/spot_and_fargate) |

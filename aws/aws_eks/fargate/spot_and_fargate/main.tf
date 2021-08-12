@@ -2,7 +2,7 @@
 
 # Documentation: https://www.terraform.io/docs/language/settings/index.html
 terraform {
-  required_version = ">= 0.14.0"
+  required_version = ">= 1.0.0"
   required_providers {
     local = {
       version = "~> 1.4"
@@ -156,6 +156,9 @@ resource "aws_route" "changeme_spot_and_fargate_aws_route_public" {
   route_table_id         = aws_route_table.changeme_spot_and_fargate_route_table_public.id
   destination_cidr_block = "0.0.0.0/0"
   gateway_id             = aws_internet_gateway.changeme_spot_and_fargate_internet_gateway.id
+  timeouts {
+    create = "5m"
+  }
 }
 
 # Documentation: https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/route_table
@@ -170,6 +173,9 @@ resource "aws_route" "changeme_spot_and_fargate_route_private" {
   route_table_id         = element(aws_route_table.changeme_spot_and_fargate_route_table_private.*.id, count.index)
   destination_cidr_block = "0.0.0.0/0"
   nat_gateway_id         = element(aws_nat_gateway.changeme_spot_and_fargate_nat_gateway.*.id, count.index)
+  timeouts {
+    create = "5m"
+  }
 }
 
 # Documentation: https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/route_table_association

@@ -1,4 +1,4 @@
-# Summary: Create an S3 bucket
+# Summary: Create a simple AWS RDS DB Instance with MySQL 
 
 # Documentation: https://www.terraform.io/docs/language/settings/index.html
 terraform {

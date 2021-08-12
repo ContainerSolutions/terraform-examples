@@ -2,8 +2,8 @@
 
 | Feature                               | Links/Related Features  |
 | -------------                         |:-------------:|
-| `aws aurora`                          | [aws](aws/aws_aurora) <p/> [cluster](aws/aws_aurora/cluster) |
-| `aws_dynamodb`                        | [aws](aws/aws_dynamodb) <p/> [table](aws/aws_dynamodb/table) |
+| `aws_rds_cluster`                     | [aws](aws/aws_rds_cluster) <p/> [simple](aws/aws_rds_cluster/simple) |
+| `aws_dynamodb_table`                  | [aws](aws/aws_dynamodb_table) <p/> [simple](aws/aws_dynamodb_table/simple) |
 | `aws_ebs_volume`                      | [aws](aws/aws_ebs_volume) <p/>[simple](aws/aws_ebs_volume/simple)  <p/> [volume_attachment](aws/aws_ebs_volume/volume_attachment) |
 | `aws_eks`                             | [aws, spot_and_fargate](aws/aws_eks/fargate/spot_and_fargate) |
 | `aws_iam`                             | [aws](aws/aws_iam/groups) |
@@ -30,10 +30,12 @@
 | `azurerm_function_app`                | [simple](azurerm/azurerm_function_app/simple) |
 | `azurerm_kubernetes_cluster`          | [simple](azurerm/azurerm_kubernetes_cluster/simple) |
 | `azurerm_lb`                          | [simple](azurerm/azurerm_lb/simple) |
+| `azurerm_linux_virtual_machine`       | [simple](azurerm/azurerm_linux_virtual_machine/simple) |
 | `azurerm_managed_disk`                | [empty](azurerm/azurerm_managed_disk/empty) <p/> [copy](azurerm/azurerm_managed_disk/copy) |
 | `azurerm_mariadb_server`              | [simple](azurerm/azurerm_mariadb_server/simple) |
 | `azurerm_mssql_server`                | [simple](azurerm/azurerm_mssql_server/simple) |
 | `azurerm_mysql_server`                | [simple](azurerm/azurerm_mysql_server/simple) |
+| `azurerm_network_interface`           | [simple](azurerm/azurerm_network_interface/simple) |
 | `azurerm_postgresql_server`           | [simple](azurerm/azurerm_postgresql_server/simple) |
 | `azurerm_private_dns_zone`            | [simple](azurerm/azurerm_private_dns_zone/simple) |
 | `azurerm_public_ip`                   | [simple](azurerm/azurerm_public_ip/simple) |
@@ -44,7 +46,11 @@
 | `azurerm_storage_queue`               | [simple](azurerm/azurerm_storage_queue/simple) |
 | `azurerm_storage_share`               | [simple](azurerm/azurerm_storage_share/simple) |
 | `azurerm_storage_table`               | [simple](azurerm/azurerm_storage_table/simple) |
+| `zurerm_subnet`                       | [simple](azurerm/azurerm_subnet/simple) |
+| `azurerm_virtual_machine`             | [linux](azurerm/azurerm_virtual_machine/linux) <p/> [windows](azurerm/azurerm_virtual_machine/windows)
+|
 | `azurerm_virtual_network`             | [azure](azurerm/azurerm_virtual_network/simple) |
+| `azurerm_windows_virtual_machine`     | [simple](azurerm/azurerm_windows_virtual_machine/simple) |
 | `backends`                            | [backends](backends) <p/> [aws, s3, aws_s3_bucket](backends/s3/aws_s3_bucket) <p/> [aws, remote](backends/remote) <p/> [google, gcs_bucket](backends/gcs/google_storage_bucket) |
 | `count`                               | [aws, aws_instance](aws/aws_instance/count) <p/> [aws, aws_vpc](aws/aws_vpc/count) <p/> [google, gcp_attached_disk](google/google_compute_attached_disk/count) |
 | `depends_on`                          | [aws](aws/aws_iam/groups) |

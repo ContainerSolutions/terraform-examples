@@ -8,6 +8,8 @@ Owner: Ian Miell
 
 Secrets: `AWS_ACCESS_KEY_ID`, `AWS_SECRET_ACCESS_KEY`
 
+Console Access: Tomasz Tarczynski
+
 ### azurerm
 
 Subscription name: "[INT] Terraform Examples"
@@ -25,6 +27,12 @@ Secrets: `DIGITALOCEAN_TOKEN`
 ### gcp
 
 Secrets: `GCP_CREDENTIALS_FILE`, `GCP_CREDENTIALS_FILENAME`, `GCP_PROJECT`
+
+Owner: Ian Miell
+
+Project: ianmiell-project-1
+
+Editor Access: Tomasz Tarczynski
 
 ### linode
 

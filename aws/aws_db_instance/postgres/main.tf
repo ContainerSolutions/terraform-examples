@@ -46,4 +46,4 @@ resource "aws_db_instance" "changeme_simple_postgresql_instance" {
 # Required Argument -            passord: The master DB-User password
 # Optional Argument -               name: The Name of the Instance
 # Optional Argument -  skip_final_snapshot: It's needed for destroying the instance with Terraform Destroy
-# Optional Argument -  storage_encrypted: it data is going to be encrypted at rest or not
+# Optional Argument -  storage_encrypted: If data is going to be encrypted at rest or not

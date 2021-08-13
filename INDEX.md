@@ -2,18 +2,18 @@
 
 | Feature                               | Links/Related Features  |
 | -------------                         |:-------------:|
-| `aws_rds_cluster`                     | [aws](aws/aws_rds_cluster) <p/> [simple](aws/aws_rds_cluster/simple) |
 | `aws_db_cluster_snapshot`             | [aws](aws/aws_db_cluster_snapshot) <p/> [simple](aws/aws_db_cluster_snapshot/simple) |
-| `aws_dynamodb_table`                  | [aws](aws/aws_dynamodb_table) <p/> [simple](aws/aws_dynamodb_table/simple) |
+| `aws_db_instance`                     | [aws](aws/aws_db_instance) <p/> [simple](aws/aws_db_instance/simple) <p/> [postgres](aws/aws_db_instance/postgres) |
 | `aws_dynamodb_table_item`             | [aws](aws/aws_dynamodb_table_item) <p/> [simple](aws/aws_dynamodb_table_item/simple) |
+| `aws_dynamodb_table`                  | [aws](aws/aws_dynamodb_table) <p/> [simple](aws/aws_dynamodb_table/simple) |
 | `aws_ebs_volume`                      | [aws](aws/aws_ebs_volume) <p/>[simple](aws/aws_ebs_volume/simple) |
 | `aws_eks`                             | [aws, spot_and_fargate](aws/aws_eks/fargate/spot_and_fargate) |
 | `aws_iam`                             | [aws](aws/aws_iam/groups) |
 | `aws_instance`                        | [aws](aws/aws_instance) <p/> [simple](aws/aws_instance/simple) <p/> [simple_ssh_access](aws/aws_instance/simple_ssh_access) |
 | `aws_lambda_function`                 | [aws](aws/aws_lambda_function) <p/> [simple](aws/aws_lambda_function/simple) |
+| `aws_rds_cluster`                     | [aws](aws/aws_rds_cluster) <p/> [simple](aws/aws_rds_cluster/simple) |
 | `aws_s3_bucket`                       | [aws, backends, s3](backends/s3/aws_s3_bucket) |
 | `aws_security_group`                  | [aws, ssh](aws/aws_security_group/ssh) <p/> [aws, open](aws/aws_security_group/open) |
-| `aws_db_instance`                     | [aws](aws/aws_db_instance) <p/> [simple](aws/aws_db_instance/simple) <p/> [postgres](aws/aws_db_instance/postgres) |
 | `aws_vpc`                             | [aws](aws/aws_vpc/simple) |
 | `azuread_application`                 | [simple](azuread/azuread_application/simple) |
 | `azuread_group_member`                | [simple](azuread/azuread_group_member/simple) |
@@ -48,9 +48,8 @@
 | `azurerm_storage_queue`               | [simple](azurerm/azurerm_storage_queue/simple) |
 | `azurerm_storage_share`               | [simple](azurerm/azurerm_storage_share/simple) |
 | `azurerm_storage_table`               | [simple](azurerm/azurerm_storage_table/simple) |
-| `zurerm_subnet`                       | [simple](azurerm/azurerm_subnet/simple) |
-| `azurerm_virtual_machine`             | [linux](azurerm/azurerm_virtual_machine/linux) <p/> [windows](azurerm/azurerm_virtual_machine/windows)
-|
+| `azurerm_subnet`                      | [simple](azurerm/azurerm_subnet/simple) |
+| `azurerm_virtual_machine`             | [linux](azurerm/azurerm_virtual_machine/linux) <p/> [windows](azurerm/azurerm_virtual_machine/windows) |
 | `azurerm_virtual_network`             | [azure](azurerm/azurerm_virtual_network/simple) |
 | `azurerm_windows_virtual_machine`     | [simple](azurerm/azurerm_windows_virtual_machine/simple) |
 | `backends`                            | [backends](backends) <p/> [aws, s3, aws_s3_bucket](backends/s3/aws_s3_bucket) <p/> [aws, remote](backends/remote) <p/> [google, gcs_bucket](backends/gcs/google_storage_bucket) |
@@ -82,10 +81,9 @@
 | `module`                              | [modules](modules) <p/> [local, module usage](variables/local_file/module) <p/> [local, module example](modules/local_file/hello_module) <p/> [local, module example consumer](modules/local_file/hello_consumer) |
 | `null_resource`                       | [simple, local](local/null_resource/simple) |
 | `outputs`                             | [outputs](outputs) <p/> [local](outputs/local_file/local_file) <p/> [local, module](outputs/local_file/module) |
-| `outputs`                             | [local](outputs/local_file/local_file) <p/> [local, module](outputs/local_file/module) |
 | `random_id`                           | [simple](aws/aws_s3_bucket/simple) |
 | `remote-exec`                         | [aws, inline](aws/aws_instance/remote-exec/inline) |
-| `splat`                               | [aws, aws_vpc](aws/aws_vpc/splat) |
 | `s3`                                  | [aws, backends, aws_s3_bucket](backends/s3/aws_s3_bucket) |
+| `splat`                               | [aws, aws_vpc](aws/aws_vpc/splat) |
 | `variable`                            | [variables](variables) <p/> [aws, local_file](variables/local_file/local_file) |
 | `windows`                             | [aws_instance, remote-exec, inline](aws/aws_instance/remote-exec/inline/windows) |

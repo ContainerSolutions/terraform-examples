@@ -53,9 +53,9 @@ resource "aws_ebs_volume" "changeme_aws_ebs_volume" {
 # Explanation: The AWS 'aws_instance' resource is responsible for allocating an EC2 instance. It's needed as we want to deliver the 
 # the EBS volume to it. 
 resource "aws_instance" "changeme_aws_instance" {
-  instance_type     = "t2.micro"
+  instance_type = "t2.micro"
   # Explanation: AMI IDs are region-specific. This AMI ID is specific to the `us-east-1` region. If you use a different region, you will need to change this ID.
-  ami = "ami-0c2b8ca1dad447f8a" # us-east-1 / Amazon Linux
+  ami               = "ami-0c2b8ca1dad447f8a" # us-east-1 / Amazon Linux
   availability_zone = data.aws_availability_zones.changeme_az_list.names[0]
   tags = {
     Name = "changeme_aws_instance_tag"

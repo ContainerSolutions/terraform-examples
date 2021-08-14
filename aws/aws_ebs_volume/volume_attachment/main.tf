@@ -54,14 +54,15 @@ resource "aws_ebs_volume" "changeme_aws_ebs_volume" {
 # the EBS volume to it. 
 resource "aws_instance" "changeme_aws_instance" {
   instance_type     = "t2.micro"
-  ami               = "ami-0c2b8ca1dad447f8a"
+  # Explanation: AMI IDs are region-specific. This AMI ID is specific to the `us-east-1` region. If you use a different region, you will need to change this ID.
+  ami = "ami-0c2b8ca1dad447f8a" # us-east-1 / Amazon Linux
   availability_zone = data.aws_availability_zones.changeme_az_list.names[0]
   tags = {
     Name = "changeme_aws_instance_tag"
   }
   user_data = <<-EOF
             #!/bin/bash
-            echo "Hello Example"
+            echo "Hello_Example!"
             EOF
 }
 

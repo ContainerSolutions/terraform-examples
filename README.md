@@ -60,6 +60,11 @@ The examples seek to be:
 
 ## Conventions
 
+- Naming examples:
+  - `simple` - for minimal functionality demonstration
+  - `<functionality>` - when demonstrating something more than minimal
+  - directory structure: `<provider>/<resource_type>/<example_name>`
+
 - Where it makes sense, items that can be changed are prefaced with `changeme_`
 
 - In general, underscores are used in Terraform names over dashes
@@ -75,6 +80,11 @@ The examples seek to be:
 
 - For help with automated testing
   - where possible, add some way to enable 'left-over' resources to be cleaned up, eg provider `default_tags` of `cs_terraform_examples` in AWS provider blocks
+
+- Add inline documentation for each Terraform code block
+  - `# Summary:` – 1-line summary of what this example does
+  - `# Documentation:` – add link to documentation before each block (terraform, provider, variable, resource, etc.)
+  - `# Explanation:` – add only where some extra explanation is needed
 
 ## GitHub Actions Workflow
 
@@ -104,6 +114,16 @@ The auth information for the provider accounts are stored in secrets in the repo
 
 Integration rebasing and any necessary re-work is done on the `integration` branch before rebasing to `main`. This is to help ensure that `main` is in as pristine a state as possible.
 
+### Forcing tests
+
+You can force a test for a given provider (on the `integration` or `main` branches only) by adding a `.forcetest` file to the relevant folder.
+
+For example, if you want to ensure that the aws tests run, then add an empty file in `aws/.forcetest`. On a successfully completed test run, these files are removed as part of the 'success commit' in the github action workflow.
+
+## Maintainer Information
+
+For information for maintainers of this repository at ContainerSolutions, see [maintainers](MAINTAINERS.md)
+
 ## Sources / Thanks To
 
 [Learn Terraform The Hard Way](https://leanpub.com/learnterraformthehardway)
@@ -111,3 +131,6 @@ Integration rebasing and any necessary re-work is done on the `integration` bran
 ## Other Examples
 
 [Immutable Cluster Using Packer and Ansible on AWS](https://github.com/bluebrown/immutable-cluster)
+
+
+

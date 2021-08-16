@@ -1,8 +1,12 @@
 # Summary: Simplest example of an aws_instance resource
+#
+# Note: This example simply creates the VM, but does not set up a keypair,
+#       or networking such that you can ssh into it from the internet.
+#       For a more complete example, see `aws/aws_instance/remote_exec/inline`.
 
 # Documentation: https://www.terraform.io/docs/language/settings/index.html
 terraform {
-  required_version = ">= 0.14.0"
+  required_version = ">= 1.0.0"
   required_providers {
     aws = {
       source  = "hashicorp/aws"

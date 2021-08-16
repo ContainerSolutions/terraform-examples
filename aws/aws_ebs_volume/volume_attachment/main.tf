@@ -2,7 +2,7 @@
 
 # Documentation: https://www.terraform.io/docs/language/settings/index.html
 terraform {
-  required_version = ">= 0.14.0"
+  required_version = ">= 1.0.0"
   required_providers {
     aws = {
       source  = "hashicorp/aws"
@@ -54,6 +54,7 @@ resource "aws_ebs_volume" "changeme_aws_ebs_volume" {
 # the EBS volume to it. 
 resource "aws_instance" "changeme_aws_instance" {
   instance_type = "t2.micro"
+
   # Explanation: AMI IDs are region-specific. This AMI ID is specific to the `us-east-1` region. If you use a different region, you will need to change this ID.
   ami               = "ami-0c2b8ca1dad447f8a" # us-east-1 / Amazon Linux
   availability_zone = data.aws_availability_zones.changeme_az_list.names[0]

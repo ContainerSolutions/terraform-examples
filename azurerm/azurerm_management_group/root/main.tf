@@ -27,5 +27,5 @@ provider "azurerm" {
 # Management Group created without a parent, so it attaches to the tenant root
 # Documentation: https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/management_group
 resource "azurerm_management_group" "changeme_root_management_group" {
-  display_name = "changeme-child-management-group-display-name"
+  display_name = "changeme-root-management-group-display-name"
 }

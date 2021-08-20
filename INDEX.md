@@ -9,7 +9,7 @@
 | `aws_ebs_volume`                      | [aws](aws/aws_ebs_volume) <p/>[simple](aws/aws_ebs_volume/simple)  <p/> [volume_attachment](aws/aws_ebs_volume/volume_attachment) |
 | `aws_eks`                             | [aws, spot_and_fargate](aws/aws_eks/fargate/spot_and_fargate) |
 | `aws_iam`                             | [aws](aws/aws_iam/groups) |
-| `aws_instance`                        | [aws](aws/aws_instance) <p/> [simple](aws/aws_instance/simple) <p/> [simple_ssh_access](aws/aws_instance/simple_ssh_access) |
+| `aws_instance`                        | [aws](aws/aws_instance) <p/> [simple](aws/aws_instance/simple) <p/> [simple_ssh_access](aws/aws_instance/simple_ssh_access) <p/> [ami_lookup](aws/aws_instance/ami_lookup) | 
 | `aws_lambda_function`                 | [aws](aws/aws_lambda_function) <p/> [simple](aws/aws_lambda_function/simple) |
 | `aws_rds_cluster`                     | [aws](aws/aws_rds_cluster) <p/> [simple](aws/aws_rds_cluster/simple) |
 | `aws_s3_bucket`                       | [aws, backends, s3](backends/s3/aws_s3_bucket) |

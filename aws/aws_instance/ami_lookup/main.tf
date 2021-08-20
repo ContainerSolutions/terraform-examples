@@ -43,7 +43,7 @@ data "aws_ami" "changeme_aws_ami" {
 }
 
 # Documentation: https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/instance
-resource "aws_instance" "change_aws_instance" {
+resource "aws_instance" "changeme_aws_instance" {
   ami           = data.aws_ami.changeme_aws_ami.id
   instance_type = "t3.micro"
 

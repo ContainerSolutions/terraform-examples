@@ -27,7 +27,8 @@ data "aws_ami" "changeme_aws_ami" {
   most_recent = true
 
   # Explanation: Canonical now publishes  official Ubuntu images on the Amazon cloud. Is it possible to get parameters with AWS SSM (System Manager)
-  filter {
+  # Check supported versions here : https://uec-images.ubuntu.com/locator/
+  ilter {
     name   = "name"
     values = ["ubuntu/images/hvm-ssd/ubuntu-hirsute-21.04-amd64-server-*"]
   }

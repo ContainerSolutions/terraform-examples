@@ -28,7 +28,7 @@ data "aws_ami" "changeme_aws_ami" {
 
   # Explanation: Canonical now publishes  official Ubuntu images on the Amazon cloud. Is it possible to get parameters with AWS SSM (System Manager)
   # Check supported versions here : https://uec-images.ubuntu.com/locator/
-  ilter {
+  filter {
     name   = "name"
     values = ["ubuntu/images/hvm-ssd/ubuntu-hirsute-21.04-amd64-server-*"]
   }
@@ -44,7 +44,7 @@ data "aws_ami" "changeme_aws_ami" {
 }
 
 # Documentation: https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/instance
-resource "aws_instance" "changeme_aws_instance" {
+resource "aws_instance" "changeme_aws_iinstance_ami_lookup" {
   ami           = data.aws_ami.changeme_aws_ami.id
   instance_type = "t3.micro"
 

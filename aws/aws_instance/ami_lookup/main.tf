@@ -44,11 +44,11 @@ data "aws_ami" "changeme_aws_ami" {
 }
 
 # Documentation: https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/instance
-resource "aws_instance" "changeme_aws_iinstance_ami_lookup" {
+resource "aws_instance" "changeme_ami_lookup_aws_instance" {
   ami           = data.aws_ami.changeme_aws_ami.id
   instance_type = "t3.micro"
 
   tags = {
-    Name = "changeme_ami_instance_tag"
+    Name = "changeme_ami_lookup_aws_instance"
   }
 }

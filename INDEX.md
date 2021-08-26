@@ -12,7 +12,7 @@
 | `aws_instance`                        | [aws](aws/aws_instance) <p/> [simple](aws/aws_instance/simple) <p/> [simple_ssh_access](aws/aws_instance/simple_ssh_access) |
 | `aws_lambda_function`                 | [aws](aws/aws_lambda_function) <p/> [simple](aws/aws_lambda_function/simple) |
 | `aws_rds_cluster`                     | [aws](aws/aws_rds_cluster) <p/> [simple](aws/aws_rds_cluster/simple) |
-| `aws_s3_bucket`                       | [aws, backends, s3](backends/s3/aws_s3_bucket) |
+| `aws_s3_bucket`                       | [aws, backends, s3](backends/s3/aws_s3_bucket) <p/> [s3_static_website](aws/aws_s3_bucket/s3_static_website) |
 | `aws_security_group`                  | [aws, ssh](aws/aws_security_group/ssh) <p/> [aws, open](aws/aws_security_group/open) |
 | `aws_vpc`                             | [aws](aws/aws_vpc/simple) |
 | `azuread_application`                 | [simple](azuread/azuread_application/simple) |

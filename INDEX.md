@@ -6,7 +6,7 @@
 | `aws_db_instance`                     | [aws](aws/aws_db_instance) <p/> [simple](aws/aws_db_instance/simple) <p/> [postgres](aws/aws_db_instance/postgres) |
 | `aws_dynamodb_table_item`             | [aws](aws/aws_dynamodb_table_item) <p/> [simple](aws/aws_dynamodb_table_item/simple) |
 | `aws_dynamodb_table`                  | [aws](aws/aws_dynamodb_table) <p/> [simple](aws/aws_dynamodb_table/simple) |
-| `aws_ebs_volume`                      | [aws](aws/aws_ebs_volume) <p/>[simple](aws/aws_ebs_volume/simple)  <p/> [volume_attachment](aws/aws_ebs_volume/volume_attachment) |
+| `aws_ebs_volume`                      | [aws](aws/aws_ebs_volume) <p/>[simple](aws/aws_ebs_volume/simple)  <p/> [volume_attachment](aws/aws_ebs_volume/volume_attachment) <p/> [ebs_snapshot](aws/aws_ebs_volume/ebs_snapshot) |
 | `aws_eks`                             | [aws, spot_and_fargate](aws/aws_eks/fargate/spot_and_fargate) |
 | `aws_iam`                             | [aws](aws/aws_iam/groups) |
 | `aws_instance`                        | [aws](aws/aws_instance) <p/> [simple](aws/aws_instance/simple) <p/> [simple_ssh_access](aws/aws_instance/simple_ssh_access) |

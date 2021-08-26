@@ -34,6 +34,7 @@
 | `azurerm_lb`                          | [simple](azurerm/azurerm_lb/simple) |
 | `azurerm_linux_virtual_machine`       | [simple](azurerm/azurerm_linux_virtual_machine/simple) |
 | `azurerm_managed_disk`                | [empty](azurerm/azurerm_managed_disk/empty) <p/> [copy](azurerm/azurerm_managed_disk/copy) |
+| `azurerm_management_group`            | [child](azurerm/azurerm_management_group/child) <p/> [root](azurerm/azurerm_management_group/root) |
 | `azurerm_mariadb_server`              | [simple](azurerm/azurerm_mariadb_server/simple) |
 | `azurerm_mssql_server`                | [simple](azurerm/azurerm_mssql_server/simple) |
 | `azurerm_mysql_server`                | [simple](azurerm/azurerm_mysql_server/simple) |
@@ -49,6 +50,7 @@
 | `azurerm_storage_share`               | [simple](azurerm/azurerm_storage_share/simple) |
 | `azurerm_storage_table`               | [simple](azurerm/azurerm_storage_table/simple) |
 | `azurerm_subnet`                      | [simple](azurerm/azurerm_subnet/simple) |
+| `azurerm_subscription`                | [customer_account](azurerm/azurerm_subscription/customer_account) <p/> [enterprise_enrollment](azurerm/azurerm_subscription/enterprise_enrollment) |
 | `azurerm_virtual_machine`             | [linux](azurerm/azurerm_virtual_machine/linux) <p/> [windows](azurerm/azurerm_virtual_machine/windows) |
 | `azurerm_virtual_network`             | [azure](azurerm/azurerm_virtual_network/simple) |
 | `azurerm_windows_virtual_machine`     | [simple](azurerm/azurerm_windows_virtual_machine/simple) |

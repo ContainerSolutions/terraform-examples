@@ -24,8 +24,12 @@ provider "aws" {
 
 
 # Documentation: https://www.terraform.io/docs/language/providers/requirements.html
-# Explanation: Sets a Bucket for Static Website Hosting
 # See also: [aws/aws_s3_bucket/simple] (https://github.com/ContainerSolutions/terraform-examples/tree/main/aws/aws_s3_bucket/simple)
+# Explanation: Sets a Bucket for Static Website Hosting
+# Now you have to add your files to the bucket index.html and also acces with this naming scheme , dependig on your region:
+# s3-website dash (-) Region ‐ http://bucket-name.s3-website-Region.amazonaws.com
+# s3-website dot (.) Region ‐ http://bucket-name.s3-website.Region.amazonaws.com
+
 resource "aws_s3_bucket" "changeme_aws_static_website" {
   bucket = "s3-website-xftcs.example.com"
   acl    = "public-read"
@@ -46,3 +50,12 @@ resource "aws_s3_bucket" "changeme_aws_static_website" {
 EOF
   }
 }
+
+
+output "Website-Endpoint" {
+  value = aws_s3_bucket.changeme_aws_static_website.website_endpoint
+}
+output "Website-Domain" {
+  value = aws_s3_bucket.changeme_aws_static_website.website_domain
+}
+

@@ -30,7 +30,7 @@ data "aws_availability_zones" "changeme_az_list" {
 # Documentation: https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/ebs_volume
 # Explanation: The AWS 'aws_ebs_volume' resource is responsible for creating the EBS volume. The only required field is Availability Zone
 # where the EBS vol is going to be created. Some optional arguments are Size in GBi, encryption(TRUE/FALSE) and he type of EBS volume. Can be "standard", "gp2", "io1", "sc1" or "st1" (Default: "standard").
-resource "aws_ebs_volume" "changeme_aws_ebs_volume" {
+resource "aws_ebs_volume" "changeme_ebs_volume_snapshot" {
   availability_zone = data.aws_availability_zones.changeme_az_list.names[0]
   size              = 10
   type              = "standard"
@@ -43,7 +43,7 @@ resource "aws_ebs_volume" "changeme_aws_ebs_volume" {
 # Documentation: https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/ebs_snapshot
 # Explanation: Takes a Snapshot from the EBS Volume created Above 
 resource "aws_ebs_snapshot" "changeme_ebs_snapshot" {
-  volume_id = aws_ebs_volume.changeme_aws_ebs_volume
+  volume_id = aws_ebs_volume.changeme_ebs_volume_snapshot.id
 
   tags = {
     Name = "Hello_CS_snap"

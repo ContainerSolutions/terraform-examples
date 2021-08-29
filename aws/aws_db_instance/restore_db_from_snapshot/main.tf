@@ -32,7 +32,6 @@ resource "aws_db_instance" "changeme_aws_db_instance_prod" {
   name                      = "changeme_db_prod"
   username                  = "changeme_username_prod"
   password                  = "changeme_password_prod"
-  parameter_group_name      = "default.mysql5.7"
   final_snapshot_identifier = true
 
 }

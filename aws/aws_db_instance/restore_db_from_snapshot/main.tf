@@ -61,7 +61,7 @@ data "aws_db_snapshot" "changeme_latest_prod_snapshot" {
 
 # Documentation: https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/db_instance
 # Explanation: Use the latest production snapshot to create a DEV instance DB.
-resource "aws_db_instance" "dev" {
+resource "aws_db_instance" "changeme_db_dev" {
   instance_class      = "db.t2.micro"
   snapshot_identifier = data.aws_db_snapshot.changeme_latest_prod_snapshot.id
   skip_final_snapshot = true

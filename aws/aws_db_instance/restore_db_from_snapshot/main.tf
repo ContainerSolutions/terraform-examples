@@ -38,7 +38,7 @@ resource "aws_db_instance" "changeme_aws_db_instance_prod" {
 
 
 # Documentation: https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/db_snapshot
-# Explanation: Takes the snapshot from prod Database. It uses timeouts for waiting until the snapshot operation complete
+# Explanation: Run a backup snapshot from prod Database. It uses timeouts for waiting until the snapshot operation complete
 resource "aws_db_snapshot" "changeme_db_prod_snapshot" {
   db_instance_identifier = aws_db_instance.changeme_aws_db_instance_prod.id
   db_snapshot_identifier = "testsnapshot1234"
@@ -48,7 +48,7 @@ resource "aws_db_snapshot" "changeme_db_prod_snapshot" {
 
 }
 
-# Documentation: https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/db_snapshot
+# Documentation: https://registry.terraform.io/providers/hashicorp/aws/latest/docs/data-sources/db_snapshot
 # Explanation: Data Source, reads the latest snapshot from the prod Database and gets its id
 data "aws_db_snapshot" "changeme_latest_prod_snapshot" {
   depends_on = [

@@ -1,10 +1,10 @@
 # Summary: Uses the 'count' feature to create multiple EC2 instances.
 terraform {
-  required_version = ">= 0.14.0"
+  required_version = ">= 1.0.0"
   required_providers {
     aws = {
       source  = "hashicorp/aws"
-      version = "~> 3.0"
+      version = "~> 3.38"
     }
   }
 }
@@ -12,6 +12,11 @@ terraform {
 # Documentation: https://www.terraform.io/docs/language/providers/requirements.html
 provider "aws" {
   region = "us-east-1"
+  default_tags {
+    tags = {
+      cs_terraform_examples = "aws_vpc/splat"
+    }
+  }
 }
 
 # Documentation: https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/vpc

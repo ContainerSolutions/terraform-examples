@@ -1,0 +1,35 @@
+# Summary: Uses the 'count' feature to create multiple EC2 instances.
+
+# Documentation: https://www.terraform.io/docs/language/settings/index.html
+terraform {
+  required_version = ">= 1.0.0"
+  required_providers {
+    google = {
+      source  = "hashicorp/google"
+      version = "~> 3.0"
+    }
+  }
+  # Documentation: https://www.terraform.io/docs/language/settings/backends/gcs.html
+  backend "gcs" {
+    bucket  = ${BUCKET_NAME}
+    prefix  = "terraform/state"
+  }
+}
+
+# Documentation: https://www.terraform.io/docs/language/values/variables.html
+variable "project_id" {
+  type = string
+}
+
+# Documentation: https://www.terraform.io/docs/language/providers/requirements.html
+provider "google" {
+  project = var.project_id
+  region  = "us-central1"
+  zone    = "us-central1-c"
+}
+
+# Documentation: https://registry.terraform.io/providers/hashicorp/google/latest/docs/resources/compute_network
+resource "google_compute_network" "changeme_backends_gcs_vpc" {
+  name                    = "changeme-backends-gcs-vpc"
+  auto_create_subnetworks = "false"
+}

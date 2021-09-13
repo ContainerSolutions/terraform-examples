@@ -34,6 +34,6 @@ data "azurerm_billing_enrollment_account_scope" "changeme_enrollment_account_sco
 # Subscription attached to the Enrollment Account
 # Documentation: https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/subscription
 resource "azurerm_subscription" "changeme_enterprise_enrollment_subscription" {
-  subscription_name = "changeme_subscription_name"
+  subscription_name = "changeme-subscription-name"
   billing_scope_id  = data.azurerm_billing_enrollment_account_scope.changeme_enrollment_account_scope.id
 }

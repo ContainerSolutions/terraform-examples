@@ -35,6 +35,6 @@ data "azurerm_billing_mca_account_scope" "changeme_mca_account_scope" {
 # Subscription attached to the MCA
 # Documentation: https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/subscription
 resource "azurerm_subscription" "changeme_customer_account_subscription" {
-  subscription_name = "changeme_new_subscription_name"
+  subscription_name = "changeme-new-subscription-name"
   billing_scope_id  = data.azurerm_billing_mca_account_scope.changeme_mca_account_scope.id
 }

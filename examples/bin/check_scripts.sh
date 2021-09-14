@@ -17,12 +17,13 @@ do
   for script in run.sh destroy.sh
   do
     echo -n "script:${script}... "
-    if ! [ -e "${script}" ]
+    if ! [ -x "${script}" ]
     then
-      echo "$folder/$script should exist, but does not"
+      echo "$folder/$script should exist and be executable, but is/does not"
+      ls -l "${folder}"
       exit 1
     fi
-    FILES="$(grep '\.sh$' ${script})"
+    FILES="$(grep '\.sh$' ${script} | awk '{print $NF}')"
     echo -n "file:${script}... "
     for file in ${FILES}
     do
@@ -33,6 +34,6 @@ do
       fi
     done
   done
-  echo done.
+  echo 'OK! Done.'
   popd >/dev/null
 done

@@ -5,13 +5,13 @@ set -o nounset
 
 cd "${0%/*}/.."
 
-echo "$GCP_CREDENTIALS_FILE" > "$GCP_CREDENTIALS_FILENAME"
+export TF_VAR_azure_subscription_id="$ARM_SUBSCRIPTION_ID"
 
 last_successful_commit=$(./bin/get_last_successful_commit.sh)
 changed_folders=$(./bin/get_changed_folders.sh)
 # shellcheck disable=SC1091
-source bin/get_gcp_folders.sh
-for folder in ${GCP_FOLDERS}
+source bin/get_azurerm_folders.sh
+for folder in ${AZURERM_FOLDERS}
 do
   echo "================================================================================"
   echo -n "$0 checking folder: ${folder} ... "
@@ -22,9 +22,9 @@ do
   fi
   if ! echo "${changed_folders}" | tr ' ' '\n' | grep "$folder"
   then
-    if [[ -a google/.forcetest ]]
+    if [[ -a azurerm/.forcetest ]]
     then
-      echo "google/.forcetest file exists, forcing test run"
+      echo "azurerm/.forcetest file exists, forcing test run"
     elif [[ -a ${folder}/.forcetest ]]
     then
       echo "${folder}/.forcetest file exists, forcing test run"

@@ -14,6 +14,7 @@ $cs-color-section: #edf9fa !default;
 body {
   font-family: $cs-font-family !important;
   overflow-y: auto!important;
+  padding-bottom: 0 !important;
 }
 
 
@@ -225,7 +226,7 @@ figure.highlight pre, figure.highlight pre {
 }
 
 .sticky {
-  position: fixed !important;
+  position: sticky !important;
   top: 0 !important;
   width: 100% !important
 }
@@ -393,6 +394,7 @@ h3 {
 
 
 .site-footer{
+  position: static !important;
   background: $cs-accent-color;
   text-align: center;
   color: #fff;

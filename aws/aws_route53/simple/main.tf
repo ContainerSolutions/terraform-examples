@@ -13,7 +13,7 @@ terraform {
 
 # Documentation: https://www.terraform.io/docs/language/providers/requirements.html
 provider "aws" {
-  region  = "us-east-1"
+  region = "us-east-1"
   default_tags {
     tags = {
       cs_terraform_examples = "aws_route53/simple"
@@ -33,6 +33,6 @@ resource "aws_route53_record" "changeme_aws_route53_simple_record" {
   name    = "changeme.com"
   type    = "TXT"
   ttl     = "300"
-  records = [ "changeme" ]
+  records = ["changeme"]
 }
 

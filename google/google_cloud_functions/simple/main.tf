@@ -62,3 +62,15 @@ resource "google_cloudfunctions_function" "changeme_function" {
   trigger_http          = true
   entry_point           = "hello_world"
 }
+
+# Needed for the function to be invoked without authentication
+# by anyone on the internet, since it's a public http (hello world) function
+# Documentation: https://registry.terraform.io/providers/hashicorp/google/latest/docs/resources/cloudfunctions_function_iam
+resource "google_cloudfunctions_function_iam_member" "changeme_invoker" {
+  project        = google_cloudfunctions_function.changeme_function.project
+  region         = google_cloudfunctions_function.changeme_function.region
+  cloud_function = google_cloudfunctions_function.changeme_function.name
+
+  role   = "roles/cloudfunctions.invoker"
+  member = "allUsers"
+}

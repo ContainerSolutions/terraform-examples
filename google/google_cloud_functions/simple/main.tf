@@ -38,13 +38,8 @@ resource "random_id" "changeme_google_storage_bucket_simple_name" {
 
 # Documentation: https://registry.terraform.io/providers/hashicorp/google/latest/docs/resources/storage_bucket
 resource "google_storage_bucket" "changeme_stoarge_bucket" {
-<<<<<<< HEAD
   name     = "changeme-${random_id.changeme_google_storage_bucket_simple_name.hex}"
   location = "US"
-=======
-  name      = "changeme-${random_id.changeme_google_storage_bucket_simple_name.hex}"
-  location  = "US"
->>>>>>> 9b51da438dc2003fa16e6f80ab02ea049a8d1b8f
 }
 
 # Documentation: https://registry.terraform.io/providers/hashicorp/google/latest/docs/resources/storage_bucket_object

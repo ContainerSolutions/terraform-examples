@@ -24,10 +24,11 @@ provider "google" {
 }
 
 # Documentation: https://registry.terraform.io/providers/hashicorp/archive/latest/docs/data-sources/archive_file
+# Documentation (path.module): https://www.terraform.io/docs/language/expressions/references.html#filesystem-and-workspace-info
 data "archive_file" "changeme_archive_file" {
   type        = "zip"
-  source_file = "${path.module}/google/google_cloud_functions/hello_world_app"
-  output_path = "${path.root}/hello_world.zip"
+  source_dir  = "${path.module}/hello_world_app"
+  output_path = "${path.module}/hello_world.zip"
 }
 
 # Needed to have a unique bucket name globally in GCP
@@ -44,8 +45,8 @@ resource "google_storage_bucket" "changeme_stoarge_bucket" {
 
 # Documentation: https://registry.terraform.io/providers/hashicorp/google/latest/docs/resources/storage_bucket_object
 resource "google_storage_bucket_object" "changeme_hello_world_zip_object" {
-  name   = "changeme_hello_world.zip"
-  source = "${path.root}/hello_world.zip"
+  name   = "hello_world.zip"
+  source = "${path.module}/hello_world.zip"
   bucket = google_storage_bucket.changeme_stoarge_bucket.name
 }
 

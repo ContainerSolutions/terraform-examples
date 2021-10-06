@@ -32,13 +32,13 @@ data "archive_file" "changeme_archive_file" {
 
 # Needed to have a unique bucket name globally in GCP
 # Documentation: https://registry.terraform.io/providers/hashicorp/random/latest/docs/resources/id
-resource "random_id" "changeme_google_storage_bucket_simple_name" {
+resource "random_id" "changeme_google_storage_bucket_simple_name_2" {
   byte_length = 16
 }
 
 # Documentation: https://registry.terraform.io/providers/hashicorp/google/latest/docs/resources/storage_bucket
 resource "google_storage_bucket" "changeme_stoarge_bucket" {
-  name     = "changeme-${random_id.changeme_google_storage_bucket_simple_name.hex}"
+  name     = "changeme-${random_id.changeme_google_storage_bucket_simple_name_2.hex}"
   location = "US"
 }
 

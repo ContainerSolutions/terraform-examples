@@ -24,18 +24,40 @@ provider "google" {
 }
 
 # Documentation: https://registry.terraform.io/providers/hashicorp/archive/latest/docs/data-sources/archive_file
-data "archive_file" "init" {
+data "archive_file" "changeme_archive_file" {
   type        = "zip"
-  source_file = "${path.module}/init.tpl"
-  output_path = "${path.module}/files/init.zip"
+  source_file = "${path.module}/google/google_cloud_functions/hello_world_app"
+  output_path = "${path.root}/hello_world.zip"
+}
+
+# Needed to have a unique bucket name globally in GCP
+# Documentation: https://registry.terraform.io/providers/hashicorp/random/latest/docs/resources/id
+resource "random_id" "changeme_google_storage_bucket_simple_name" {
+  byte_length = 16
 }
 
 # Documentation: https://registry.terraform.io/providers/hashicorp/google/latest/docs/resources/storage_bucket
+resource "google_storage_bucket" "changeme_stoarge_bucket" {
+  name          = "changeme-${random_id.changeme_google_storage_bucket_simple_name.hex}"
+  location      = "US"
+}
 
-// tbd: create the storage bucket
-
-// tbd place the zip-ed code in the bucket
+# Documentation: https://registry.terraform.io/providers/hashicorp/google/latest/docs/resources/storage_bucket_object
+resource "google_storage_bucket_object" "changeme_hello_world_zip_object" {
+  name   = "changeme_hello_world.zip"
+  source = "${path.root}/hello_world.zip"
+  bucket = google_storage_bucket.changeme_stoarge_bucket.name
+}
 
 # Documentation: https://registry.terraform.io/providers/hashicorp/google/latest/docs/resources/cloudfunctions_function
-
-// tbd: create the Cloud Function here
+resource "google_cloudfunctions_function" "changeme_function" {
+  name        = "changeme_hello_world_function"
+  description = "Schedule Hello World Cloud Function"
+  runtime     = "python38"
+  timeout     = 60
+  available_memory_mb   = 128
+  source_archive_bucket = google_storage_bucket.changeme_stoarge_bucket.name
+  source_archive_object = google_storage_bucket_object.changeme_hello_world_zip_object.name
+  trigger_http          = true
+  entry_point           = "hello_world"
+}

@@ -38,8 +38,8 @@ resource "random_id" "changeme_google_storage_bucket_simple_name" {
 
 # Documentation: https://registry.terraform.io/providers/hashicorp/google/latest/docs/resources/storage_bucket
 resource "google_storage_bucket" "changeme_stoarge_bucket" {
-  name          = "changeme-${random_id.changeme_google_storage_bucket_simple_name.hex}"
-  location      = "US"
+  name     = "changeme-${random_id.changeme_google_storage_bucket_simple_name.hex}"
+  location = "US"
 }
 
 # Documentation: https://registry.terraform.io/providers/hashicorp/google/latest/docs/resources/storage_bucket_object
@@ -51,10 +51,10 @@ resource "google_storage_bucket_object" "changeme_hello_world_zip_object" {
 
 # Documentation: https://registry.terraform.io/providers/hashicorp/google/latest/docs/resources/cloudfunctions_function
 resource "google_cloudfunctions_function" "changeme_function" {
-  name        = "changeme_hello_world_function"
-  description = "Schedule Hello World Cloud Function"
-  runtime     = "python38"
-  timeout     = 60
+  name                  = "changeme_hello_world_function"
+  description           = "Schedule Hello World Cloud Function"
+  runtime               = "python38"
+  timeout               = 60
   available_memory_mb   = 128
   source_archive_bucket = google_storage_bucket.changeme_stoarge_bucket.name
   source_archive_object = google_storage_bucket_object.changeme_hello_world_zip_object.name

@@ -52,9 +52,6 @@ resource "aws_db_snapshot" "changeme_db_prod_snapshot" {
 # Documentation: https://registry.terraform.io/providers/hashicorp/aws/latest/docs/data-sources/db_snapshot
 # Explanation: Data Source, reads the latest snapshot from the prod Database and gets its id
 data "aws_db_snapshot" "changeme_latest_prod_snapshot" {
-  depends_on = [
-    aws_db_snapshot.changeme_db_prod_snapshot
-  ]
   db_instance_identifier = aws_db_instance.changeme_aws_db_instance_prod.id
   most_recent            = true
 

@@ -1,4 +1,4 @@
-# Summary: Create a DB Instance and take a snapshot(A point in time database backups) 
+# Summary: Create a DB Instance and take a snapshot
 
 # Documentation: https://www.terraform.io/docs/language/settings/index.html
 terraform {

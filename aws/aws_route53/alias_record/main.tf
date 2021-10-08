@@ -33,6 +33,11 @@ data "aws_iam_policy_document" "changeme_iam_policy_document" {
     resources = [
       "arn:aws:s3:::*",
     ]
+
+    principals {
+      type        = "AWS"
+      identifiers = ["*"]
+    }
   }
 }
 

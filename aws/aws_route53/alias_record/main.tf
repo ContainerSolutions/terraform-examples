@@ -38,7 +38,7 @@ data "aws_iam_policy_document" "changeme_iam_policy_document" {
 
 # Documentation: https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/s3_bucket
 resource "aws_s3_bucket" "changeme_s3_bucket" {
-  bucket_prefix = "changeme_a_globally_unique_name"
+  bucket_prefix = "changeme"
   acl           = "public-read"
   policy        = data.aws_iam_policy_document.changeme_iam_policy_document.json
 

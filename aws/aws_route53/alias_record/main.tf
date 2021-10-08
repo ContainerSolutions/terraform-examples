@@ -16,7 +16,7 @@ provider "aws" {
   region = "us-east-1"
   default_tags {
     tags = {
-      cs_terraform_examples = "aws_route53/simple"
+      cs_terraform_examples = "aws_route53/alias"
     }
   }
 }
@@ -67,7 +67,7 @@ resource "aws_route53_zone" "changeme_aws_route53_alias" {
 }
 
 # Documentation: https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/route53_record
-resource "aws_route53_record" "changeme_aws_route53_simple_record" {
+resource "aws_route53_record" "changeme_aws_route53_alias_record" {
   zone_id = aws_route53_zone.changeme_aws_route53_alias.zone_id
   name    = "changemealias.com"
   type    = "A"

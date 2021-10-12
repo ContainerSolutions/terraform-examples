@@ -13,7 +13,6 @@ terraform {
 
 # Documentation: https://www.terraform.io/docs/language/providers/requirements.html
 provider "aws" {
-  profile = "cs-test"
   region = "us-east-1"
   default_tags {
     tags = {
@@ -35,7 +34,7 @@ resource "aws_db_instance" "changeme_aws_db_instance_prod" {
   username                  = "changeme_username_prod"
   password                  = "changeme_password_prod"
   final_snapshot_identifier = "changeme-final-snapshot"
-  skip_final_snapshot       = true      # change to false if you want to keep snapshot after deleting the instance
+  skip_final_snapshot       = true # change to false if you want to keep snapshot after deleting the instance
 }
 
 

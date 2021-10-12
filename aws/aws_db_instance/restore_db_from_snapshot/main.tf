@@ -13,6 +13,7 @@ terraform {
 
 # Documentation: https://www.terraform.io/docs/language/providers/requirements.html
 provider "aws" {
+  profile = "cs-test"
   region = "us-east-1"
   default_tags {
     tags = {
@@ -30,11 +31,11 @@ resource "aws_db_instance" "changeme_aws_db_instance_prod" {
   engine_version            = "5.7"
   instance_class            = "db.t2.micro"
   name                      = "changeme_db_prod"
+  identifier                = "changeme-db-identifier"
   username                  = "changeme_username_prod"
   password                  = "changeme_password_prod"
   final_snapshot_identifier = "changeme-final-snapshot"
-  skip_final_snapshot       = false
-
+  skip_final_snapshot       = true      # change to false if you want to keep snapshot after deleting the instance
 }
 
 
@@ -42,16 +43,23 @@ resource "aws_db_instance" "changeme_aws_db_instance_prod" {
 # Explanation: Run a backup snapshot from prod Database. It uses timeouts for waiting until the snapshot operation complete
 resource "aws_db_snapshot" "changeme_db_prod_snapshot" {
   db_instance_identifier = aws_db_instance.changeme_aws_db_instance_prod.id
-  db_snapshot_identifier = "testsnapshot1234"
+  db_snapshot_identifier = "changeme-prod-snapshot"
   timeouts {
     read = "10m"
   }
+
+  depends_on = [
+    aws_db_instance.changeme_aws_db_instance_prod
+  ]
 
 }
 
 # Documentation: https://registry.terraform.io/providers/hashicorp/aws/latest/docs/data-sources/db_snapshot
 # Explanation: Data Source, reads the latest snapshot from the prod Database and gets its id
 data "aws_db_snapshot" "changeme_latest_prod_snapshot" {
+  depends_on = [
+    aws_db_snapshot.changeme_db_prod_snapshot
+  ]
   db_instance_identifier = aws_db_instance.changeme_aws_db_instance_prod.id
   most_recent            = true
 
@@ -61,6 +69,7 @@ data "aws_db_snapshot" "changeme_latest_prod_snapshot" {
 # Explanation: Use the latest production snapshot to create a DEV instance DB.
 resource "aws_db_instance" "changeme_db_dev" {
   instance_class      = "db.t2.micro"
+  identifier          = "changeme-db-from-backup"
   snapshot_identifier = data.aws_db_snapshot.changeme_latest_prod_snapshot.id
   skip_final_snapshot = true
 

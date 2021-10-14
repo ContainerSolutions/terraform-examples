@@ -21,48 +21,36 @@ provider "aws" {
   }
 }
 
+# Documentation: https://registry.terraform.io/providers/hashicorp/random/latest/docs/resources/id
+resource "random_id" "changeme_random_bucket_name" {
+  byte_length = 16
+}
+
 # Documentation: https://registry.terraform.io/providers/hashicorp/aws/latest/docs/data-sources/iam_policy_document
-# data "aws_iam_policy_document" "changeme_iam_policy_document" {
-#   statement {
-#     sid = "BucketForStaticWebsite"
+data "aws_iam_policy_document" "changeme_iam_policy_document" {
+  statement {
+    sid = "BucketForStaticWebsite"
 
-#     actions = [
-#       # "s3:GetObject",
-#       "*",
-#     ]
+    actions = [
+      "s3:GetObject"
+    ]
 
-#     resources = [
-#       # "arn:aws:s3:::changeme",
-#       "*"
-#     ]
+    resources = [
+      "arn:aws:s3:::changeme-${random_id.changeme_random_bucket_name.hex}/*"
+    ]
 
-#     principals {
-#       type        = "AWS"
-#       identifiers = ["*"]
-#     }
-#   }
-# }
+    principals {
+      type        = "AWS"
+      identifiers = ["*"]
+    }
+  }
+}
 
 # Documentation: https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/s3_bucket
 resource "aws_s3_bucket" "changeme_s3_bucket" {
-  bucket = "changeme"
+  bucket = "changeme-${random_id.changeme_random_bucket_name.hex}"
   acl    = "public-read"
-  policy = <<POLICY
-{
-  "Version": "2012-10-17",
-  "Statement": [
-    {
-      "Action": "s3:GetObject",
-      "Principal": {
-        "Service": "s3.amazonaws.com"
-      },
-      "Effect": "Allow",
-      "Sid": "BucketForStaticWebsite"
-    }
-  ]
-}
-POLICY
-
+  policy = data.aws_iam_policy_document.changeme_iam_policy_document.json
 
   website {
     index_document = "index.html"
@@ -72,15 +60,17 @@ POLICY
 
 # Documentation: https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/s3_bucket_object
 resource "aws_s3_bucket_object" "changeme_example_index_object" {
-  key    = "index.html"
-  bucket = aws_s3_bucket.changeme_s3_bucket.id
-  source = "${path.module}/alias_record/static_website/index.html"
+  key          = "index.html"
+  bucket       = aws_s3_bucket.changeme_s3_bucket.id
+  source       = "./static_website/index.html"
+  content_type = "text/html"
 }
 
 resource "aws_s3_bucket_object" "changeme_example_error_object" {
-  key    = "error.html"
-  bucket = aws_s3_bucket.changeme_s3_bucket.id
-  source = "${path.module}/alias_record/static_website/error.html"
+  key          = "error.html"
+  bucket       = aws_s3_bucket.changeme_s3_bucket.id
+  source       = "./static_website/error.html"
+  content_type = "text/html"
 }
 
 # Documentation: https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/route53_zone
@@ -94,7 +84,7 @@ resource "aws_route53_record" "changeme_aws_route53_alias_record" {
   name    = "changemealias.com"
   type    = "A"
   alias {
-    name                   = aws_s3_bucket.changeme_s3_bucket.id
+    name                   = aws_s3_bucket.changeme_s3_bucket.website_endpoint
     zone_id                = aws_s3_bucket.changeme_s3_bucket.hosted_zone_id
     evaluate_target_health = true
   }

@@ -22,30 +22,47 @@ provider "aws" {
 }
 
 # Documentation: https://registry.terraform.io/providers/hashicorp/aws/latest/docs/data-sources/iam_policy_document
-data "aws_iam_policy_document" "changeme_iam_policy_document" {
-  statement {
-    sid = "BucketForStaticWebsite"
+# data "aws_iam_policy_document" "changeme_iam_policy_document" {
+#   statement {
+#     sid = "BucketForStaticWebsite"
 
-    actions = [
-      "s3:GetObject",
-    ]
+#     actions = [
+#       # "s3:GetObject",
+#       "*",
+#     ]
 
-    resources = [
-      "arn:aws:s3:::*",
-    ]
+#     resources = [
+#       # "arn:aws:s3:::changeme",
+#       "*"
+#     ]
 
-    principals {
-      type        = "AWS"
-      identifiers = ["*"]
-    }
-  }
-}
+#     principals {
+#       type        = "AWS"
+#       identifiers = ["*"]
+#     }
+#   }
+# }
 
 # Documentation: https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/s3_bucket
 resource "aws_s3_bucket" "changeme_s3_bucket" {
-  bucket_prefix = "changeme"
-  acl           = "public-read"
-  policy        = data.aws_iam_policy_document.changeme_iam_policy_document.json
+  bucket = "changeme"
+  acl    = "public-read"
+  policy = <<POLICY
+{
+  "Version": "2012-10-17",
+  "Statement": [
+    {
+      "Action": "s3:GetObject",
+      "Principal": {
+        "Service": "s3.amazonaws.com"
+      },
+      "Effect": "Allow",
+      "Sid": "BucketForStaticWebsite"
+    }
+  ]
+}
+POLICY
+
 
   website {
     index_document = "index.html"

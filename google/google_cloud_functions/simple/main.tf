@@ -13,7 +13,7 @@ terraform {
 
 # Documentation: https://www.terraform.io/docs/language/values/variables.html
 variable "project_id" {
-  type = string
+  type    = string
   default = "changeme_myprojectid"
 }
 

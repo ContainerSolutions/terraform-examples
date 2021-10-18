@@ -87,10 +87,21 @@ resource "aws_lb_listener" "changeme_simple_alb_listener" {
   }
 }
 
+# Documentation: https://registry.terraform.io/providers/hashicorp/aws/latest/docs/data-sources/ami
+data "aws_ami" "changeme_amazon_alb_ami" {
+  owners      = ["amazon"]
+  most_recent = true
+
+  filter {
+    name   = "name"
+    values = ["amzn2-ami-hvm*"]
+  }
+}
+
 # Documentation: https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/launch_template
 resource "aws_launch_template" "changeme_simple_asg_launch_template_alb" {
   name                   = "changeme-simple-asg-launch-template-alb"
-  image_id               = "ami-087c17d1fe0178315"
+  image_id               = data.aws_ami.changeme_amazon_alb_ami.id #"ami-087c17d1fe0178315"
   instance_type          = "t2.micro"
   vpc_security_group_ids = [aws_security_group.changeme_alb_aws_security_group.id]
   user_data              = filebase64("${path.module}/user_data.sh")

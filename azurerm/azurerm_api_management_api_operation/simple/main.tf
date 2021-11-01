@@ -38,8 +38,8 @@ resource "azurerm_api_management" "changeme_simple_api_management_api_operation_
   location            = "West Europe"
   resource_group_name = azurerm_resource_group.changeme_simple_api_management_api_operation_resource_group.name
 
-  publisher_name      = "changeme-publisher"
-  publisher_email     = "changeme-publisher@example.com"
+  publisher_name  = "changeme-publisher"
+  publisher_email = "changeme-publisher@example.com"
 
   sku_name = "Developer_1"
 }
@@ -59,12 +59,12 @@ resource "azurerm_api_management_api" "changeme_simple_api_management_api_operat
 # Documentation: https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/api_management_api_operation
 resource "azurerm_api_management_api_operation" "changeme_simple_api_management_api_operation" {
   api_management_name = azurerm_api_management.changeme_simple_api_management_api_operation_api_management.name
-  api_name = azurerm_api_management_api.changeme_simple_api_management_api_operation_api_management_api.name
+  api_name            = azurerm_api_management_api.changeme_simple_api_management_api_operation_api_management_api.name
   resource_group_name = azurerm_resource_group.changeme_simple_api_management_api_operation_resource_group.name
 
   display_name = "changeme-simple-api-management-api-operation-display-name"
 
-  method = "GET"
+  method       = "GET"
   operation_id = "changeme-simple-api-management-api-operation-operation-id"
   url_template = "changeme-simple-api-management-api-operation-url-template"
 }

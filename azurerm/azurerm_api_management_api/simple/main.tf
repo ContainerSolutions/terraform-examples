@@ -38,8 +38,8 @@ resource "azurerm_api_management" "changeme_simple_api_management_api_api_manage
   location            = "West Europe"
   resource_group_name = azurerm_resource_group.changeme_simple_api_management_api_resource_group.name
 
-  publisher_name      = "changeme-publisher"
-  publisher_email     = "changeme-publisher@example.com"
+  publisher_name  = "changeme-publisher"
+  publisher_email = "changeme-publisher@example.com"
 
   sku_name = "Developer_1"
 }

@@ -34,7 +34,7 @@ resource "azurerm_resource_group" "changeme_simple_api_management_logger_resourc
 # API Management Service
 # Documentation: https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/api_management
 resource "azurerm_api_management" "changeme_simple_api_management_logger_api_management" {
-  name                = "changeme-simple-api-management-logger-api-management-name"
+  name                = "changeme-simple-api-management-logger-apim-name"
   location            = "West Europe"
   resource_group_name = azurerm_resource_group.changeme_simple_api_management_logger_resource_group.name
 

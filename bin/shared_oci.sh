@@ -15,6 +15,7 @@ then
     echo "Make sure oci-cli is initialised, by running: 'oci setup config'"
     echo "More info available here: https://docs.oracle.com/en-us/iaas/Content/API/SDKDocs/cliinstall.htm#configfile__setupdialog"
   fi
+  echo "NOTE: Terraform provider doesn't use this value. It is used only by oci-cli."
 fi
 if [ -z "$TF_VAR_config_file_profile" ]
 then

@@ -154,6 +154,34 @@ jobs:
           DIGITALOCEAN_TOKEN: ${{ secrets.DIGITALOCEAN_TOKEN }}
         if: github.ref == 'refs/heads/main' || env.GITHUB_REF_SLUG == 'integration' # Only run on main/integration, as these take a long time
         run: ${{github.workspace}}/bin/run_digitalocean_examples.sh
+  ProvidersOCI:
+    concurrency: provider_test_oci
+    needs: [TFLint, TFValidate, Checks]
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository code
+        uses: actions/checkout@v2
+        with:
+          fetch-depth: 0   # Need whole history, or at least far enough back to get .test_log.log reference
+      - name: Setup Terraform
+        uses: hashicorp/setup-terraform@v1
+        with:
+          terraform_version: ${{ env.terraform_version }}
+          terraform_wrapper: false
+          cli_config_credentials_token: ${{ secrets.TERRAFORM_CLOUD_LOGIN_TOKEN }}
+      - name: Inject slug/short variables
+        uses: rlespinasse/github-slug-action@v3.x
+      - name: Run OCI examples
+        env:
+          CI_USE_TF_CLOUD: ${{ secrets.CI_USE_TF_CLOUD }}
+          TERRAFORM_CLOUD_LOGIN_TOKEN: ${{ secrets.TERRAFORM_CLOUD_LOGIN_TOKEN }}
+          OCI_PROFILE_FILE: ${{ secrets.OCI_PROFILE_FILE }}
+          OCI_PROFILE_FILENAME: ${{ secrets.OCI_PROFILE_FILENAME }}
+          OCI_KEY_FILE_FILE: ${{ secrets.OCI_KEY_FILE_FILE }}
+          OCI_KEY_FILE_FILENAME: ${{ secrets.OCI_KEY_FILE_FILENAME }}
+          TF_VAR_config_file_profile: ${{ secrets.OCI_CLI_PROFILE }}
+        if: github.ref == 'refs/heads/main' || env.GITHUB_REF_SLUG == 'integration' # Only run on main/integration, as these take a long time
+        run: ${{github.workspace}}/bin/run_oci_examples.sh
   ProvidersAzure:
     concurrency: provider_test_azure
     needs: [TFLint, TFValidate, Checks]
@@ -207,7 +235,7 @@ jobs:
         run: ${{github.workspace}}/bin/run_local_examples.sh
   RecordActionSuccess:
     runs-on: ubuntu-latest
-    needs: [ProvidersLocal, ProvidersAzure, ProvidersDigitalocean, ProvidersLinode, ProvidersGCP, ProvidersAWS]
+    needs: [ProvidersLocal, ProvidersAzure, ProvidersDigitalocean, ProvidersOCI, ProvidersLinode, ProvidersGCP, ProvidersAWS]
     if: github.ref == 'refs/heads/main' || github.ref == 'refs/heads/integration' # Only run on main/integration, as we run provider tests only there
     steps:
       - name: Check out repository code

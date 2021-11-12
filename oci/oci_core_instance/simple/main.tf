@@ -19,13 +19,13 @@ provider "oci" {
 # The OCID of the compartment
 # Documentation: https://registry.terraform.io/providers/hashicorp/oci/latest/docs/resources/core_instance#compartment_id
 variable "compartment_id" {
-  type    = string
+  type = string
 }
 
 # Subnet to create the VNIC in
 # Documentation: https://registry.terraform.io/providers/hashicorp/oci/latest/docs/resources/core_instance#subnet_id
 variable "subnet_id" {
-  type    = string
+  type = string
 }
 
 # Oracle Cloud Infrastructure Images

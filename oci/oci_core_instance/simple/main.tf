@@ -37,7 +37,7 @@ variable "image_id" {
 
 # Data source for a single Availability Domain
 # Documentation: https://registry.terraform.io/providers/hashicorp/oci/latest/docs/data-sources/identity_availability_domain
-data "oci_identity_availability_domain" "ad" {
+data "oci_identity_availability_domain" "changeme_availability_domain" {
   compartment_id = var.compartment_id
   ad_number      = 1
 }
@@ -45,8 +45,8 @@ data "oci_identity_availability_domain" "ad" {
 # Instance resource
 # Documentation: https://registry.terraform.io/providers/hashicorp/oci/latest/docs/resources/core_instance
 resource "oci_core_instance" "changeme_oci_simple_instance" {
-  availability_domain = data.oci_identity_availability_domain.ad.name
-  compartment_id      = data.oci_identity_availability_domain.ad.compartment_id
+  availability_domain = data.oci_identity_availability_domain.changeme_availability_domain.name
+  compartment_id      = data.oci_identity_availability_domain.changeme_availability_domain.compartment_id
   display_name        = "changeme-oci-simple-instance"
   shape               = "VM.Standard.E2.1.Micro"
 

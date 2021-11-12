@@ -20,18 +20,23 @@ provider "oci" {
 # Documentation: https://registry.terraform.io/providers/hashicorp/oci/latest/docs/resources/core_instance#compartment_id
 variable "changeme_compartment_id" {
   type = string
+
+  default = "ocid1.compartment.oc1..aaaaaaaavrhfdoos3wg4qnl52iy22pxyiseyjp4yn67x4mukc34dc6uruliq"
 }
 
 # Subnet to create the VNIC in
 # Documentation: https://registry.terraform.io/providers/hashicorp/oci/latest/docs/resources/core_instance#subnet_id
 variable "changeme_subnet_id" {
   type = string
+
+  default = "ocid1.subnet.oc1.eu-amsterdam-1.aaaaaaaawd2edyewykhmjgfqrzxhlpk4q7hvyz5xv6p4tuxbhknp2jwo2xda"
 }
 
 # Oracle Cloud Infrastructure Images
 # https://docs.oracle.com/en-us/iaas/images/ubuntu-2004/
 variable "changeme_image_id" {
-  type    = string
+  type = string
+
   default = "ocid1.image.oc1.eu-amsterdam-1.aaaaaaaawlrfkqdc4fm4tco6ifgmd4pcbjg232hyo6gscvu6xcgnufdznqtq"
 }
 

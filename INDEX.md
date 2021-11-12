@@ -3,7 +3,7 @@
 | Feature                               | Links/Related Features  |
 | -------------                         |:-------------:|
 | `aws_db_cluster_snapshot`             | [aws](aws/aws_db_cluster_snapshot) <p/> [simple](aws/aws_db_cluster_snapshot/simple) |
-| `aws_db_instance`                     | [aws](aws/aws_db_instance) <p/> [simple](aws/aws_db_instance/simple) <p/> [postgres](aws/aws_db_instance/postgres) <p/> [restore_db_from_snapshot](aws/aws_db_instance/restore_db_from_snapshot) | 
+| `aws_db_instance`                     | [aws](aws/aws_db_instance) <p/> [simple](aws/aws_db_instance/simple) <p/> [postgres](aws/aws_db_instance/postgres) <p/> [restore_db_from_snapshot](aws/aws_db_instance/restore_db_from_snapshot) |
 | `aws_dynamodb_table_item`             | [aws](aws/aws_dynamodb_table_item) <p/> [simple](aws/aws_dynamodb_table_item/simple) |
 | `aws_dynamodb_table`                  | [aws](aws/aws_dynamodb_table) <p/> [simple](aws/aws_dynamodb_table/simple) |
 | `aws_ebs_volume`                      | [aws](aws/aws_ebs_volume) <p/>[simple](aws/aws_ebs_volume/simple)  <p/> [volume_attachment](aws/aws_ebs_volume/volume_attachment) <p/> [ebs_snapshot](aws/aws_ebs_volume/ebs_snapshot) |
@@ -83,6 +83,7 @@
 | `map`                                 | [null_resource, for_each, local](local/null_resource/for_each) |
 | `module`                              | [modules](modules) <p/> [local, module usage](variables/local_file/module) <p/> [local, module example](modules/local_file/hello_module) <p/> [local, module example consumer](modules/local_file/hello_consumer) |
 | `null_resource`                       | [simple, local](local/null_resource/simple) |
+| `oci_core_instance`                   | [oci, oci_core_instance](oci/oci_core_instance/simple) |
 | `outputs`                             | [outputs](outputs) <p/> [local](outputs/local_file/local_file) <p/> [local, module](outputs/local_file/module) |
 | `random_id`                           | [simple](aws/aws_s3_bucket/simple) |
 | `remote-exec`                         | [aws, inline](aws/aws_instance/remote-exec/inline) |

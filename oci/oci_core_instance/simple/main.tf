@@ -18,19 +18,19 @@ provider "oci" {
 
 # The OCID of the compartment
 # Documentation: https://registry.terraform.io/providers/hashicorp/oci/latest/docs/resources/core_instance#compartment_id
-variable "compartment_id" {
+variable "changeme_compartment_id" {
   type = string
 }
 
 # Subnet to create the VNIC in
 # Documentation: https://registry.terraform.io/providers/hashicorp/oci/latest/docs/resources/core_instance#subnet_id
-variable "subnet_id" {
+variable "changeme_subnet_id" {
   type = string
 }
 
 # Oracle Cloud Infrastructure Images
 # https://docs.oracle.com/en-us/iaas/images/ubuntu-2004/
-variable "image_id" {
+variable "changeme_image_id" {
   type    = string
   default = "ocid1.image.oc1.eu-amsterdam-1.aaaaaaaawlrfkqdc4fm4tco6ifgmd4pcbjg232hyo6gscvu6xcgnufdznqtq"
 }
@@ -38,7 +38,7 @@ variable "image_id" {
 # Data source for a single Availability Domain
 # Documentation: https://registry.terraform.io/providers/hashicorp/oci/latest/docs/data-sources/identity_availability_domain
 data "oci_identity_availability_domain" "changeme_availability_domain" {
-  compartment_id = var.compartment_id
+  compartment_id = var.changeme_compartment_id
   ad_number      = 1
 }
 
@@ -51,12 +51,12 @@ resource "oci_core_instance" "changeme_oci_simple_instance" {
   shape               = "VM.Standard.E2.1.Micro"
 
   create_vnic_details {
-    subnet_id = var.subnet_id
+    subnet_id = var.changeme_subnet_id
   }
 
   source_details {
     source_type = "image"
-    source_id   = var.image_id
+    source_id   = var.changeme_image_id
   }
 
   freeform_tags = {

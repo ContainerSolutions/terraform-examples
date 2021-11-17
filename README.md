@@ -2,7 +2,7 @@
 
 A reference repository of Terraform with canonical and as-simple-as-possible demonstrations of Terraform functionality and features.
 
-See [here](https://containersolutions.github.io/terraform-examples/) for docs.
+See here for a searchable front-end: https://containersolutions.github.io/terraform-examples/
 
 ## Why?
 

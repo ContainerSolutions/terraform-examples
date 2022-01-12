@@ -26,6 +26,6 @@ variable "project_id" {
 # DNS Managed Zone
 # Documentation: https://registry.terraform.io/providers/hashicorp/google/latest/docs/resources/dns_managed_zone
 resource "google_dns_managed_zone" "changeme_public_zone" {
-  name       = "changeme-public-zone"
-  dns_name   = "changeme-public-zone.com."
+  name     = "changeme-public-zone"
+  dns_name = "changeme-public-zone.com."
 }

@@ -26,7 +26,7 @@ provider "aws" {
 data "aws_ami" "changeme_aws_ami" {
   most_recent = true
 
-  # Explanation: Canonical now publishes  official Ubuntu images on the Amazon cloud. Is it possible to get parameters with AWS SSM (System Manager)
+  # Explanation: Canonical now publishes  official Ubuntu images on the Amazon cloud.
   # Check supported versions here : https://uec-images.ubuntu.com/locator/
   filter {
     name   = "name"

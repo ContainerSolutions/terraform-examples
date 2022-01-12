@@ -1,4 +1,4 @@
-# Summary: Creates the simplest DNS managed zone
+# Summary: Creates a public DNS managed zone
 
 # Documentation: https://www.terraform.io/docs/language/settings/index.html
 terraform {
@@ -25,8 +25,7 @@ variable "project_id" {
 
 # DNS Managed Zone
 # Documentation: https://registry.terraform.io/providers/hashicorp/google/latest/docs/resources/dns_managed_zone
-resource "google_dns_managed_zone" "changeme_simple_zone" {
-  name       = "changeme-simple-zone"
-  dns_name   = "changeme-simple-zone.com."
-  visibility = "private"
+resource "google_dns_managed_zone" "changeme_public_zone" {
+  name       = "changeme-public-zone"
+  dns_name   = "changeme-public-zone.com."
 }

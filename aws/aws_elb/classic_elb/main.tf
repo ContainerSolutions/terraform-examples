@@ -20,10 +20,10 @@ provider "aws" {
   }
 }
 
-# Documentation: https://www.terraform.io/docs/language/providers/requirements.html
+# Documentation: https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/security_group
 # See also: [aws/aws_security_group/ssh](https://github.com/ContainerSolutions/terraform-examples/tree/main/aws/aws_security_group/ssh)
 resource "aws_security_group" "changeme_aws_security_group" {
-  name        = "changeme_aws_security_group_classic_elb_name"
+  name        = "changeme-aws-security-group-classic-elb-name"
   description = "Allow HTTP 8080 inbound traffic"
   ingress {
     from_port   = 8080

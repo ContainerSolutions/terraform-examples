@@ -29,7 +29,7 @@ provider "google" {
 resource "google_sql_database" "changeme_sql_database" {
   name     = "changeme_database"
   project  = var.project_id
-  instance = google_sql_database_instance.master.name
+  instance = google_sql_database_instance.changeme_simple_sql_database_instance.name
 }
 
 resource "google_sql_database_instance" "changeme_simple_sql_database_instance" {

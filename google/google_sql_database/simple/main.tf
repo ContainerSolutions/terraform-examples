@@ -26,13 +26,13 @@ provider "google" {
 # SQL database instance
 # Documentation: https://registry.terraform.io/providers/hashicorp/google/latest/docs/resources/sql_database_instance
 
-resource "google_sql_database" "database" {
+resource "google_sql_database" "changeme_sql_database" {
   name     = "changeme_database"
   project  = var.project_id
   instance = google_sql_database_instance.master.name
 }
 
-resource "google_sql_database_instance" "master" {
+resource "google_sql_database_instance" "changeme_simple_sql_database_instance" {
   name             = "changedb"
   database_version = "POSTGRES_11"
   region           = "us-central1"

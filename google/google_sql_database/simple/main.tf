@@ -1,4 +1,4 @@
-# Summary: Creates a SQL database instance
+# Summary: Creates a SQL database instance on the gcp console
 
 # Documentation: https://www.terraform.io/docs/language/settings/index.html
 terraform {

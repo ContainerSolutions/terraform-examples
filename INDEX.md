@@ -3,14 +3,14 @@
 | Feature                               | Links/Related Features  |
 | -------------                         |:-------------:|
 | `aws_db_cluster_snapshot`             | [aws](aws/aws_db_cluster_snapshot) <p/> [simple](aws/aws_db_cluster_snapshot/simple) |
-| `aws_db_instance`                     | [aws](aws/aws_db_instance) <p/> [simple](aws/aws_db_instance/simple) <p/> [postgres](aws/aws_db_instance/postgres) <p/> [restore_db_from_snapshot](aws/aws_db_instance/restore_db_from_snapshot) | 
+| `aws_db_instance`                     | [aws](aws/aws_db_instance) <p/> [simple](aws/aws_db_instance/simple) <p/> [postgres](aws/aws_db_instance/postgres) <p/> [restore_db_from_snapshot](aws/aws_db_instance/restore_db_from_snapshot) |
 | `aws_dynamodb_table_item`             | [aws](aws/aws_dynamodb_table_item) <p/> [simple](aws/aws_dynamodb_table_item/simple) |
 | `aws_dynamodb_table`                  | [aws](aws/aws_dynamodb_table) <p/> [simple](aws/aws_dynamodb_table/simple) |
 | `aws_ebs_volume`                      | [aws](aws/aws_ebs_volume) <p/>[simple](aws/aws_ebs_volume/simple)  <p/> [volume_attachment](aws/aws_ebs_volume/volume_attachment) <p/> [ebs_snapshot](aws/aws_ebs_volume/ebs_snapshot) |
 | `aws_eks`                             | [aws, spot_and_fargate](aws/aws_eks/fargate/spot_and_fargate) |
 | `aws_elb`                             | [aws](aws/aws_elb/classic_elb) |
 | `aws_iam`                             | [aws](aws/aws_iam/groups) |
-| `aws_instance`                        | [aws](aws/aws_instance) <p/> [simple](aws/aws_instance/simple) <p/> [simple_ssh_access](aws/aws_instance/simple_ssh_access) <p/> [ami_lookup](aws/aws_instance/ami_lookup) | 
+| `aws_instance`                        | [aws](aws/aws_instance) <p/> [simple](aws/aws_instance/simple) <p/> [simple_ssh_access](aws/aws_instance/simple_ssh_access) <p/> [ami_lookup](aws/aws_instance/ami_lookup) |
 | `aws_lambda_function`                 | [aws](aws/aws_lambda_function) <p/> [simple](aws/aws_lambda_function/simple) |
 | `aws_rds_cluster`                     | [aws](aws/aws_rds_cluster) <p/> [simple](aws/aws_rds_cluster/simple) |
 | `aws_route53`                         | [aws](aws/aws_route53) <p/> [simple](aws/aws_route53/simple)
@@ -71,6 +71,7 @@
 | `google_compute_network`              | [google](google/google_compute_network/simple) |
 | `google_container_cluster`            | [google, GKE](google/google_container_cluster/simple) <p/> [separate_node_pool](google/google_container_cluster/separate_node_pool) <p/> [cluster_and_deployment](google/google_container_cluster/cluster_and_deployment) <p/> [vpc_native_cluster](google/google_container_cluster/vpc_native_cluster) <p/> [autopilot](google/google_container_cluster/autopilot) |
 | `google_dns_managed_zone`             | [google, public](google/google_dns_managed_zone/public) <p/> [private](google/google_dns_managed_zone/private) |
+| `google_sql_database`                 | [simple](google/google_sql_database/simple) |
 | `google_storage_bucket`               | [google, gcs_bucket](google/google_storage_bucket/simple) |
 | `helm_release`                        | [simple](helm/helm_release/simple) <p/> [values_from_file](helm/helm_release/values_from_file) |
 | `inline`                              | [aws, remote-exec](aws/aws_instance/remote-exec/inline/) |

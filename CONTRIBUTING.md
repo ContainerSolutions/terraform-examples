@@ -50,11 +50,11 @@ If you spot a problem with terraform scripts, CI checks, bash scripts, documents
 
 ### Solve an issue
 
-You can search for [existing issues](https://github.com/ContainerSolutions/terraform-examples/issues), and if you intend to solve one of them, then you can make changes on it in a new branch and create a Pull Request for the fix.
+You can search for [existing issues](https://github.com/ContainerSolutions/terraform-examples/issues), and if you intend to solve one of them, then you can make changes for it in a new branch and create a Pull Request for the fix.
 
 ## Milestones
 
-We are using GitHub projects and tracking milestones [there](https://github.com/ContainerSolutions/terraform-examples/projects). Similar to solving issues, if you intend to work on one of the items there, then you can make changes on it in a new branch and create a Pull Request for it.
+We are using GitHub projects and tracking milestones [there](https://github.com/ContainerSolutions/terraform-examples/projects). Similar to solving issues, if you intend to work on one of the items there, then you can make changes for it in a new branch and create a Pull Request for it.
 
 
 ## Development

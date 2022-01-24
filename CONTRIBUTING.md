@@ -143,3 +143,56 @@ Your PR is now merged, thank you for your contribution to terraform-examples. If
 ### Updating Web UI
 As it can be seen in [README](README.md#terraform-examples), searchable web UI of the project is at [this link](https://containersolutions.github.io/terraform-examples/). To update Web UI you can follow these steps:
 
+1. Update example files by running following commands on the shell:
+    <pre>
+    # please run these commands at the root directory of the repository
+    git switch main
+    
+    # temporary directory will be created for copying files from main to terraform-examples-UI branch
+    mkdir ../terraform-examples-main-temp
+    
+    # copying to temp directory
+    find . -maxdepth 1 -mindepth 1 -type d -not -path './\.*' -exec cp -r {} ../terraform-examples-main-temp \;
+    
+    # switch to terraform-examples-UI branch
+    git switch terraform-examples-UI
+    
+    # create a branch for updates
+    BRANCH_NAME=terraform-examples-UI-update-$(date +'%m%d%y')
+    git checkout -b ${BRANCH_NAME}
+    
+    # dry run for rsync:
+    rsync -avn --include='*/' --include='*.tf' --include='*.sh' --exclude='*' ../terraform-examples-main-temp/ examples/
+    
+    # actual run of rsync:
+    rsync -av --include='*/' --include='*.tf' --include='*.sh' --exclude='*' ../terraform-examples-main-temp/ examples/
+    
+    # removing temporary directory
+    rm -rf ../terraform-examples-main-temp
+    </pre>
+2. Check missing index files for any of the provider directories and add missing index files if there are any.
+    <pre>
+    ./release.sh
+    </pre>
+
+3. Test updated web UI locally
+
+    You should have ruby installed to test web UI. If you haven't run this project locally before, you should install ruby and gems first.
+
+    Install ruby: https://www.ruby-lang.org/en/downloads/
+
+    Install gems while you are on terraform-examples-UI branch:
+    <pre>
+    gem install bundler
+    bundle install
+    </pre>
+
+    After installation, you can run jekyll locally while you are on terraform-examples-UI branch:
+    <pre>
+    bundle exec jekyll serve
+    </pre>
+4. Commit changes on the new branch and push
+5. Create a Pull Request to merge updated terraform-examples-UI-update-.. branch to terraform-examples-UI branch.
+6. Check CI run for Pull Request terraform-examples-UI branch
+7. Request a review for proposed updates
+8. After PR is merged, confirm updates on live page

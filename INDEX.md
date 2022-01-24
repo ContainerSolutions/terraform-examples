@@ -71,6 +71,7 @@
 | `google_compute_network`              | [google](google/google_compute_network/simple) |
 | `google_container_cluster`            | [google, GKE](google/google_container_cluster/simple) <p/> [separate_node_pool](google/google_container_cluster/separate_node_pool) <p/> [cluster_and_deployment](google/google_container_cluster/cluster_and_deployment) <p/> [vpc_native_cluster](google/google_container_cluster/vpc_native_cluster) <p/> [autopilot](google/google_container_cluster/autopilot) |
 | `google_dns_managed_zone`             | [google, public](google/google_dns_managed_zone/public) <p/> [private](google/google_dns_managed_zone/private) |
+| `google_project_service`              | [simple](google/google_project_service/simple) |
 | `google_sql_database`                 | [simple](google/google_sql_database/simple) |
 | `google_storage_bucket`               | [google, gcs_bucket](google/google_storage_bucket/simple) |
 | `helm_release`                        | [simple](helm/helm_release/simple) <p/> [values_from_file](helm/helm_release/values_from_file) |

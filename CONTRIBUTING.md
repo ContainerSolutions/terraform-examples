@@ -54,7 +54,7 @@ You can search for [existing issues](https://github.com/ContainerSolutions/terra
 
 ## Milestones
 
-We are using GitHub projects and tracking milestones [there](https://github.com/ContainerSolutions/terraform-examples/projects). Similar to solving issues, if you intend to work on one of the items there, then you can make changes for it in a new branch and create a Pull Request for it.
+We are tracking [milestones on GitHub](https://github.com/ContainerSolutions/terraform-examples/milestones) and using [GitHub projects](https://github.com/ContainerSolutions/terraform-examples/projects) to keep track of them. Similar to solving issues, if you intend to work on one of the items there, then you can make changes for it in a new branch and create a Pull Request for it.
 
 
 ## Development

@@ -1,3 +1,2 @@
 #!/bin/bash
-../../../bin/apply.sh aws
-
+../../../bin/apply.sh

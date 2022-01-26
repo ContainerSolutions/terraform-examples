@@ -34,5 +34,5 @@ resource "google_project_service" "changeme_project_service" {
   }
 
   disable_dependent_services = false
-  disable_on_destroy = false
+  disable_on_destroy         = false
 }

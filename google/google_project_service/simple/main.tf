@@ -33,5 +33,6 @@ resource "google_project_service" "changeme_project_service" {
     update = "40m"
   }
 
-  disable_dependent_services = true
+  disable_dependent_services = false
+  disable_on_destroy = false
 }

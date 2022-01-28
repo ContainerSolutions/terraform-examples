@@ -1,3 +1,24 @@
+# Table of Contents <!-- omit in toc -->
+- [Contributing](#contributing)
+  - [Principles](#principles)
+  - [Conventions](#conventions)
+  - [Issues](#issues)
+    - [Create a new issue](#create-a-new-issue)
+    - [Solve an issue](#solve-an-issue)
+  - [Milestones](#milestones)
+  - [Development](#development)
+    - [Local Development](#local-development)
+      - [Folder for new examples:](#folder-for-new-examples)
+    - [Local Testing](#local-testing)
+    - [Commit Changes and Push](#commit-changes-and-push)
+    - [CI Checks on Local Branch](#ci-checks-on-local-branch)
+    - [Pull Request](#pull-request)
+    - [Pull Request Review](#pull-request-review)
+    - [CI Checks on main and integration Branches](#ci-checks-on-main-and-integration-branches)
+      - [Forcing tests](#forcing-tests)
+    - [PR Merged](#pr-merged)
+    - [Updating Web UI](#updating-web-ui)
+
 # Contributing
 
 New contributors to the project can get an overview of the project by reading the [README](README.md) and checking examples in the repository.

@@ -23,7 +23,7 @@ provider "aws" {
 
 # Documentation: https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/iam_user
 resource "aws_iam_user" "changeme_iam_user" {
-  name = "changeme_iam_user_name"
+  name = "changeme-iam-user-name"
 }
 
 # Documentation: https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/iam_access_key

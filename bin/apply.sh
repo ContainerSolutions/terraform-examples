@@ -1,6 +1,6 @@
 #!/bin/bash
 
-SUPPORTED_PROVIDERS="aws|azurerm|digitalocean|google|kubernetes|linode"
+SUPPORTED_PROVIDERS="aws|azurerm|digitalocean|google|kubernetes|linode|oci"
 if [[ -n "$1" && ! "$1" =~ ${SUPPORTED_PROVIDERS} ]]
 then
   echo "usage: $0 [PROVIDER]"

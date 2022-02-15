@@ -45,18 +45,18 @@
 | `azurerm_private_dns_zone`            | [simple](azurerm/azurerm_private_dns_zone/simple) |
 | `azurerm_public_ip`                   | [simple](azurerm/azurerm_public_ip/simple) |
 | `azurerm_sql_server`                  | [simple](azurerm/azurerm_sql_server/simple) |
-| `azurerm_storage_account`             | [simple](azurerm/azurerm_storage_account/simple) |
+| `azurerm_storage_account`             | [simple](azurerm/azurerm_storage_account/simple) <p/> [azure, backends](backends/azure/azurerm_storage_container) |
 | `azurerm_storage_blob`                | [append](azurerm/azurerm_storage_blob/append) <p/> [block](azurerm/azurerm_storage_blob/block) <p/> [page](azurerm/azurerm_storage_blob/page) |
-| `azurerm_storage_container`           | [simple](azurerm/azurerm_storage_container/simple) |
+| `azurerm_storage_container`           | [simple](azurerm/azurerm_storage_container/simple) <p/> [azure, backends](backends/azure/azurerm_storage_container) |
 | `azurerm_storage_queue`               | [simple](azurerm/azurerm_storage_queue/simple) |
 | `azurerm_storage_share`               | [simple](azurerm/azurerm_storage_share/simple) |
 | `azurerm_storage_table`               | [simple](azurerm/azurerm_storage_table/simple) |
 | `azurerm_subnet`                      | [simple](azurerm/azurerm_subnet/simple) |
 | `azurerm_subscription`                | [customer_account](azurerm/azurerm_subscription/customer_account) <p/> [enterprise_enrollment](azurerm/azurerm_subscription/enterprise_enrollment) |
 | `azurerm_virtual_machine`             | [linux](azurerm/azurerm_virtual_machine/linux) <p/> [windows](azurerm/azurerm_virtual_machine/windows) |
-| `azurerm_virtual_network`             | [azure](azurerm/azurerm_virtual_network/simple) |
+| `azurerm_virtual_network`             | [azure](azurerm/azurerm_virtual_network/simple) <p/> [azure, backends](backends/azure/azurerm_virtual_network) |
 | `azurerm_windows_virtual_machine`     | [simple](azurerm/azurerm_windows_virtual_machine/simple) |
-| `backends`                            | [backends](backends) <p/> [aws, s3, aws_s3_bucket](backends/s3/aws_s3_bucket) <p/> [aws, remote](backends/remote) <p/> [google, gcs_bucket](backends/gcs/google_storage_bucket) |
+| `backends`                            | [backends](backends) <p/> [aws, s3, aws_s3_bucket](backends/s3/aws_s3_bucket) <p/> [aws, remote](backends/remote) <p/> [google, gcs_bucket](backends/gcs/google_storage_bucket) <p/> [azure, azurerm_storage_container](backends/azure/azurerm_storage_container) |
 | `count`                               | [aws, aws_instance](aws/aws_instance/count) <p/> [aws, aws_vpc](aws/aws_vpc/count) <p/> [google, gcp_attached_disk](google/google_compute_attached_disk/count) |
 | `depends_on`                          | [aws](aws/aws_iam/groups) |
 | `digitalocean`                        | [simple](digitalocean/digitalocean_droplet/simple) |

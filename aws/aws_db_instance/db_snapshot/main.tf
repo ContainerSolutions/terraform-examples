@@ -25,16 +25,16 @@ provider "aws" {
 # See also: (aws/aws_db_instance/simple)
 # Explanation: This resource creates the DB Instance. This Example creates a MySQL  version 5.6.17 as a Managed RDS Service.
 resource "aws_db_instance" "changeme_aws_db_intance_myqsl" {
-  allocated_storage         = 15
-  engine                    = "mysql"
-  engine_version            = "5.7"
-  instance_class            = "db.t3.micro"
-  name                      = "changeme_simple_aws_db_instance"
-  username                  = "changemeusername"
-  password                  = "changeme_password"
-  maintenance_window        = "Sat:07:00-Sat:07:30"
-  backup_retention_period   = 0
-  final_snapshot_identifier = true
+  allocated_storage       = 15
+  engine                  = "mysql"
+  engine_version          = "5.7"
+  instance_class          = "db.t3.micro"
+  name                    = "changeme_simple_aws_db_instance"
+  username                = "changemeusername"
+  password                = "changeme_password"
+  maintenance_window      = "Sat:07:00-Sat:07:30"
+  backup_retention_period = 0
+  skip_final_snapshot     = true
 }
 
 # Documentation: https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/db_snapshot

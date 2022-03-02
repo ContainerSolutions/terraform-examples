@@ -29,7 +29,7 @@ resource "aws_db_instance" "changeme_aws_db_intance_myqsl" {
   engine                    = "mysql"
   engine_version            = "5.7"
   instance_class            = "db.t3.micro"
-  name                      = "changeme_simple_aws_db_instance"
+  name                      = "changeme-simple-aws-db-instance"
   username                  = "changemeusername"
   password                  = "changeme_password"
   maintenance_window        = "Sat:07:00-Sat:07:30"
@@ -41,6 +41,4 @@ resource "aws_db_instance" "changeme_aws_db_intance_myqsl" {
 resource "aws_db_snapshot" "changeme_aws_db_snapshot" {
   db_instance_identifier = aws_db_instance.changeme_aws_db_intance_myqsl.id
   db_snapshot_identifier = "changeme-snapshot-cs-2021"
-
-
 }

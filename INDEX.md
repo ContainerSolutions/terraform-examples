@@ -33,6 +33,7 @@
 | `azurerm_cosmosdb_sql_database`       | [simple](azurerm/azurerm_cosmosdb_sql_database/simple) |
 | `azurerm_dns_zone`                    | [simple](azurerm/azurerm_dns_zone/simple) |
 | `azurerm_function_app`                | [simple](azurerm/azurerm_function_app/simple) |
+| `azurerm_key_vault`                   | [simple](azurerm/azurerm_key_vault/simple) |
 | `azurerm_kubernetes_cluster`          | [simple](azurerm/azurerm_kubernetes_cluster/simple) |
 | `azurerm_lb`                          | [simple](azurerm/azurerm_lb/simple) |
 | `azurerm_linux_virtual_machine`       | [simple](azurerm/azurerm_linux_virtual_machine/simple) |

@@ -32,6 +32,6 @@ resource "google_bigtable_instance" "changeme_cloudbigtable_database" {
 
   cluster {
     cluster_id = "changemeclusterid"
-    num_nodes = 1
+    num_nodes  = 1
   }
 }

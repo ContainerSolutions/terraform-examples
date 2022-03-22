@@ -1,2 +1,2 @@
 #!/bin/bash
-../../../bin/apply.sh google
+../../../../bin/apply.sh google

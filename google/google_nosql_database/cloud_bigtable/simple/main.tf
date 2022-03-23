@@ -26,12 +26,12 @@ provider "google" {
 # CloudBigtable NOSQL database instance
 # Documentation: https://registry.terraform.io/providers/hashicorp/google/latest/docs/resources/bigtable_instance
 resource "google_bigtable_instance" "changeme_cloudbigtable_database" {
-  name = "changemebigtableinstance"
+  name = "changeme-cloudbigtable-database"
 
   deletion_protection = false
 
   cluster {
-    cluster_id = "changemeclusterid"
+    cluster_id = "changeme-cluster-id"
     num_nodes  = 1
   }
 }

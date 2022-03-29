@@ -57,6 +57,7 @@
 | `azurerm_subscription`                | [customer_account](azurerm/azurerm_subscription/customer_account) <p/> [enterprise_enrollment](azurerm/azurerm_subscription/enterprise_enrollment) |
 | `azurerm_virtual_machine`             | [linux](azurerm/azurerm_virtual_machine/linux) <p/> [windows](azurerm/azurerm_virtual_machine/windows) |
 | `azurerm_virtual_network`             | [azure](azurerm/azurerm_virtual_network/simple) |
+| `azurerm_virtual_network_peering` | [azure](azurerm/azurerm_virtual_network/vnet_peering) |
 | `azurerm_windows_virtual_machine`     | [simple](azurerm/azurerm_windows_virtual_machine/simple) |
 | `backends`                            | [backends](backends) <p/> [aws, s3, aws_s3_bucket](backends/s3/aws_s3_bucket) <p/> [aws, remote](backends/remote) <p/> [google, gcs_bucket](backends/gcs/google_storage_bucket) |
 | `count`                               | [aws, aws_instance](aws/aws_instance/count) <p/> [aws, aws_vpc](aws/aws_vpc/count) <p/> [google, gcp_attached_disk](google/google_compute_attached_disk/count) |

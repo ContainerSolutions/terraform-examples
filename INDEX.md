@@ -43,6 +43,8 @@
 | `azurerm_mssql_server`                | [simple](azurerm/azurerm_mssql_server/simple) |
 | `azurerm_mysql_server`                | [simple](azurerm/azurerm_mysql_server/simple) |
 | `azurerm_network_interface`           | [simple](azurerm/azurerm_network_interface/simple) |
+| `azurerm_network_security_group`      | [simple](azurerm/azurerm_network_security_group/simple) |
+| `azurerm_network_security_rule`       | [simple](azurerm/azurerm_network_security_rule/simple) <p/> [iterative](azurerm/azurerm_network_security_rule/iterative)
 | `azurerm_postgresql_server`           | [simple](azurerm/azurerm_postgresql_server/simple) |
 | `azurerm_private_dns_zone`            | [simple](azurerm/azurerm_private_dns_zone/simple) |
 | `azurerm_public_ip`                   | [simple](azurerm/azurerm_public_ip/simple) |

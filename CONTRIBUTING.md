@@ -87,7 +87,7 @@ Changes should be made on different branches and then merged with main and integ
 1. Terraform (with version >= 1.0.0) should be installed and it should be added to the path. To download terraform binary, check [this link](https://www.terraform.io/downloads).
 2. On Windows systems, bash should be installed and sh scripts should be invoked from bash shell. To install git bash, check [this link](https://git-scm.com/downloads).
 3. An IDE with linting installed for Terraform can be used optionally (e.g, VS Code and [HashiCorp Terraform Extension](https://marketplace.visualstudio.com/items?itemName=HashiCorp.terraform))
-4. This repository should be cloned
+4. This repository should be forked (for contributors outside of CS organization)
 5. New branch should be created for development or fix
 6. If a new example is going to be created, an appropriate folder should be created with files according to explanation [below](#folder-for-new-examples).
 7. Changes can be tested locally before committing to the repository according to explanation [below](#local-testing).
@@ -115,6 +115,8 @@ Commit your changes with meaningful commit message when you have completed devel
 
 ### CI Checks on Local Branch
 
+Warning: It may not work for forked repositories, these tests will also run with Pull Request.
+
 On every commit, the following tests run on all branches:
 
 - A `tflint` on all files ending with `tf`
@@ -125,7 +127,12 @@ On every commit, the following tests run on all branches:
 
 ### Pull Request
 
-Create Pull Request when CI checks passes for your commit and you are ready to merge your changes. Fill the Pull Request template by linking related issues, addding information about changed/added features and checking the items in checklist. After updating the description and completing checklist, you can request PR review from reviewers.
+- Create Pull Request when you are ready to merge your changes
+- Fill the Pull Request template by linking related issues, adding information about changed/added features 
+- Submit the Pull Request
+- Wait for CI checks to complete
+- Update items in the checklist
+- Request PR review from reviewers.
 
 ### Pull Request Review
 

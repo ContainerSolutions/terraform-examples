@@ -86,11 +86,12 @@ Changes should be made on different branches and then merged with main and integ
 
 1. Terraform (with version >= 1.0.0) should be installed and it should be added to the path. To download terraform binary, check [this link](https://www.terraform.io/downloads).
 2. On Windows systems, bash should be installed and sh scripts should be invoked from bash shell. To install git bash, check [this link](https://git-scm.com/downloads).
-3. An IDE with linting installed for Terraform can be used optionally (e.g, VS Code and [HashiCorp Terraform Extension](https://marketplace.visualstudio.com/items?itemName=HashiCorp.terraform))
+3. An IDE with linting installed for Terraform can be used optionally (e.g. VS Code and [HashiCorp Terraform Extension](https://marketplace.visualstudio.com/items?itemName=HashiCorp.terraform))
 4. This repository should be forked (for contributors outside of CS organization)
 5. New branch should be created for development or fix
-6. If a new example is going to be created, an appropriate folder should be created with files according to explanation [below](#folder-for-new-examples).
-7. Changes can be tested locally before committing to the repository according to explanation [below](#local-testing).
+6. If a new example is going to be created, an appropriate folder should be created with files according to explanation [below](#folder-for-new-examples) and [INDEX](INDEX.md) should be updated to include new example.
+7. Formatting for newly added or changed Terraform scripts should be corrected with `terraform fmt`
+8. Changes can be tested locally before committing to the repository according to explanation [below](#local-testing).
 
 #### Folder for new examples:
 
@@ -111,11 +112,9 @@ To prevent unnecessary charges, please don't forget to destroy resources after y
 
 ### Commit Changes and Push
 
-Commit your changes with meaningful commit message when you have completed development and your tests are successful.
+Commit your changes with meaningful commit message when you have completed development.
 
 ### CI Checks on Local Branch
-
-Warning: It may not work for forked repositories, these tests will also run with Pull Request.
 
 On every commit, the following tests run on all branches:
 
@@ -198,7 +197,7 @@ As it can be seen in [README](README.md#terraform-examples), searchable web UI o
     # removing temporary directory
     rm -rf ../terraform-examples-main-temp
     </pre>
-2. Check missing index files for any of the provider directories and add missing index files if there are any.
+2. Check missing index files for any of the provider directories and add missing index files if it's needed.
     <pre>
     ./release.sh
     </pre>
@@ -220,7 +219,7 @@ As it can be seen in [README](README.md#terraform-examples), searchable web UI o
     bundle exec jekyll serve
     </pre>
 4. Commit changes on the new branch and push
-5. Create a Pull Request to merge updated terraform-examples-UI-update-.. branch to terraform-examples-UI branch.
-6. Check CI run for Pull Request terraform-examples-UI branch
-7. Request a review for proposed updates
-8. After PR is merged, confirm updates on live page
+5. Create a Pull Request to merge updated terraform-examples-UI-update-... branch to terraform-examples-UI branch.
+6. Check CI run for the Pull Request terraform-examples-UI branch
+7. Request a review for the proposed updates
+8. After the PR is merged, confirm updates on the live page

@@ -25,7 +25,7 @@ source ./shared_terraform_cloud.sh
 cd - || exit 1
 
 terraform init
-terraform plan
+terraform plan -destroy
 
 # If this is non-interactive, then auto-approve...
 if [[ $- == *i* ]]

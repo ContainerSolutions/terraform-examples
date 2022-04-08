@@ -87,7 +87,7 @@ Changes should be made on different branches and then merged with main and integ
 1. Terraform (with version >= 1.0.0) should be installed and it should be added to the path. To download terraform binary, check [this link](https://www.terraform.io/downloads).
 2. On Windows systems, bash should be installed and sh scripts should be invoked from bash shell. To install git bash, check [this link](https://git-scm.com/downloads).
 3. An IDE with linting installed for Terraform can be used optionally (e.g. VS Code and [HashiCorp Terraform Extension](https://marketplace.visualstudio.com/items?itemName=HashiCorp.terraform))
-4. This repository should be forked (for contributors outside of CS organization)
+4. This repository should be forked (for contributors outside of CS organization). You can check official GitHub documentations for [Forking a repo](https://docs.github.com/en/get-started/quickstart/fork-a-repo) and [Syncing a fork](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/working-with-forks/syncing-a-fork).
 5. New branch should be created for development or fix
 6. If a new example is going to be created, an appropriate folder should be created with files according to explanation [below](#folder-for-new-examples) and [INDEX](INDEX.md) should be updated to include new example.
 7. Formatting for newly added or changed Terraform scripts should be corrected with `terraform fmt`

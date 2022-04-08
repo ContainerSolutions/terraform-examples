@@ -86,6 +86,10 @@ The examples seek to be:
   - `# Documentation:` – add link to documentation before each block (terraform, provider, variable, resource, etc.)
   - `# Explanation:` – add only where some extra explanation is needed
 
+## Contributing
+
+Contributions to terraform-examples project are welcome. You can find detailed information about [contributing here](CONTRIBUTING.md).
+
 ## GitHub Actions Workflow
 
 On every commit, the following tests run on all branches:

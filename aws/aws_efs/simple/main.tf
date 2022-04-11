@@ -67,10 +67,10 @@ resource "aws_efs_file_system" "changeme_aws_efs" {
   }
 }
 
+# Documentation: https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/efs_mount_target
 resource "aws_efs_mount_target" "changeme_efs_mount_target" {
   for_each        = data.aws_subnet_ids.changeme_aws_subnet_ids.ids
   subnet_id       = each.value
   file_system_id  = aws_efs_file_system.changeme_aws_efs.id
   security_groups = [aws_security_group.changeme_efs_aws_security_group.id]
-
 }

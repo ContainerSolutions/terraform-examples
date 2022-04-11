@@ -17,7 +17,7 @@ provider "aws" {
   region = "us-east-1"
   default_tags {
     tags = {
-      cs_terraform_examples = "aws_efs/simple"
+      cs_terraform_examples = "aws_efs/access_point"
     }
   }
 }
@@ -33,8 +33,8 @@ data "aws_subnet_ids" "changeme_aws_subnet_ids" {
 }
 
 # Documentation: https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/security_group
-resource "aws_security_group" "changeme_efs_aws_security_group" {
-  name          = "changeme-simple-efs-security-group"
+resource "aws_security_group" "changeme_aws_security_group" {
+  name          = "changeme-security-group"
   description   = "Allow inbound traffic"
   ingress {
     from_port   = 2049
@@ -59,7 +59,7 @@ resource "aws_efs_file_system" "changeme_aws_efs" {
   kms_key_id                      = null
 
   tags = {
-    Name = "changeme-simple-efs"
+    Name = "changeme-access-point-efs"
   }
 
   lifecycle_policy {

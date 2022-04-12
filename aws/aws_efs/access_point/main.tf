@@ -53,10 +53,10 @@ resource "aws_security_group" "changeme_aws_security_group" {
 
 # Documentation: https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/efs_file_system
 resource "aws_efs_file_system" "changeme_aws_efs" {
-  performance_mode                = "generalPurpose"
-  throughput_mode                 = "bursting"
-  encrypted                       = "false"
-  kms_key_id                      = null
+  performance_mode = "generalPurpose"
+  throughput_mode  = "bursting"
+  encrypted        = "false"
+  kms_key_id       = null
 
   tags = {
     Name = "changeme-access-point-efs"

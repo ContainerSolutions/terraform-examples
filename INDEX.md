@@ -9,7 +9,7 @@
 | `aws_dynamodb_table`                  | [aws](aws/aws_dynamodb_table) <p/> [simple](aws/aws_dynamodb_table/simple) |
 | `aws_ebs_volume`                      | [aws](aws/aws_ebs_volume) <p/>[simple](aws/aws_ebs_volume/simple)  <p/> [volume_attachment](aws/aws_ebs_volume/volume_attachment) <p/> [ebs_snapshot](aws/aws_ebs_volume/ebs_snapshot) |
 | `aws_eks`                             | [aws, spot_and_fargate](aws/aws_eks/fargate/spot_and_fargate) |
-| `aws_efs`                             | [aws](aws/aws_efs) <p/> [simple](aws/aws_elb/simple) <p/> [access_point](aws/aws_elb/access_point) |
+| `aws_efs`                             | [aws](aws/aws_efs) <p/> [access_point](aws/aws_elb/access_point) |
 | `aws_elb`                             | [aws](aws/aws_elb) <p/> [application_elb](aws/aws_elb/application_elb) <p/> [network_elb](aws/aws_elb/network_elb) [classic_elb](aws/aws_elb/classic_elb) |
 | `aws_iam`                             | [iam_user_and_access_key](aws/aws_iam/users) <p/>[users_and_groups](aws/aws_iam/groups) |
 | `aws_instance`                        | [aws](aws/aws_instance) <p/> [simple](aws/aws_instance/simple) <p/> [simple_ssh_access](aws/aws_instance/simple_ssh_access) <p/> [ami_lookup](aws/aws_instance/ami_lookup) |

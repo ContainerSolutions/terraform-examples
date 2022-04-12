@@ -34,8 +34,8 @@ data "aws_subnet_ids" "changeme_aws_subnet_ids" {
 
 # Documentation: https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/security_group
 resource "aws_security_group" "changeme_efs_aws_security_group" {
-  name          = "changeme-simple-efs-security-group"
-  description   = "Allow inbound traffic"
+  name         = "changeme-simple-efs-security-group"
+  description  = "Allow inbound traffic"
   ingress {
     from_port   = 2049
     to_port     = 2049
@@ -53,10 +53,10 @@ resource "aws_security_group" "changeme_efs_aws_security_group" {
 
 # Documentation: https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/efs_file_system
 resource "aws_efs_file_system" "changeme_aws_efs" {
-  performance_mode                = "generalPurpose"
-  throughput_mode                 = "bursting"
-  encrypted                       = "false"
-  kms_key_id                      = null
+  performance_mode = "generalPurpose"
+  throughput_mode  = "bursting"
+  encrypted        = "false"
+  kms_key_id       = null
 
   tags = {
     Name = "changeme-simple-efs"

@@ -23,6 +23,17 @@ provider "aws" {
   }
 }
 
+
+# Documentation: https://registry.terraform.io/providers/hashicorp/aws/latest/docs/data-sources/vpc
+data "aws_vpc" "changeme_default_aws_vpc" {
+  default = true
+}
+
+# Documentation: https://registry.terraform.io/providers/hashicorp/aws/latest/docs/data-sources/subnet_ids
+data "aws_subnet_ids" "changeme_aws_subnet_ids" {
+  vpc_id = data.aws_vpc.changeme_default_aws_vpc.id
+}
+
 # Documentation: https://registry.terraform.io/providers/hashicorp/aws/latest/docs/data-sources/ami
 # Explanation: Get most_recent version of Ubuntu Image 
 data "aws_ami" "changeme_aws_ami" {
@@ -58,12 +69,14 @@ resource "aws_launch_configuration" "changeme_aws_launch_configuration" {
 
 # Documentation: https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/autoscaling_group
 resource "aws_autoscaling_group" "changeme_aws_autoscaling_group" {
-  name                 = "changeme_aws_autoscaling_group"
+  name                 = "changeme-aws-autoscaling-group"
   launch_configuration = aws_launch_configuration.changeme_aws_launch_configuration.name
   min_size             = 1
   max_size             = 2
+  vpc_zone_identifier  = data.aws_subnet_ids.changeme_aws_subnet_ids.ids
 
   lifecycle {
     create_before_destroy = true
   }
 }
+

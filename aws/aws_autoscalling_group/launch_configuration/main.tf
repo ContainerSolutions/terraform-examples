@@ -1,5 +1,5 @@
 
-# Summary: Create a simple Autoscalling Group
+# Summary: Create a simple Autoscaling Group
 
 # Documentation: https://www.terraform.io/docs/language/settings/index.html
 terraform {
@@ -18,52 +18,52 @@ provider "aws" {
   profile = "terraform-examples"
   default_tags {
     tags = {
-      cs_terraform_examples = "aws_db_cluster_snapshot/simple"
+      cs_terraform_examples = "aws_autoscaling_group/launch_configuration"
     }
   }
 }
 
+# Documentation: https://registry.terraform.io/providers/hashicorp/aws/latest/docs/data-sources/ami
+# Explanation: Get most_recent version of Ubuntu Image 
+data "aws_ami" "changeme_aws_ami" {
+  most_recent = true
 
-
-# Documentation: 
-resource "aws_autoscaling_group" "this" {
-  name_prefix = var.name_prefix != "" ? "${var.name_prefix}-" : null
-  name        = var.name != "" ? var.name : null
-
-  launch_configuration = var.launch_configuration
-  vpc_zone_identifier  = var.vpc_zone_identifier
-  max_size             = var.max_size
-  min_size             = var.min_size
-  desired_capacity     = var.desired_capacity
-
-  load_balancers            = var.load_balancers
-  health_check_grace_period = var.health_check_grace_period
-  health_check_type         = var.health_check_type
-
-  min_elb_capacity          = var.min_elb_capacity
-  wait_for_elb_capacity     = var.wait_for_elb_capacity
-  target_group_arns         = var.target_group_arns
-  default_cooldown          = var.default_cooldown
-  force_delete              = var.force_delete
-  termination_policies      = var.termination_policies
-  suspended_processes       = var.suspended_processes
-  placement_group           = var.placement_group
-  enabled_metrics           = var.enabled_metrics
-  metrics_granularity       = var.metrics_granularity
-  wait_for_capacity_timeout = var.wait_for_capacity_timeout
-  protect_from_scale_in     = var.protect_from_scale_in
-
-  dynamic "tag" {
-    for_each = var.tags
-    content {
-      key                 = tag.key
-      value               = tag.value
-      propagate_at_launch = true
-    }
+  # Explanation: Canonical now publishes  official Ubuntu images on the Amazon cloud.
+  # Check supported versions here : https://uec-images.ubuntu.com/locator/
+  filter {
+    name   = "name"
+    values = ["ubuntu/images/hvm-ssd/ubuntu-hirsute-21.04-amd64-server-*"]
   }
+
+  filter {
+    name   = "virtualization-type"
+    values = ["hvm"]
+  }
+
+  # Explanation: There are different Public providers (owners), like Canonical, AWS and others . Check here: https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/finding-an-ami.html
+  # Some examples of owners:   099720109477 - Canonical and 679593333241 - AWS
+  owners = ["099720109477"]
+}
+
+# Documentation: https://registry.terraform.io/providers/hashicorp/aws/latest/docs/data-sources/launch_configuration
+resource "aws_launch_configuration" "changeme_aws_launch_configuration" {
+  name_prefix   = "changeme-"
+  image_id      = data.aws_ami.changeme_aws_ami.id
+  instance_type = "t2.micro"
 
   lifecycle {
     create_before_destroy = true
   }
+}
 
+# Documentation: https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/autoscaling_group
+resource "aws_autoscaling_group" "changeme_aws_autoscaling_group" {
+  name                 = "changeme_aws_autoscaling_group"
+  launch_configuration = aws_launch_configuration.changeme_aws_launch_configuration.name
+  min_size             = 1
+  max_size             = 2
+
+  lifecycle {
+    create_before_destroy = true
+  }
 }

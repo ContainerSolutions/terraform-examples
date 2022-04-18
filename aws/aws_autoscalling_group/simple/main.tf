@@ -1,6 +1,6 @@
 
 
-# Summary: Create a simple Autoscalling Group
+# Summary: Create a simple Autoscaling Group
 
 # Documentation: https://www.terraform.io/docs/language/settings/index.html
 terraform {

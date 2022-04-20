@@ -54,7 +54,7 @@ resource "aws_launch_template" "changeme_aws_launch_template" {
 }
 
 # Documentation: https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/autoscaling_group
-resource "aws_autoscaling_group" "changeme_aws_autoscaling_group" {
+resource "aws_autoscaling_group" "changeme_aws_autoscaling_group_simple" {
   availability_zones = ["us-east-1a"]
   desired_capacity   = 1
   max_size           = 2

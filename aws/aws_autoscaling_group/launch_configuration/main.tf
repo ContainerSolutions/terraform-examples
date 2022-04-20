@@ -68,7 +68,7 @@ resource "aws_launch_configuration" "changeme_aws_launch_configuration" {
 }
 
 # Documentation: https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/autoscaling_group
-resource "aws_autoscaling_group" "changeme_aws_autoscaling_group" {
+resource "aws_autoscaling_group" "changeme_aws_autoscaling_group_lc" {
   name                 = "changeme-aws-autoscaling-group"
   launch_configuration = aws_launch_configuration.changeme_aws_launch_configuration.name
   min_size             = 1

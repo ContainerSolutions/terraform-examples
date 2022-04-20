@@ -36,7 +36,7 @@ data "aws_subnet_ids" "changeme_aws_subnet_ids" {
 
 # Documentation: https://registry.terraform.io/providers/hashicorp/aws/latest/docs/data-sources/ami
 # Explanation: Get most_recent version of Ubuntu Image 
-data "aws_ami" "changeme_aws_ami" {
+data "aws_ami" "changeme_aws_ami_lc" {
   most_recent = true
 
   # Explanation: Canonical now publishes  official Ubuntu images on the Amazon cloud.

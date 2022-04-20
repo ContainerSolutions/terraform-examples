@@ -2,6 +2,7 @@
 
 | Feature                               | Links/Related Features  |
 | -------------                         |:-------------:|
+| `aws_autoscaling_group`               | [aws](aws/aws_autoscaling_group) <p/> [simple](aws/aws_autoscaling_group/simple) <p/> [launch_configuration](aws/aws_autoscaling_group/launch_configuration) |
 | `aws_docdb_cluster`                   | [aws](aws/aws_docdb_cluster) <p/> [simple](aws/aws_docdb_cluster/simple) |
 | `aws_db_cluster_snapshot`             | [aws](aws/aws_db_cluster_snapshot) <p/> [simple](aws/aws_db_cluster_snapshot/simple) |
 | `aws_db_instance`                     | [aws](aws/aws_db_instance) <p/> [simple](aws/aws_db_instance/simple) <p/> [postgres](aws/aws_db_instance/postgres) <p/> [restore_db_from_snapshot](aws/aws_db_instance/restore_db_from_snapshot) <p/> [db_snapshot](aws/aws_db_instance/db_snapshot) |

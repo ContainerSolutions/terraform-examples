@@ -33,7 +33,7 @@ data "aws_subnet_ids" "changeme_aws_subnet_ids" {
 }
 
 # Documentation: https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/security_group
-resource "aws_security_group" "changeme_aws_security_group" {
+resource "aws_security_group" "changeme_aws_security_group_efs" {
   name        = "changeme-security-group"
   description = "Allow inbound traffic to EFS"
   ingress {

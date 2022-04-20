@@ -59,7 +59,7 @@ data "aws_ami" "changeme_aws_ami_lc" {
 # Documentation: https://registry.terraform.io/providers/hashicorp/aws/latest/docs/data-sources/launch_configuration
 resource "aws_launch_configuration" "changeme_aws_launch_configuration" {
   name_prefix   = "changeme-"
-  image_id      = data.aws_ami.changeme_aws_ami.id
+  image_id      = data.aws_ami.changeme_aws_ami_lc.id
   instance_type = "t2.micro"
 
   lifecycle {

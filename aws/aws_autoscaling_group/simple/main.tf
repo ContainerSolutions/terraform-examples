@@ -49,7 +49,7 @@ data "aws_ami" "changeme_aws_ami_simple" {
 # Documentation: https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/launch_template
 resource "aws_launch_template" "changeme_aws_launch_template" {
   name_prefix   = "changeme-aws-launch-template"
-  image_id      = data.aws_ami.changeme_aws_ami.id
+  image_id      = data.aws_ami.changeme_aws_ami_simple.id
   instance_type = "t2.micro"
 }
 

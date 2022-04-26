@@ -46,6 +46,7 @@
 | `azurerm_postgresql_server`           | [simple](azurerm/azurerm_postgresql_server/simple) |
 | `azurerm_private_dns_zone`            | [simple](azurerm/azurerm_private_dns_zone/simple) |
 | `azurerm_public_ip`                   | [simple](azurerm/azurerm_public_ip/simple) |
+| `azurerm_scale_set`                   | [linux](azurerm/azurerm_scale_set/linux) |
 | `azurerm_sql_server`                  | [simple](azurerm/azurerm_sql_server/simple) |
 | `azurerm_storage_account`             | [simple](azurerm/azurerm_storage_account/simple) |
 | `azurerm_storage_blob`                | [append](azurerm/azurerm_storage_blob/append) <p/> [block](azurerm/azurerm_storage_blob/block) <p/> [page](azurerm/azurerm_storage_blob/page) |

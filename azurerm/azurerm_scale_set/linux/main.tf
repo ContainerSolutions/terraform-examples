@@ -33,8 +33,8 @@ resource "azurerm_resource_group" "changeme_linux_scaleset_resource_group" {
 
 # Virtual Network within the Resource Group
 # Documentation: https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/virtual_network
-resource "azurerm_virtual_network" "changeme_simple_virtual_machine_linux_virtual_network" {
-  name                = "changeme-simple-virtual-machine-linux-virtual-network-name"
+resource "azurerm_virtual_network" "changeme_linux_scaleset_virtual_network" {
+  name                = "changeme-linux-scaleset-network-name"
   resource_group_name = azurerm_resource_group.changeme_linux_scaleset_resource_group.name
   location            = azurerm_resource_group.changeme_linux_scaleset_resource_group.location
   address_space       = ["10.0.0.0/16"]
@@ -42,10 +42,10 @@ resource "azurerm_virtual_network" "changeme_simple_virtual_machine_linux_virtua
 
 # Subnet within the Virtual Network
 # Documentation: https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/subnet
-resource "azurerm_subnet" "changeme_simple_virtual_machine_linux_subnet" {
-  name                 = "changeme-simple-virtual-machine-linux-subnet-name"
+resource "azurerm_subnet" "changeme_linux_scaleset_subnet" {
+  name                 = "changeme-linux-scaleset-subnet-name"
   resource_group_name  = azurerm_resource_group.changeme_linux_scaleset_resource_group.name
-  virtual_network_name = azurerm_virtual_network.changeme_simple_virtual_machine_linux_virtual_network.name
+  virtual_network_name = azurerm_virtual_network.changeme_linux_scaleset_virtual_network.name
   address_prefixes     = ["10.0.1.0/24"]
 }
 
@@ -73,13 +73,13 @@ resource "azurerm_linux_virtual_machine_scale_set" "changeme_simple_virtual_mach
 
 
   network_interface {
-    name    = "changeme-network-interface-name"
+    name    = "changeme-linux-scaleset-network-interface-name"
     primary = true
 
     ip_configuration {
-      name      = "changeme-internal-ip-config"
+      name      = "changeme-linux-scaleset-ip-config"
       primary   = true
-      subnet_id = azurerm_subnet.changeme_simple_virtual_machine_linux_subnet.id
+      subnet_id = azurerm_subnet.changeme_linux_scaleset_subnet.id
     }
   }
 }

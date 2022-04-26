@@ -62,8 +62,8 @@ resource "azurerm_linux_virtual_machine_scale_set" "changeme_simple_virtual_mach
   source_image_reference {
     publisher = "Canonical"
     offer     = "UbuntuServer"
-    sku       = "16.04-LTS"
-    version   = "latest"
+    sku       = "18.04-LTS"
+    version   = "Latest"
   }
 
   os_disk {
@@ -73,11 +73,11 @@ resource "azurerm_linux_virtual_machine_scale_set" "changeme_simple_virtual_mach
 
 
   network_interface {
-    name    = "example"
+    name    = "changeme-network-interface-name"
     primary = true
 
     ip_configuration {
-      name      = "internal"
+      name      = "changeme-internal-ip-config"
       primary   = true
       subnet_id = azurerm_subnet.changeme_simple_virtual_machine_linux_subnet.id
     }

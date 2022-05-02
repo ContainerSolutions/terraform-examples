@@ -23,6 +23,10 @@
 | `azuread_group`                       | [simple](azuread/azuread_group/simple) |
 | `azuread_service_principal`           | [simple](azuread/azuread_service_principal/simple) |
 | `azuread_user`                        | [simple](azuread/azuread_user/simple) |
+| `azurerm_api_management`               | [simple](azurerm/azurerm_api_management/simple) |
+| `azurerm_api_management_api`           | [simple](azurerm/azurerm_api_management_api/simple) |
+| `azurerm_api_management_api_operation` | [simple](azurerm/azurerm_api_management_api_operation/simple) |
+| `azurerm_api_management_logger`        | [simple](azurerm/azurerm_api_management_logger/simple) |
 | `azurerm_app_service_plan`            | [simple](azurerm/azurerm_app_service_plan/simple) |
 | `azurerm_container_group`             | [simple](azurerm/azurerm_container_group/simple) |
 | `azurerm_container_registry`          | [simple](azurerm/azurerm_container_registry/simple) |

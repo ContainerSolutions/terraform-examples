@@ -1,7 +1,8 @@
-name: free-tests-command
-on:
-  repository_dispatch:
-    types: [free-tests-command]
+name: Main Pull Request
+on: [push, pull_request]
+env:
+  terraform_version: latest
+  tflint_version: latest
 jobs:
   TFLint:
     runs-on: ubuntu-latest

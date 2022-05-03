@@ -8,7 +8,6 @@ env:
 jobs:
   cloudTests:
     runs-on: ubuntu-latest
-    
     needs: [TFLint, TFValidate, Checks]
     steps:
       - name: Perform Cloud Tests

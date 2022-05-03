@@ -1,0 +1,34 @@
+name: Main Comment Commands
+  issue_comment:
+    types: [created]
+env:
+  terraform_version: latest
+  tflint_version: latest
+jobs:
+  cloudTests:
+    runs-on: ubuntu-latest
+    needs: [TFLint, TFValidate, Checks]
+    steps:
+      - name: Perform Cloud Tests
+        uses: peter-evans/slash-command-dispatch@v3
+        with:
+          token: ${{ secrets.PAT }}
+          commands: cloud-tests
+  reviewAndApprove:
+    runs-on: ubuntu-latest
+    needs: [TFLint, TFValidate, Checks, cloudTests]
+    steps:
+      - name: Review and Approve
+        uses: peter-evans/slash-command-dispatch@v3
+        with:
+          token: ${{ secrets.PAT }}
+          commands: approve
+  merge:
+    runs-on: ubuntu-latest
+    needs: [TFLint, TFValidate, Checks, cloudTests]
+    steps:
+      - name: Merge
+        uses: peter-evans/slash-command-dispatch@v3
+        with:
+          token: ${{ secrets.PAT }}
+          commands: merge

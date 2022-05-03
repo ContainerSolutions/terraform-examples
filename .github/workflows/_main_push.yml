@@ -61,3 +61,14 @@ jobs:
         run: ${{ github.workspace }}/bin/check_shell.sh
       - name: Run Check Names
         run: ${{ github.workspace }}/bin/check_non_unique_data.sh && ${{ github.workspace }}/bin/check_non_unique_resources.sh && ${{ github.workspace }}/bin/check_non_unique_variable.sh
+  commentFeedback:
+    runs-on: ubuntu-latest
+    needs: [TFLint, TFValidate, Checks]
+    steps:
+      - name: Add reaction on success
+        uses: peter-evans/create-or-update-comment@v2
+        with:
+          token: ${{ secrets.PAT }}
+          repository: ${{ github.event.client_payload.github.payload.repository.full_name }}
+          comment-id: ${{ github.event.client_payload.github.payload.comment.id }}
+          reaction-type: hooray

@@ -1,4 +1,5 @@
 name: Main Comment Commands
+on:
   issue_comment:
     types: [created]
 env:
@@ -7,6 +8,7 @@ env:
 jobs:
   cloudTests:
     runs-on: ubuntu-latest
+    
     needs: [TFLint, TFValidate, Checks]
     steps:
       - name: Perform Cloud Tests

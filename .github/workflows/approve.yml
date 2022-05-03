@@ -10,7 +10,7 @@ jobs:
         uses: juliangruber/approve-pull-request-action@v1.1.1
         with:
           github-token: ${{ secrets.GITHUB_TOKEN }}
-          number: ${{ github.event.client_payload.merge.args.named.number }}
+          number: ${{ github.event.client_payload.approve.args.named.number }}
           repo: juliangruber/approve-pull-request-action
   commentApprove:
     runs-on: ubuntu-latest

@@ -1,0 +1,159 @@
+name: cloud-tests-command
+on:
+  repository_dispatch:
+    types: [cloud-tests-command]
+jobs:
+  ProvidersAWS:
+    concurrency: provider_test_aws
+    needs: [TFLint, TFValidate, Checks]
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository code
+        uses: actions/checkout@v2
+        with:
+          fetch-depth: 0   # Need whole history, or at least far enough back to get .test_log.log reference
+      - name: Setup Terraform
+        uses: hashicorp/setup-terraform@v1
+        with:
+          terraform_version: ${{ env.terraform_version }}
+          terraform_wrapper: false
+          cli_config_credentials_token: ${{ secrets.TERRAFORM_CLOUD_LOGIN_TOKEN }}
+      - name: Inject slug/short variables
+        uses: rlespinasse/github-slug-action@v3.x
+      - name: Run AWS examples
+        env:
+          AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          CI_USE_TF_CLOUD: true
+          TERRAFORM_CLOUD_LOGIN_TOKEN: ${{ secrets.TERRAFORM_CLOUD_LOGIN_TOKEN }}
+        if: github.ref == 'refs/heads/main' || env.GITHUB_REF_SLUG == 'integration' # Only run on main/integration, as these take a long time
+        run: ${{ github.workspace }}/bin/run_aws_examples.sh
+  ProvidersGCP:
+    concurrency: provider_test_gcp
+    needs: [TFLint, TFValidate, Checks]
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository code
+        uses: actions/checkout@v2
+        with:
+          fetch-depth: 0   # Need whole history, or at least far enough back to get .test_log.log reference
+      - name: Setup Terraform
+        uses: hashicorp/setup-terraform@v1
+        with:
+          terraform_version: ${{ env.terraform_version }}
+          terraform_wrapper: false
+          cli_config_credentials_token: ${{ secrets.TERRAFORM_CLOUD_LOGIN_TOKEN }}
+      - name: Inject slug/short variables
+        uses: rlespinasse/github-slug-action@v3.x
+      - name: Run GCP examples
+        env:
+          CI_USE_TF_CLOUD: ${{ secrets.CI_USE_TF_CLOUD }}
+          TERRAFORM_CLOUD_LOGIN_TOKEN: ${{ secrets.TERRAFORM_CLOUD_LOGIN_TOKEN }}
+          GCP_CREDENTIALS_FILE: ${{ secrets.GCP_CREDENTIALS_FILE }}
+          GCP_CREDENTIALS_FILENAME: ${{ secrets.GCP_CREDENTIALS_FILENAME }}
+          TF_VAR_project_id: ${{ secrets.GCP_PROJECT }}
+        if: github.ref == 'refs/heads/main' || env.GITHUB_REF_SLUG == 'integration' # Only run on main/integration, as these take a long time
+        run: GOOGLE_APPLICATION_CREDENTIALS=$GCP_CREDENTIALS_FILENAME ${{github.workspace}}/bin/run_gcp_examples.sh
+  ProvidersLinode:
+    concurrency: provider_test_linode
+    needs: [TFLint, TFValidate, Checks]
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository code
+        uses: actions/checkout@v2
+        with:
+          fetch-depth: 0   # Need whole history, or at least far enough back to get .test_log.log reference
+      - name: Setup Terraform
+        uses: hashicorp/setup-terraform@v1
+        with:
+          terraform_version: ${{ env.terraform_version }}
+          terraform_wrapper: false
+      - name: Inject slug/short variables
+        uses: rlespinasse/github-slug-action@v3.x
+      - name: Run Linode examples
+        env:
+          LINODE_TOKEN: ${{ secrets.LINODE_TOKEN }}
+        if: github.ref == 'refs/heads/main' || env.GITHUB_REF_SLUG == 'integration' # Only run on main/integration, as these take a long time
+        run: ${{github.workspace}}/bin/run_linode_examples.sh
+  ProvidersDigitalocean:
+    concurrency: provider_test_digitalocean
+    needs: [TFLint, TFValidate, Checks]
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository code
+        uses: actions/checkout@v2
+        with:
+          fetch-depth: 0   # Need whole history, or at least far enough back to get .test_log.log reference
+      - name: Setup Terraform
+        uses: hashicorp/setup-terraform@v1
+        with:
+          terraform_version: ${{ env.terraform_version }}
+          terraform_wrapper: false
+      - name: Inject slug/short variables
+        uses: rlespinasse/github-slug-action@v3.x
+      - name: Run DigitalOcean examples
+        env:
+          DIGITALOCEAN_TOKEN: ${{ secrets.DIGITALOCEAN_TOKEN }}
+        if: github.ref == 'refs/heads/main' || env.GITHUB_REF_SLUG == 'integration' # Only run on main/integration, as these take a long time
+        run: ${{github.workspace}}/bin/run_digitalocean_examples.sh
+  ProvidersAzure:
+    concurrency: provider_test_azure
+    needs: [TFLint, TFValidate, Checks]
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository code
+        uses: actions/checkout@v2
+        with:
+          fetch-depth: 0   # Need whole history, or at least far enough back to get .test_log.log reference
+      - name: Setup Terraform
+        uses: hashicorp/setup-terraform@v1
+        with:
+          terraform_version: ${{ env.terraform_version }}
+          terraform_wrapper: false
+          cli_config_credentials_token: ${{ secrets.TERRAFORM_CLOUD_LOGIN_TOKEN }}
+      - name: Inject slug/short variables
+        uses: rlespinasse/github-slug-action@v3.x
+      - name: Generate SSH key
+        run: |
+          mkdir -p ~/.ssh/
+          chmod 700 ~/.ssh/
+          ssh-keygen -q -N '' -f ~/.ssh/id_rsa
+      - name: Run Azure examples
+        env:
+          CI_USE_TF_CLOUD: ${{ secrets.CI_USE_TF_CLOUD }}
+          TERRAFORM_CLOUD_LOGIN_TOKEN: ${{ secrets.TERRAFORM_CLOUD_LOGIN_TOKEN }}
+          ARM_CLIENT_ID: ${{ secrets.ARM_CLIENT_ID }}
+          ARM_CLIENT_SECRET: ${{ secrets.ARM_CLIENT_SECRET }}
+          ARM_SUBSCRIPTION_ID: ${{ secrets.ARM_SUBSCRIPTION_ID }}
+          ARM_TENANT_ID: ${{ secrets.ARM_TENANT_ID }}
+        if: github.ref == 'refs/heads/main' || env.GITHUB_REF_SLUG == 'integration' # Only run on main/integration, as these take a long time
+        run: ${{github.workspace}}/bin/run_azurerm_examples.sh
+  ProvidersLocal:
+    concurrency: provider_test_local
+    needs: [TFLint, TFValidate, Checks]
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository code
+        uses: actions/checkout@v2
+        with:
+          fetch-depth: 0   # Need whole history, or at least far enough back to get .test_log.log reference
+      - name: Inject slug/short variables
+        uses: rlespinasse/github-slug-action@v3.x
+      - name: Setup Terraform
+        uses: hashicorp/setup-terraform@v1
+        with:
+          terraform_version: ${{ env.terraform_version }}
+          terraform_wrapper: false
+      - name: Run Local Examples
+        if: github.ref == 'refs/heads/main' || env.GITHUB_REF_SLUG == 'integration' # Only run on main/integration, as these take a long time
+        run: ${{github.workspace}}/bin/run_local_examples.sh
+  commentFeedback:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Add reaction on success
+        uses: peter-evans/create-or-update-comment@v2
+        with:
+          token: ${{ secrets.PAT }}
+          repository: ${{ github.event.client_payload.github.payload.repository.full_name }}
+          comment-id: ${{ github.event.client_payload.github.payload.comment.id }}
+          reaction-type: hooray

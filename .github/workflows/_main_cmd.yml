@@ -1,4 +1,5 @@
 name: Main Comment Commands
+on:
   issue_comment:
     types: [created]
 env:

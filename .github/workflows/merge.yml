@@ -2,29 +2,20 @@ name: merge-command
 on:
   repository_dispatch:
     types: [merge-command]
-env:
-  PR_NUMBER: ${{ github.event.number }}
 jobs:
   merge:
     runs-on: ubuntu-latest
     steps:
-      - name: Test
-        uses: actions/github-script@0.3.0
-        with:
-          github-token: ${{ secrets.PAT }}
-          script: |
-            const core = require('@actions/core')
-            const prNumber = context.payload.number;
-            core.exportVariable('PULL_NUMBER', prNumber);
       - name: Merge Pull Request
         uses: juliangruber/merge-pull-request-action@v1
         with:
           github-token: ${{ secrets.PAT }}
-          number: ${{ env.PULL_NUMBER }}
+          number: ${{ github.event.client_payload.github.payload.issue.number }}
           method: merge
           repo: juliangruber/octokit-action
   commentFeedback:
     runs-on: ubuntu-latest
+    needs: [merge]
     steps:
       - name: Add reaction on success
         uses: peter-evans/create-or-update-comment@v2

@@ -9,8 +9,8 @@ jobs:
       - name: Merge Pull Request
         uses: juliangruber/merge-pull-request-action@v1
         with:
-          github-token: ${{ secrets.GITHUB_TOKEN }}
-          number: ${{ github.event.client_payload.merge.args.named.number }}
+          github-token: ${{ secrets.PAT }}
+          number: ${{ github.event.pull_request.number }}
           method: merge
           repo: juliangruber/octokit-action
   commentFeedback:

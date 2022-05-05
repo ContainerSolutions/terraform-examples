@@ -8,11 +8,19 @@ jobs:
   merge:
     runs-on: ubuntu-latest
     steps:
+      - name: Test
+        uses: actions/github-script@0.3.0
+        with:
+          github-token: ${{ secrets.PAT }}
+          script: |
+            const core = require('@actions/core')
+            const prNumber = context.payload.number;
+            core.exportVariable('PULL_NUMBER', prNumber);
       - name: Merge Pull Request
         uses: juliangruber/merge-pull-request-action@v1
         with:
           github-token: ${{ secrets.PAT }}
-          number: 10
+          number: ${{ env.PULL_NUMBER }}
           method: merge
           repo: juliangruber/octokit-action
   commentFeedback:

@@ -2,6 +2,8 @@ name: merge-command
 on:
   repository_dispatch:
     types: [merge-command]
+env:
+  PR_NUMBER: ${{ github.event.number }}
 jobs:
   merge:
     runs-on: ubuntu-latest

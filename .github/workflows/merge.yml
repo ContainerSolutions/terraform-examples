@@ -2,6 +2,8 @@ name: merge-command
 on:
   repository_dispatch:
     types: [merge-command]
+env:
+  PR_NUMBER: ${{ github.event.number }}
 jobs:
   merge:
     runs-on: ubuntu-latest
@@ -10,7 +12,7 @@ jobs:
         uses: juliangruber/merge-pull-request-action@v1
         with:
           github-token: ${{ secrets.PAT }}
-          number: 10
+          number: ${{ env.PR_NUMBER }}
           method: merge
           repo: juliangruber/octokit-action
   commentFeedback:

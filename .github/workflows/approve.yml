@@ -10,7 +10,7 @@ jobs:
         uses: juliangruber/approve-pull-request-action@v1.1.1
         with:
           github-token: ${{ secrets.PAT }}
-          number: ${{ github.event.number }}
+          number: 10
           repo: juliangruber/approve-pull-request-action
   commentApprove:
     runs-on: ubuntu-latest

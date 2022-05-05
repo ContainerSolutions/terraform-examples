@@ -12,7 +12,7 @@ jobs:
         uses: juliangruber/merge-pull-request-action@v1
         with:
           github-token: ${{ secrets.PAT }}
-          number: ${{ env.PR_NUMBER }}
+          number: 10
           method: merge
           repo: juliangruber/octokit-action
   commentFeedback:

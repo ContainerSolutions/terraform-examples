@@ -9,7 +9,7 @@ jobs:
       - name: Print
         run: |
           echo "HERE"
-          echo " - ${{ toJSON(github.event.client_payload.github.payload.issue.number) }}"    
+          echo " - ${{ toJSON(github.event.client_payload.github.payload.issue) }}"    
       - name: Approve Pull Request
         uses: juliangruber/approve-pull-request-action@v1.1.1
         with:

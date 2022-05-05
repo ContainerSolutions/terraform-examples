@@ -5,16 +5,12 @@ on:
 jobs:
   approve:
     runs-on: ubuntu-latest
-    steps:
-      - name: Print
-        run: |
-          echo "HERE"
-          echo " - ${{ github.event.client_payload.github.payload.issue.number }}"    
+    steps:  
       - name: Approve Pull Request
         uses: juliangruber/approve-pull-request-action@v1.1.1
         with:
           github-token: ${{ secrets.PAT }}
-          number: 11
+          number: ${{ github.event.client_payload.github.payload.issue.number }}
           repo: juliangruber/approve-pull-request-action
   commentApprove:
     runs-on: ubuntu-latest

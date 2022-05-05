@@ -15,8 +15,3 @@ The following short checklist should be used to make sure your PR is of good qua
 - [ ] resolved issues linked
 - [ ] [Milestone](https://github.com/ContainerSolutions/terraform-examples/milestones) linked (if applicable)
 
-
-
-
-
-

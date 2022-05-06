@@ -2,9 +2,6 @@ name: Main Comment Commands
 on:
   issue_comment:
     types: [created]
-env:
-  terraform_version: latest
-  tflint_version: latest
 jobs:
   cloudTests:
     runs-on: ubuntu-latest

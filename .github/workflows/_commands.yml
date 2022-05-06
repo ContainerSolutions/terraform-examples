@@ -5,11 +5,6 @@ on:
 env:
   terraform_version: latest
   tflint_version: latest
-permissions:
-  contents: write
-  pull-requests: write
-  issues: write
-  actions: write
 jobs:
   cloudTests:
     runs-on: ubuntu-latest
@@ -18,6 +13,7 @@ jobs:
         uses: peter-evans/slash-command-dispatch@v3
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
+          permissions: write
           commands: full-ci
   reviewAndApprove:
     runs-on: ubuntu-latest
@@ -26,6 +22,7 @@ jobs:
         uses: peter-evans/slash-command-dispatch@v3
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
+          permissions: write
           commands: approve
   merge:
     runs-on: ubuntu-latest
@@ -34,4 +31,5 @@ jobs:
         uses: peter-evans/slash-command-dispatch@v3
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
+          permissions: write
           commands: merge

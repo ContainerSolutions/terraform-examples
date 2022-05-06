@@ -10,7 +10,7 @@ jobs:
         uses: peter-evans/slash-command-dispatch@v3
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
-          permissions: write
+          permission: write
           commands: full-ci
   reviewAndApprove:
     runs-on: ubuntu-latest
@@ -19,7 +19,7 @@ jobs:
         uses: peter-evans/slash-command-dispatch@v3
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
-          permissions: write
+          permission: write
           commands: approve
   merge:
     runs-on: ubuntu-latest
@@ -28,5 +28,5 @@ jobs:
         uses: peter-evans/slash-command-dispatch@v3
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
-          permissions: write
+          permission: write
           commands: merge

@@ -7,7 +7,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Merge Pull Request
-        uses: juliangruber/merge-pull-request-action@v1
+        uses: juliangruber/merge-pull-request-action@v1.1.0
         with:
           github-token: ${{ secrets.PAT }}
           number: ${{ github.event.client_payload.github.payload.issue.number }}

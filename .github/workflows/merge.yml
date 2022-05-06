@@ -11,7 +11,7 @@ jobs:
         with:
           github-token: ${{ secrets.PAT }}
           number: ${{ github.event.client_payload.github.payload.issue.number }}
-          method: merge
+          method: squash
           repo: juliangruber/octokit-action
   commentFeedback:
     runs-on: ubuntu-latest

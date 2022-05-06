@@ -11,7 +11,6 @@ jobs:
         with:
           github-token: ${{ secrets.PAT }}
           number: ${{ github.event.client_payload.github.payload.issue.number }}
-          repo: juliangruber/approve-pull-request-action
   commentApprove:
     runs-on: ubuntu-latest
     needs: [approve]

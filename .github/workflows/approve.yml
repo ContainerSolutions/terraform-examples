@@ -1,25 +1,25 @@
-name: approve-command
-on:
-  repository_dispatch:
-    types: [approve-command]
-jobs:
-  approve:
-    runs-on: ubuntu-latest
-    steps:  
-      - name: Approve Pull Request
-        uses: juliangruber/approve-pull-request-action@v1.1.1
-        with:
-          permission: write
-          github-token: ${{ secrets.GITHUB_TOKEN }}
-          number: ${{ github.event.client_payload.github.payload.issue.number }}
-  commentApprove:
-    runs-on: ubuntu-latest
-    needs: [approve]
-    steps:
-      - name: Add reaction on success
-        uses: peter-evans/create-or-update-comment@v2
-        with:
-          token: ${{ secrets.GITHUB_TOKEN }}
-          repository: ${{ github.event.client_payload.github.payload.repository.full_name }}
-          comment-id: ${{ github.event.client_payload.github.payload.comment.id }}
-          reaction-type: laugh
+# name: approve-command
+# on:
+#   repository_dispatch:
+#     types: [approve-command]
+# jobs:
+#   approve:
+#     runs-on: ubuntu-latest
+#     steps:  
+#       - name: Approve Pull Request
+#         uses: juliangruber/approve-pull-request-action@v1.1.1
+#         with:
+#           permission: write
+#           github-token: ${{ secrets.GITHUB_TOKEN }}
+#           number: ${{ github.event.client_payload.github.payload.issue.number }}
+#   commentApprove:
+#     runs-on: ubuntu-latest
+#     needs: [approve]
+#     steps:
+#       - name: Add reaction on success
+#         uses: peter-evans/create-or-update-comment@v2
+#         with:
+#           token: ${{ secrets.GITHUB_TOKEN }}
+#           repository: ${{ github.event.client_payload.github.payload.repository.full_name }}
+#           comment-id: ${{ github.event.client_payload.github.payload.comment.id }}
+#           reaction-type: laugh

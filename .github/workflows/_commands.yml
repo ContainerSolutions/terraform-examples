@@ -12,21 +12,21 @@ jobs:
           token: ${{ secrets.GITHUB_TOKEN }}
           permission: write
           commands: full-ci
-  reviewAndApprove:
-    runs-on: ubuntu-latest
-    steps:
-      - name: Review and Approve
-        uses: peter-evans/slash-command-dispatch@v3
-        with:
-          token: ${{ secrets.GITHUB_TOKEN }}
-          permission: write
-          commands: approve
-  merge:
-    runs-on: ubuntu-latest
-    steps:
-      - name: Merge
-        uses: peter-evans/slash-command-dispatch@v3
-        with:
-          token: ${{ secrets.GITHUB_TOKEN }}
-          permission: write
-          commands: merge
+  # reviewAndApprove:
+  #   runs-on: ubuntu-latest
+  #   steps:
+  #     - name: Review and Approve
+  #       uses: peter-evans/slash-command-dispatch@v3
+  #       with:
+  #         token: ${{ secrets.GITHUB_TOKEN }}
+  #         permission: write
+  #         commands: approve
+  # merge:
+  #   runs-on: ubuntu-latest
+  #   steps:
+  #     - name: Merge
+  #       uses: peter-evans/slash-command-dispatch@v3
+  #       with:
+  #         token: ${{ secrets.GITHUB_TOKEN }}
+  #         permission: write
+  #         commands: merge

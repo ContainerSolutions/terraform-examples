@@ -31,7 +31,7 @@ resource "aws_iam_access_key" "changeme_iam_user" {
   user = aws_iam_user.changeme_iam_user.name
 }
 
-# Documentation: https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/iam_group_policy
+# Documentation: https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/iam_group_policy 
 resource "aws_iam_user_policy" "changeme_iam_group_policy_admin" {
   name = "changeme-iam-group-policy-admin"
   user = aws_iam_user.changeme_iam_user.name

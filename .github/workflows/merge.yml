@@ -1,0 +1,37 @@
+on: issue_comment
+name: Issue Comments for merge
+jobs:
+  check_comments_merge:
+    name: Check comments for /merge
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check for Command
+        uses: xt0rted/slash-command-action@v1.1.0
+        with:
+          repo-token: ${{ secrets.GITHUB_TOKEN }}
+          command: merge
+          reaction: "true"
+          reaction-type: "eyes"
+          allow-edits: "false"
+          permission-level: admin
+  merge:
+    runs-on: ubuntu-latest
+    needs: [check_comments_merge]
+    steps:
+      - name: Merge Pull Request
+        uses: juliangruber/merge-pull-request-action@v1.1.0
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          number: ${{ github.event.issue.number }}
+          method: merge
+  commentFeedback:
+    runs-on: ubuntu-latest
+    needs: [merge]
+    steps:
+      - name: Add reaction on success
+        uses: peter-evans/create-or-update-comment@v2
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          repository: ${{ github.event.client_payload.github.payload.repository.full_name }}
+          comment-id: ${{ github.event.client_payload.github.payload.comment.id }}
+          reaction-type: hooray

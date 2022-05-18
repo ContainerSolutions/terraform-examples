@@ -1,0 +1,36 @@
+on: issue_comment
+name: Issue Comments for approve
+jobs:
+  check_comments_approve:
+    name: Check comments for /approve
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check for Command
+        uses: xt0rted/slash-command-action@v1.1.0
+        with:
+          repo-token: ${{ secrets.GITHUB_TOKEN }}
+          command: approve
+          reaction: "true"
+          reaction-type: "eyes"
+          allow-edits: "false"
+          permission-level: admin
+  approve:
+    runs-on: ubuntu-latest
+    needs: [check_comments_approve]
+    steps:
+      - name: Approve Pull Request
+        uses: juliangruber/approve-pull-request-action@v1.1.1
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          number: ${{ github.event.issue.number }}
+  commentFeedback:
+    runs-on: ubuntu-latest
+    needs: [approve]
+    steps:
+      - name: Add reaction on success
+        uses: peter-evans/create-or-update-comment@v2
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          repository: ${{ github.event.client_payload.github.payload.repository.full_name }}
+          comment-id: ${{ github.event.client_payload.github.payload.comment.id }}
+          reaction-type: hooray

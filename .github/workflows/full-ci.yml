@@ -218,14 +218,3 @@ jobs:
       - name: Run Local Examples
         if: github.ref == 'refs/heads/main' || env.GITHUB_REF_SLUG == 'integration' # Only run on main/integration, as these take a long time
         run: ${{github.workspace}}/bin/run_local_examples.sh
-  commentFeedback:
-    runs-on: ubuntu-latest
-    needs: [check_comments_test, TFLint, TFValidate, Checks, ProvidersAWS, ProvidersGCP, ProvidersLinode, ProvidersDigitalocean, ProvidersAzure, ProvidersLocal]
-    steps:
-      - name: Add reaction on success
-        uses: peter-evans/create-or-update-comment@v2
-        with:
-          token: ${{ secrets.GITHUB_TOKEN }}
-          repository: ${{ github.event.client_payload.github.payload.repository.full_name }}
-          comment-id: ${{ github.event.client_payload.github.payload.comment.id }}
-          reaction-type: hooray

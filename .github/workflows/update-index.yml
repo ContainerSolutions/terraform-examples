@@ -1,7 +1,7 @@
 on:
   pull_request:
     branches:
-      - index-creation-test
+      - index-creation
       - main
     types: [closed]
 name: Update index after having merged pull requests to main branch
@@ -22,10 +22,10 @@ jobs:
           echo "::set-output name=OUTPUT::$OUTPUT"
       - name: Update index using bin/update_index.sh script
         run: ./bin/update_index.sh
-        if: steps.isindexupdated.outputs.OUTPUT == '0' && (github.ref == 'refs/heads/main' || github.ref == 'refs/heads/index-creation-test')
+        if: steps.isindexupdated.outputs.OUTPUT == '0' && (github.ref == 'refs/heads/main' || github.ref == 'refs/heads/index-creation')
       - name: Commit the updated index
         uses: stefanzweifel/git-auto-commit-action@v4
-        if: steps.isindexupdated.outputs.OUTPUT == '0' && (github.ref == 'refs/heads/main' || github.ref == 'refs/heads/index-creation-test') # Only run on main, and don't run if the last commit updated index (isindexupdated).
+        if: steps.isindexupdated.outputs.OUTPUT == '0' && (github.ref == 'refs/heads/main' || github.ref == 'refs/heads/index-creation') # Only run on main, and don't run if the last commit updated index (isindexupdated).
         with:
           commit_message: "Updated INDEX.md"
           branch: ${{ github.head_ref }}

@@ -14,9 +14,11 @@ PROVIDER_LIST=$(find . -maxdepth 1 -mindepth 1 -type d -not -path './\.*' -not -
 for provider in $PROVIDER_LIST; do
     provider_uppercase=$(echo "$provider" | awk '{print toupper($0)}')
     provider_lowercase=$(echo "$provider" | awk '{print tolower($0)}')
-    echo -e "## ${provider_uppercase} Examples" >> $TMP_INDEX_FILE
-    echo '| Resource      | Feature       | Summary       |' >> $TMP_INDEX_FILE
-    echo '| ------------- |:-------------:|:-------------|' >> $TMP_INDEX_FILE
+    {
+        echo -e "## ${provider_uppercase} Examples"
+        echo '| Resource      | Feature       | Summary       |'
+        echo '| ------------- |:-------------:|:-------------|'
+    } >> $TMP_INDEX_FILE
     examples=$(find "$provider" -name main.tf)
 
     for example in $examples; do

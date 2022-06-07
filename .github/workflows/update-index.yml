@@ -32,7 +32,7 @@ jobs:
         if: steps.isindexupdated.outputs.OUTPUT == '0'
         with:
           commit_message: "Updated INDEX.md"
-          branch: ${{ github.head_ref }}
+          branch: ${{ github.ref }}
           commit_options: '--no-verify --signoff'
           repository: .
           commit_user_name: Terraform Examples Bot

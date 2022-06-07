@@ -1,0 +1,39 @@
+on:
+  pull_request:
+    branches:
+      - main
+    types: [closed]
+name: Update index after having merged pull requests to main branch
+jobs:
+  update-index:
+    if: github.event.pull_request.merged == true
+    runs-on: ubuntu-latest
+    steps: 
+      - name: Check out repository code
+        uses: actions/checkout@v2
+        with:
+          fetch-depth: 0
+          ref: ${{ github.ref }}
+      - name: Determine whether INDEX.md was updated in last commit or not
+        id: isindexupdated
+        run: |
+          echo "$(git log --format='%B' -n 1 | head -1)"
+          echo "$(git log --format='%ae' | head -1)"
+          if [ "$(git log --format='%B' -n 1 | head -1)" == 'Updated INDEX.md' ] && [ $(git log --format='%ae' | head -1) == 'terraform-examples-bot@container-solutions.com' ]; then OUTPUT=1; else OUTPUT=0; fi
+          echo "output: $OUTPUT"
+          echo "::set-output name=OUTPUT::$OUTPUT"
+          echo "github ref: $GITHUB_REF"
+      - name: Update index using bin/update_index.sh script
+        run: ./bin/update_index.sh
+        if: steps.isindexupdated.outputs.OUTPUT == '0'
+      - name: Commit the updated index
+        uses: stefanzweifel/git-auto-commit-action@v4
+        if: steps.isindexupdated.outputs.OUTPUT == '0'
+        with:
+          commit_message: "Updated INDEX.md"
+          branch: ${{ github.ref }}
+          commit_options: '--no-verify --signoff'
+          repository: .
+          commit_user_name: Terraform Examples Bot
+          commit_user_email: terraform-examples-bot@container-solutions.com
+          commit_author: Terraform Examples Bot <terraform-examples-bot@container-solutions.com>

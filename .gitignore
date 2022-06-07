@@ -5,3 +5,4 @@ TODO
 **tfvars
 .*.sw?
 !**.terraformignore*
+INDEX_TMP.md

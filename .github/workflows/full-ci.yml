@@ -66,8 +66,8 @@ jobs:
           terraform_wrapper: false
       - name: Run Check Format
         run: ${{ github.workspace }}/bin/check_format.sh
-      - name: Run Check Index
-        run: ${{ github.workspace }}/bin/check_index.sh
+      # - name: Run Check Index
+      #   run: ${{ github.workspace }}/bin/check_index.sh
       - name: Run Check Scripts
         run: ${{ github.workspace }}/bin/check_scripts.sh
       - name: Run Check Shell Scripts

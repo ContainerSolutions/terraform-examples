@@ -139,7 +139,7 @@ Note: All the slash commands are performed by Github Actions BOT with GITHUB_TOK
 
 ### Forcing tests
 
-You can force a test for a given provider (on `main` branche only) by adding a `.forcetest` file to the relevant folder.
+You can force a test for a given provider (on `main` branch only) by adding a `.forcetest` file to the relevant folder.
 
 For example, if you want to ensure that the aws tests run, then add an empty file in `aws/.forcetest`. On a successfully completed test run, these files are removed as part of the 'success commit' in the github action workflow.
 

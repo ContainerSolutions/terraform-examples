@@ -92,7 +92,7 @@ Contributions to terraform-examples project are welcome. You can find detailed i
 
 ## GitHub Actions Workflow
 
-On every commit, the following tests run on all branches:
+On every commit/push, the following tests run on all branches:
 
 - A `tflint` on all files ending with `tf`
 
@@ -100,7 +100,9 @@ On every commit, the following tests run on all branches:
 
 - A series of checks to test the code against standards
 
-On every commit to the `integration` and `main branches`:
+
+Using slash command /test, a maintainer can run Cloud Testing jobs. 
+This includes:
 
 - All AWS provider examples are run against an AWS account
 
@@ -112,15 +114,32 @@ On every commit to the `integration` and `main branches`:
 
 - All 'local' provider examples are run locally on the GitHub Actions runner
 
-This is because `a)` the tests are long and/or cost money and `b)` the won't work without the necessary auth information being set up correctly.
+Cloud Environment tests are long and/or cost money and they won't work without the necessary auth information being set up correctly. 
 
 The auth information for the provider accounts are stored in secrets in the repository, accessible to the admin.
 
-Integration rebasing and any necessary re-work is done on the `integration` branch before rebasing to `main`. This is to help ensure that `main` is in as pristine a state as possible.
+
+Slash commands can be used to approve/merge the PR, '/approve' or '/merge'.
+
+The Flow:
+
+- PR is opened
+
+- Contributor commits/pushes on-demand and triggers the Statis Tests
+
+- Once ready, and maintainer runs the Full-CI, which includes Cloud Tests '/test'
+
+- If everything goes well, the maintainer uses the command '/approve' to mark as reviewed/approve
+
+- The last step, after everything is checked, '/merge' to perform the merge to the main branch
+
+
+Note: All the slash commands are performed by Github Actions BOT with GITHUB_TOKEN
+
 
 ### Forcing tests
 
-You can force a test for a given provider (on the `integration` or `main` branches only) by adding a `.forcetest` file to the relevant folder.
+You can force a test for a given provider (on `main` branche only) by adding a `.forcetest` file to the relevant folder.
 
 For example, if you want to ensure that the aws tests run, then add an empty file in `aws/.forcetest`. On a successfully completed test run, these files are removed as part of the 'success commit' in the github action workflow.
 
@@ -131,6 +150,7 @@ For information for maintainers of this repository at ContainerSolutions, see [m
 ## Sources / Thanks To
 
 [Learn Terraform The Hard Way](https://leanpub.com/learnterraformthehardway)
+[Slash Commands](https://github.com/marketplace/actions/slash-commands)
 
 ## Other Examples
 

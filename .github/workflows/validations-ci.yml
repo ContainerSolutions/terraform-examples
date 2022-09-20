@@ -2,7 +2,7 @@ name: Main Pull Request
 on: [push, pull_request]
 env:
   terraform_version: latest
-  tflint_version: latest
+  tflint_version: v0.38.1
 jobs:
   TFLint:
     runs-on: ubuntu-latest

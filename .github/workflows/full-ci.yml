@@ -25,10 +25,10 @@ jobs:
       - name: Setup TFLint
         uses: terraform-linters/setup-tflint@v1
         with:
-          tflint_version: ${{ env.tflint_version }} # Must be specified. See: https://github.com/terraform-linters/tflint/releases for latest versions
+          tflint_version: v0.38.1 # ${{ env.tflint_version }} # Must be specified. See: https://github.com/terraform-linters/tflint/releases for latest versions
       - name: Run TFLint
         # info level there because of WARNs and ERRs seen occasionally only in GitHub actions logs
-        run: find ${{ github.workspace }} | grep tf$ | xargs -n1 dirname | xargs -IXXX -n1 /bin/sh -c 'set -o errexit; cd XXX; pwd; tflint --loglevel=info .; cd - >/dev/null'
+        run: find ${{ github.workspace }} | grep tf$ | xargs -n1 dirname | xargs -IXXX -n1 /bin/sh -c 'set -o errexit; cd XXX; pwd; TFLINT_LOG=info tflint .; cd - >/dev/null'
   TFValidate:
     runs-on: ubuntu-latest
     needs: [check_comments_test]

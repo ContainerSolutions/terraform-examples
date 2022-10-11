@@ -21,6 +21,7 @@ provider "aws" {
   }
 }
 
+# Documentation: https://www.terraform.io/docs/language/values/variables.html
 variable "users_count" {
   default = "2"
 }
@@ -28,20 +29,20 @@ variable "users_count" {
 # Documentation: https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/iam_user
 resource "aws_iam_user" "changeme_iam_user" {
   count = var.users_count
-  name = "changeme-iam-user-name-${count.index}"
+  name  = "changeme-iam-user-name-${count.index}"
 }
 
 # Documentation: https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/iam_access_key
 resource "aws_iam_access_key" "changeme_iam_user" {
   count = var.users_count
-  user = aws_iam_user.changeme_iam_user[count.index].name
+  user  = aws_iam_user.changeme_iam_user[count.index].name
 }
 
 # Documentation: https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/iam_group_policy
 resource "aws_iam_user_policy" "changeme_iam_group_policy_admin" {
   count = var.users_count
-  name = "changeme-iam-group-policy-admin-${count.index}"
-  user = aws_iam_user.changeme_iam_user[count.index].name
+  name  = "changeme-iam-group-policy-admin-${count.index}"
+  user  = aws_iam_user.changeme_iam_user[count.index].name
 
   policy = <<EOF
 {

@@ -1,4 +1,4 @@
-== AWS Examples
+## AWS Examples
 
 Examples of AWS Terraform modules.
 

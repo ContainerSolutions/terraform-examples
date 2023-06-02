@@ -9,7 +9,8 @@ cd - || exit 1
 IGN_FILE=".terraformignore"
 
 function repeat {
-  read -p "Do you want to clean all the files created by terraform? (y/n) " yn
+  echo "Do you want to clean all the files created by terraform? (y/n) "
+  read -r yn
   case $yn in
   [yY])
     echo "================================================================================"

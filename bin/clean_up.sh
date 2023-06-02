@@ -17,7 +17,6 @@ function repeat {
     echo "Removing all the files created by terraform"
     echo "================================================================================"
     find . -type f \( -name ".terraform.*" -o -name "terraform.*" \) -a ! -name ${IGN_FILE} -delete && find . -type d -name ".terraform" -exec rm -rf {} +
-    # find . -type f -name ".terraform.*" -or -name "terraform.*" -and ! -name ".terraformignore"
     ;;
   [nN])
     exit

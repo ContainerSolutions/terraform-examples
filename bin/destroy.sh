@@ -12,8 +12,6 @@ fi
 
 cd "${0%/*}" || exit 1
 
-echo $pwd
-
 if [ -z "$1" ]
 then
   # shellcheck disable=SC1091

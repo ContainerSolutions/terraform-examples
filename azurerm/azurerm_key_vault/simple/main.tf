@@ -1,4 +1,4 @@
-# Summary: A simple Azure Storage Container for Storage Blobs
+# Summary: A simple Azure Key Vault Service
 
 # Documentation: https://www.terraform.io/docs/language/settings/index.html
 terraform {

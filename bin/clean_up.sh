@@ -2,30 +2,12 @@
 
 # Script to remove all files created by terraform
 
-
 cd - || exit 1
 
 # Ignoring the file "./backends/remote/.terraformignore"
 IGN_FILE=".terraformignore"
 
-function repeat {
-  echo "Do you want to clean all the files created by terraform? (y/n) "
-  read -r yn
-  case $yn in
-  [yY])
-    echo "================================================================================"
-    echo "Removing all the files created by terraform"
-    echo "================================================================================"
-    find . -type f \( -name ".terraform.*" -o -name "terraform.*" \) -a ! -name ${IGN_FILE} -delete && find . -type d -name ".terraform" -exec rm -rf {} +
-    ;;
-  [nN])
-    exit
-    ;;
-  *)
-    echo Invalid Response
-    repeat
-    ;;
-  esac
-}
-
-repeat
+echo "================================================================================"
+echo "Removing all the files created by terraform"
+echo "================================================================================"
+find . -type f \( -name ".terraform.*" -o -name "terraform.*" \) -a ! -name ${IGN_FILE} -delete && find . -type d -name ".terraform" -exec rm -rf {} +

@@ -39,4 +39,5 @@ fi
 
 cd "${0%/*}" || exit 1
 
+# shellcheck disable=SC1091
 source ./clean_up.sh

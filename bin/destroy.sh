@@ -1,5 +1,7 @@
 #!/bin/bash
 
+# Also deletes all the files created by terraform with this script with conjunction of clean_up.sh
+
 SUPPORTED_PROVIDERS="aws|azurerm|digitalocean|google|kubernetes|linode"
 if [[ -n "$1" && ! "$1" =~ ${SUPPORTED_PROVIDERS} ]]
 then
@@ -34,3 +36,8 @@ then
 else
   terraform destroy -auto-approve
 fi
+
+cd "${0%/*}" || exit 1
+
+# shellcheck disable=SC1091
+source ./clean_up.sh
